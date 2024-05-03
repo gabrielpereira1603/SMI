@@ -1,0 +1,85 @@
+<div class="title">
+    <h2>Relatório de Manutenções</h2>
+</div>
+
+<form method="post" class="form-group">
+
+    <div class="novo-user">
+        <div class="title-user">
+            <legend>Filtre como desejado para gerar o relatório<legend>
+        </div>
+        <div class="form-floating mb-3">
+            <select class="form-select" aria-label="Usuário" name="usuario" id="select-user-relatorioManutencao" required>
+                <option value="">Selecionar um usuário</option>
+                <option value="-1">Todos os usuários selecionados</option>
+                {{user}}
+            </select>
+        </div>
+
+        <div class="form-floating mb-3">
+            <select class="form-select" aria-label="Laboratório" name="laboratorio" id="laboratorio" required>
+                <option value="">Selecionar um laboratório</option>
+                <option value="-1">Todos os laboratórios</option>
+                {{laboratorio}}
+            </select>
+            <label for="laboratorio">Laboratório:</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <select class="form-select" aria-label="Computador" name="computador" id="computador" required>
+                <option value="">Selecione um laboratório primeiro</option>
+            </select>
+            <label for="computador">Computador:</label>
+        </div>
+
+
+        <div class="form-floating mb-3">
+            <legend>Selecione o Intervalo de Datas</legend>
+            <fieldset style="border: 2px solid rgb(73, 72, 72); border-radius: 20px;">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label for="dataInicio">Data de Início:</label>
+                            <input type="date" class="form-control" id="dataInicio" name="dataInicio" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label for="dataFim">Data de Fim:</label>
+                            <input type="date" class="form-control" id="dataFim" name="dataFim" required>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+
+        <div class="d-grid gap-2 mt-4">
+            <button class="btn btn-warning" type="submit" name="criaruser">Gerar Relatório</button>
+        </div>
+        <hr>
+    </div>
+
+    <div class="user-info">
+        <div class="title-info">
+            <legend>Informações sobre os filtros</legend>
+        </div>
+
+        <div class="text-info">
+            <legend>Usuários:</legend>
+            <p>Voçe pode selecionar as manutenções de um um usuário específico ou de todos os usuários do sistema.</p>
+
+            <legend>Laboratório</legend>
+            <p>
+                Ao selecionar todos os laboratórios selecionamos automaticamente pra voçe todos os computadores daquele laboratório,
+                porém voçe pode gerar o relatório de um laboratório específico.
+            </p>
+
+            <legend>Computador</legend>
+            <p>
+                Voçe tem a opção de selecionar todos os computadores do laboratório que escolheu ou pode selecionar um
+                computador em específico.
+            </p>
+        </div>
+    </div>
+</form>

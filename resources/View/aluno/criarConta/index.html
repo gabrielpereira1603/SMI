@@ -1,0 +1,96 @@
+<section class="login mt-5">
+    <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+        <div class="container">
+            <div class="row gx-lg-5 align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h1 class="my-5 display-3 fw-bold ls-tight">
+                        Somos <span style="color: #facc15;">Dev's</span><br>
+                        the best<br/>
+                        <span style="color: #facc15;">for your business</span>
+                    </h1>
+                    <p style="color: hsl(217, 10%, 50.8%)">
+                        Bem-vindo ao Sistema de Manutenções Integrado (SMI),
+                        a solução completa para gerenciar e controlar o andamento dos serviços em seus laboratórios.
+                        O SMI oferece uma plataforma centralizada que permite monitorar e supervisionar todas as atividades de manutenção em um único lugar.
+                    </p>
+                </div>
+
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="card">
+                        <div class="card-body py-5 px-md-5">
+                            <div class="title p-2">
+                                <h3>Criar Conta</h3>
+                            </div>
+                            <form method="post">
+                                <div class="mb-4">
+                                    <input type="text" id="form3Example3" class="form-control" name="nome" placeholder="Isira seu nome completo" required>
+                                </div>
+
+                                <div class="mb-4">
+                                    <input type="email" id="form3Example3" class="form-control" name="email" placeholder="Email" required>
+                                </div>
+
+                                <div class="mb-4">
+                                    <input type="text" maxlength="30" id="form3Example4" class="form-control" name="login" placeholder="Login" required>
+                                </div>
+
+                                <div class="mb-4">
+                                    <input type="password" id="form3Example4" class="form-control" name="senha" placeholder="Senha" required>
+                                </div>
+
+                                <div class="form-check text-center mb-4">
+                                    <label class="form-check-label text-yellow" for="termos_uso">
+                                        <input class="form-check-input" type="checkbox" value="" id="termos_uso" required>
+                                        Eu li e concordo com os <a href="#" style="color: #facc15" data-bs-toggle="modal" data-bs-target="#termosModal">termos de uso</a>
+                                    </label>
+                                </div>
+
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-block" style="background-color: #facc15;">
+                                        Criar Conta
+                                    </button>
+                                </div>
+
+                                <div class="d-flex justify-content-center gap-5 mt-3">
+                                    <p><a href="{{URL}}/login" style="color: #facc15;"><i class="bi bi-info-circle-fill"></i> Já possui conta?</a></p>
+                                    <p><a href="{{URL}}/admin/login" onclick="showSweetAlert()" style="color: #facc15;"><i class='bx bx-user-pin'></i> É um administrador?</a></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="termosModal" tabindex="-1" aria-labelledby="termosModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="termosModalLabel">Termos de Uso SMI</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h3>Termos de Uso</h3>
+                <p>Bem-vindo ao Sistema de Manutenções Integrado (SMI) da Universidade Unifunec. Este sistema foi desenvolvido para facilitar o gerenciamento e a manutenção dos laboratórios da universidade, promovendo um ambiente de estudo e pesquisa mais eficiente.</p>
+
+                <h4>Obrigações do Usuário</h4>
+                <ul>
+                    <li>O usuário concorda em utilizar o SMI apenas para fins educacionais e relacionados à sua atividade acadêmica na Universidade Unifunec.</li>
+                    <li>O usuário compromete-se a não utilizar o sistema de maneira que possa prejudicar sua integridade ou interferir no acesso de outros usuários.</li>
+                    <li>O usuário concorda em seguir todas as políticas e regulamentos da universidade relacionados ao uso de recursos tecnológicos.</li>
+                </ul>
+
+                <h4>Responsabilidades</h4>
+                <p>A Universidade Unifunec não se responsabiliza por qualquer uso indevido ou violação dos termos de uso por parte dos usuários do Sistema de Manutenções Integrado (SMI). Os usuários são responsáveis por garantir que seu uso do sistema esteja em conformidade com as leis e regulamentos aplicáveis.</p>
+
+                <h4>Restrições de Uso</h4>
+                <p>O acesso ao SMI está sujeito às políticas de segurança da informação da universidade. Qualquer tentativa de acesso não autorizado ou violação da segurança do sistema será tratada de acordo com as políticas e procedimentos estabelecidos pela instituição.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" style="background-color: #facc15;" data-bs-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>

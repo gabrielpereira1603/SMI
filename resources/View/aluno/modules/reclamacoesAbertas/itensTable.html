@@ -1,0 +1,56 @@
+<tr>
+    <td>{{codreclamacao}}</td>
+    <td>{{descricao}}</td>
+    <td>{{status}}</td>
+    <td>{{patrimonio}}</td>
+    <td>Laboratório {{numerolaboratorio}}</td>
+    <td>{{nome_usuario}}</td>
+    <td>{{nome_componente}}</td>
+    <td>{{datahora_reclamacao}}</td>
+    <td style="width: 150px;"> <!-- Defina um tamanho adequado para a coluna dos botões -->
+        <button class="btn-editar" style="background-color: #facc15; border: solid black 1px; border-radius: 5px; margin-right: 10px" onclick="openPopup('modalEditarReclamacao{{codreclamacao}}')">
+            <i class="bx bx-edit-alt" style="color: black; font-size: 1.2rem;"></i>
+        </button>
+        <form method="post" action="{{URL}}/reclamacoesAbertas/delete" style="display: inline-block;">
+            <input type="hidden" name="codreclamacao" value="{{codreclamacao}}">
+            <input type="hidden" name="codcomputador" value="{{codcomputador}}">
+            <button class="btn-excluir" style="background-color: #facc15; border: solid black 1px; border-radius: 5px;" type="submit">
+                <i class='bx bx-trash' style="color: black; font-size: 1.2rem;"></i>
+            </button>
+        </form>
+    </td>
+</tr>
+
+
+<div class="modal fade" id="editarComponentesModal" tabindex="-1" aria-labelledby="editarComponentesModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editarComponentesModalLabel">Editar Reclamação</h5>
+                <button type="button" class="btn-close btn-cancelar" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body" >
+                <form id="formEditarLembrete" method="post">
+                    <input type="hidden" name="codreclamacao" value="{{codreclamacao}}">
+                    <legend>Componentes Selecionados:</legend>
+                    <div class="d-flex justify-content-around row m-3" id="componentesCheckboxContainer" >
+                        <!-- Os componentes gerados dinamicamente serão adicionados aqui -->
+                    </div>
+
+                    <!-- Input hidden para armazenar os IDs dos componentes selecionados -->
+                    <input type="hidden" id="componentesSelecionados" name="componentesSelecionados" value="">
+
+                    <div class="mb-3">
+                        <label for="editarDescricao" class="form-label">Descrição</label>
+                        <textarea class="form-control" name="editarDescricao" id="editarDescricao" rows="5" placeholder="Descreva sua reclamação">{{descricao}}</textarea>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success " id="salvarEdicao">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

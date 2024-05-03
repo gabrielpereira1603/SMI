@@ -1,0 +1,96 @@
+{{nav}}
+<div class="title">
+    <h1 class="text-dark">
+        <span><span><i class='bx bx-desktop'></i> </span>Patrimônio: {{patrimonio}}</span>
+    </h1>
+    <p>Status da reclamação: <span style="padding: 2px; border-radius: 5px;">{{status}}</span></p>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <h5 class="card-header">Descrição da Reclamação:</h5>
+                <div class="card-body">
+                    <p class="card-text">{{descricao}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Status:</strong> {{status}}</li>
+                    <li class="list-group-item"><strong>Data e Hora da Reclamação:</strong> {{dataHora}}</li>
+                    <li class="list-group-item"><strong>Número do Laboratório:</strong> {{numerolaboratorio}}</li>
+                    <li class="list-group-item"><strong>Patrimônio:</strong> {{patrimonio}}</li>
+                    <li class="list-group-item"><strong>Componentes Selecionados:</strong> {{componentes}}</li>
+                    <!-- Adicione mais informações da reclamação conforme necessário -->
+                </ul>
+                <div class="card-body">
+                    <h5 class="card-title">Informações do Usuário</h5>
+                    <p class="card-text"><strong>Login:</strong> {{login}} </p>
+                    <p class="card-text"><strong>Nome do Usuário:</strong> {{nome_usuario}}</p>
+                    <p class="card-text"><strong>Email do Usuário:</strong> {{email_usuario}}</p>
+                    <!-- Adicione mais informações do usuário conforme necessário -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <h5 class="card-header">Finalizar Manutenção</h5>
+                <div class="card-body">
+                    <!-- Formulário para finalizar a manutenção da reclamação -->
+                    <form method="post">
+                        <!-- Adicione os campos do formulário conforme necessário -->
+                        <div class="mb-3">
+                            <input type="hidden" name="codreclamacao" value="{{codreclamacao}}">
+                            <label for="motivo">Descrição da finalização:</label>
+                            <textarea class="form-control" id="motivo" name="descricao" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Finalizar Manutenção</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <h5 class="card-header">Imagem Anexada</h5>
+                <div class="card-body">
+                    <!-- Adicione a classe img-fluid para tornar a imagem responsiva -->
+                    <div id="carouselExample" class="carousel slide">
+                        <div class="carousel-inner">
+                            {{foto}}
+                            <!-- <div class="carousel-item active">
+                                <img src="data:image/jpeg;base64,{{foto_url}}" alt="Imagem da reclamação" class="d-block w-100 carousel-image">
+                            </div> -->
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .carousel-control-prev-icon {
+        background-color: rgba(196, 186, 52, 0.598);
+        border-radius: 10px;
+    }
+
+    .carousel-control-next-icon {
+        background-color: rgba(196, 186, 52, 0.598);
+        border-radius: 10px;
+    }
+    .carousel-inner .carousel-item img {
+        max-height: 500px; /* Defina o tamanho máximo desejado */
+        width: auto; /* Garante que a largura se ajuste automaticamente para manter a proporção */
+        margin: auto; /* Centraliza a imagem horizontalmente */
+    }
+</style>
