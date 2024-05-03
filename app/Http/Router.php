@@ -61,7 +61,7 @@ class Router {
     private function setPrefix() {
         //INFORMACOES DA URL ATUAL
         $parseUrl = parse_url($this->url);
-        var_dump($parseUrl);
+        
         //DEFINE O PREFIXO
         $this->prefix = $parseUrl['path'] ?? '';
     }
@@ -202,7 +202,7 @@ class Router {
         try {
             //OBTEM A ROTA ATUAL
             $route = $this->getRoute();
-
+            var_dump($route);
             //VERIFICA O CONTROLADOR
             if(!isset($route['controller'])) {
                 throw new Exception("URL não pode pôde ser processada", 500);
