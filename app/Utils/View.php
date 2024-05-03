@@ -70,28 +70,4 @@ class View {
         return str_replace($keys,array_values($vars), $conteudoView);
     }
 
-    public static function fetch($view, $vars = []): array|bool|string
-    {
-        // Caminho do arquivo da view
-        $filePath = __DIR__ . '/../../resources/view/' . $view . '.html';
-
-        // Verifica se o arquivo da view existe
-        if (!file_exists($filePath)) {
-            throw new \RuntimeException("Arquivo da view não encontrado: $filePath");
-        }
-
-        // Obter o conteúdo da view
-        $content = file_get_contents($filePath);
-
-        // Merge das variáveis da view
-        $vars = array_merge(self::$vars, $vars);
-
-        // Substitui as variáveis no conteúdo da view
-        foreach ($vars as $key => $value) {
-            $content = str_replace('{{' . $key . '}}', $value, $content);
-        }
-
-        // Retorna o conteúdo interpretado da view
-        return $content;
-    }
 }

@@ -20,7 +20,7 @@ class CadastroReclamacaoEmail
         $nome = $userData['nome_usuario'];
 
         // Renderiza a view para obter o corpo do e-mail
-        $body = View::fetch('emailBody/cadastroReclamacao/index',[
+        $body = View::render('emailBody/cadastroReclamacao/index',[
             'nome' => $nome,
         ]);
 

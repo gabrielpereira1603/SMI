@@ -17,7 +17,7 @@ class CriaContaEmail
     public function enviarEmailBoasVindas(string $nome, string $email): void
     {
         // Renderiza a view para obter o corpo do e-mail
-        $body = View::fetch('emailBody/bemVindo/index',[
+        $body = View::render('emailBody/bemVindo/index',[
             'nome' => $nome,
         ]);
 
