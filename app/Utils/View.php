@@ -23,7 +23,7 @@ class View {
     // @return string
     private static function getConteudoView($view){
         $local1 = __DIR__ .'/../../resources/view/'.$view.'.html';
-        $local2 = '/home2/somos411/public_html/SMI/resources/View/'.$view.'.html';
+        $local2 = '/home2/somos411/public_html/homologacao/resources/View/'.$view.'.html';
 
         if (file_exists($local1)) {
             return file_get_contents($local1);
