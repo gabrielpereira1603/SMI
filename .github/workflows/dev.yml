@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - homologacao
+      - main
 name: Deploy Manutencao Labs - Homologação
 jobs:
   web-deploy:
