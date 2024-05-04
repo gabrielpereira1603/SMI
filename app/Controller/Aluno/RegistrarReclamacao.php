@@ -20,6 +20,7 @@ class RegistrarReclamacao extends Page
     private CadastraReclamacaoRepositoryImpl $cadastraReclamacaoRepository;
     private ReclamacaoComponenteRepositoryImpl $cadastrarComponenteReclamacao;
     private CadastrarFotoReclamacaoRepositoryImpl $cadastrarFotoReclamacao;
+
     public function __construct()
     {
         $this->atualizaStatusRepository = new AtualizaStatusRepositoryImpl();
