@@ -1,14 +1,14 @@
 <?php
 
-use \app\Http\Response;
-use \app\Controller\Admin;
+use app\Controller\Admin;
+use app\Infrastructure\Http\Response;
 
 $obRouter->get('/admin/relatorio/manutencao',[
     'middlewares' => [
         'required-admin-login'
     ],
     function($request) {
-        return new Response(200,Admin\GerarRelatorio\RelatorioManutencao::getViewRelatorioManutencao($request));
+        return new Response(200, \app\Presentation\Controller\Admin\GerarRelatorio\RelatorioManutencao::getViewRelatorioManutencao($request));
     }
 ]);
 
@@ -17,7 +17,7 @@ $obRouter->post('/admin/relatorio/manutencao',[
         'required-admin-login'
     ],
     function($request) {
-        return new Response(200,Admin\GerarRelatorio\RelatorioManutencao::getTableDataRelatorioManutencao($request));
+        return new Response(200, \app\Presentation\Controller\Admin\GerarRelatorio\RelatorioManutencao::getTableDataRelatorioManutencao($request));
     }
 ]);
 
@@ -27,6 +27,6 @@ $obRouter->post('/admin/relatorio/PDF',[
         'required-admin-login'
     ],
     function($request) {
-        return new Response(200,Admin\GerarRelatorio\PdfRelatorioManutencao::gerarPdfRelatorioManutencao($request));
+        return new Response(200, \app\Presentation\Controller\Admin\GerarRelatorio\PdfRelatorioManutencao::gerarPdfRelatorioManutencao($request));
     }
 ]);

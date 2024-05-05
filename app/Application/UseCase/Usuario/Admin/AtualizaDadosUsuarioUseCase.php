@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Model\UseCase\Usuario\Admin;
+namespace app\Application\UseCase\Usuario\Admin;
 
 class AtualizaDadosUsuarioUseCase
 {

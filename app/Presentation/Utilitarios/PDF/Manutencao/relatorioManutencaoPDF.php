@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Utils\PDF\Manutencao;
+namespace app\Presentation\Utilitarios\PDF\Manutencao;
 
-use app\Utils\Componentes\Table\TableRelatorioManutencao;
+use app\Presentation\Utilitarios\Componentes\Table\TableRelatorioManutencao;
 use app\Utils\View;
 
 class relatorioManutencaoPDF

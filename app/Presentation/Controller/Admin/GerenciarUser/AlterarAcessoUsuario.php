@@ -1,12 +1,12 @@
 <?php
 
-namespace app\Controller\Admin\GerenciarUser;
+namespace app\Presentation\Controller\Admin\GerenciarUser;
 
 use app\Application\UseCase\Usuario\Admin\AtualizaAcessoUsuarioUseCase;
-use app\Controller\Admin\Page;
-use app\Utils\Componentes\Select\SelectNivelAcesso;
-use app\Utils\Componentes\Select\SelectTodosUsuarios;
-use app\Utils\Componentes\Table\UsuarioSemPermissao;
+use app\Presentation\Controller\Admin\Page;
+use app\Presentation\Utilitarios\Componentes\Select\SelectNivelAcesso;
+use app\Presentation\Utilitarios\Componentes\Select\SelectTodosUsuarios;
+use app\Presentation\Utilitarios\Componentes\Table\UsuarioSemPermissao;
 use app\Utils\View;
 
 class AlterarAcessoUsuario extends Page

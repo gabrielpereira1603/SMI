@@ -1,10 +1,10 @@
 <?php
 
-namespace app\Controller\Aluno\CriarConta;
+namespace app\Presentation\Controller\Aluno\CriarConta;
 
 use app\Application\UseCase\Usuario\Aluno\CriarConta\CriarUsuarioAlunoUseCase;
-use app\Controller\Aluno\Page;
-use app\Exceptions\CriarUsuarioAluno\LoginOuEmailExistentes;
+use app\Domain\Exceptions\CriarUsuarioAluno\LoginOuEmailExistentes;
+use app\Presentation\Controller\Aluno\Page;
 use app\Utils\View;
 
 class CriarConta extends Page

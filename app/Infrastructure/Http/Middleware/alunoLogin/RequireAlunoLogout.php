@@ -1,10 +1,10 @@
 <?php
 
-namespace app\Http\Middleware\alunoLogin;
+namespace app\Infrastructure\Http\Middleware\alunoLogin;
 
-use app\Http\Request;
-use app\Http\Response;
-use app\Session\Aluno\Login as SessionAlunoLogin;
+use app\Infrastructure\Http\Request;
+use app\Infrastructure\Http\Response;
+use app\Infrastructure\Session\Aluno\Login as SessionAlunoLogin;
 
 class RequireAlunoLogout{
 

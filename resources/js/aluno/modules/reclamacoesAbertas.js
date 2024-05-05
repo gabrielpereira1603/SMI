@@ -100,11 +100,22 @@ $('#formEditarLembrete').on('submit', function (event) {
         componentesSelecionados.push($(this).val());
     });
 
-    // Atualiza o valor do input hidden com os IDs dos componentes selecionados
-    $('#componentesSelecionados').val(componentesSelecionados.join(','));
-
-    // Continua com o envio do formulário normalmente
-    return true;
+    // Verifica se pelo menos um componente foi selecionado
+    if (componentesSelecionados.length === 0) {
+        // Exibe uma mensagem de erro usando o Swal.fire
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Por favor, selecione pelo menos um componente."
+        });
+        // Impede o envio do formulário
+        event.preventDefault();
+    } else {
+        // Atualiza o valor do input hidden com os IDs dos componentes selecionados
+        $('#componentesSelecionados').val(componentesSelecionados.join(','));
+        // Continua com o envio do formulário normalmente
+        return true;
+    }
 });
 
 // Adiciona um ouvinte de evento para o botão "Cancelar"

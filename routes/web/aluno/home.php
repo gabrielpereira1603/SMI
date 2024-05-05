@@ -1,7 +1,7 @@
 <?php
 
-use \app\Http\Response;
-use \app\Controller\Aluno;
+use app\Controller\Aluno;
+use app\Infrastructure\Http\Response;
 
 //ROTA Admin
 $obRouter->get('/aluno/home',[
@@ -9,7 +9,7 @@ $obRouter->get('/aluno/home',[
         'required-aluno-login'
     ],
     function($request) {
-        return new Response(200,Aluno\Home::getHome($request));
+        return new Response(200, \app\Presentation\Controller\Aluno\Home::getHome($request));
     }
 ]);
 

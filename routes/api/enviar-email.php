@@ -1,9 +1,8 @@
 <?php
 
 use app\Controller\Api;
-use app\Utils\Email\CriaContaAluno\CriaContaEmail;
-use app\Utils;
-use app\Http\Response;
+use app\Infrastructure\Http\Response;
+use app\Presentation\Utilitarios\Email\CriaContaAluno\CriaContaEmail;
 
 
 $obRouter->get('/api/v1/email/{email}/{nome}',[

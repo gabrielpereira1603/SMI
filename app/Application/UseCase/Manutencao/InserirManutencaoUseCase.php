@@ -1,10 +1,10 @@
 <?php
 
-namespace app\Model\UseCase\Manutencao;
+namespace app\Application\UseCase\Manutencao;
 
-use app\Model\Dao\Computador\ComputadorDao;
-use app\Model\Dao\Manutencao\ManutencaoDao;
-use app\Model\Dao\Reclamacao\ReclamacaoDao;
+use app\Infrastructure\Dao\Computador\ComputadorDao;
+use app\Infrastructure\Dao\Manutencao\ManutencaoDao;
+use app\Infrastructure\Dao\Reclamacao\ReclamacaoDao;
 
 class InserirManutencaoUseCase
 {

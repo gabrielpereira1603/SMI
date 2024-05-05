@@ -1,10 +1,10 @@
 <?php
 
-namespace app\Controller\Admin\GerenciarUser;
+namespace app\Presentation\Controller\Admin\GerenciarUser;
 
 use app\Application\UseCase\Usuario\Admin\CriarUsuarioUseCase;
-use app\Controller\Admin\Page;
-use app\Utils\Componentes\Select\SelectNivelAcesso;
+use app\Presentation\Controller\Admin\Page;
+use app\Presentation\Utilitarios\Componentes\Select\SelectNivelAcesso;
 use app\Utils\View;
 
 class AdicionarUsuario extends Page

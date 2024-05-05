@@ -1,12 +1,12 @@
 <?php
 
-namespace app\Model\UseCase\Usuario\ValidaLogin;
+namespace app\Application\UseCase\Usuario\ValidaLogin;
 
-use app\Exceptions\LoginExeptions\LoginOuSenhaInvalidosException;
-use app\Exceptions\LoginExeptions\PermissaoDeAcessoNegadaException;
-use app\Model\Dao\Usuario\UsuarioDao;
-use app\Model\Service\Usuario\ValidaLogin\ValidaLoginRepository;
-use app\Session\Admin\Login as SessionAdminLogin;
+use app\Domain\Exceptions\LoginExeptions\LoginOuSenhaInvalidosException;
+use app\Domain\Exceptions\LoginExeptions\PermissaoDeAcessoNegadaException;
+use app\Domain\Service\Usuario\ValidaLogin\ValidaLoginRepository;
+use app\Infrastructure\Dao\Usuario\UsuarioDao;
+use app\Infrastructure\Session\Admin\Login as SessionAdminLogin;
 
 class LoginAdminStrategy implements ValidaLoginRepository
 {

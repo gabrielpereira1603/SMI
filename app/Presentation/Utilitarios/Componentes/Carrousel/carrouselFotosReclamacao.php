@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Utils\Componentes\Carrousel;
+namespace app\Presentation\Utilitarios\Componentes\Carrousel;
 
-use app\Model\Dao\Foto\FotoDao;
+use app\Infrastructure\Dao\Foto\FotoDao;
 use app\Presentation\Controller\Admin\Page;
 use app\Utils\View;
 

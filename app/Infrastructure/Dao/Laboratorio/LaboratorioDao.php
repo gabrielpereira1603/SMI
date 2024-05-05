@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Domain\Dao\Laboratorio;
+namespace app\Infrastructure\Dao\Laboratorio;
 
 use app\Domain\Entity\Laboratorio;
 use app\Domain\Service\Laboratorio\LaboratorioRepository;

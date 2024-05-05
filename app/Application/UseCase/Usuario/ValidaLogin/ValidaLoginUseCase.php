@@ -1,13 +1,20 @@
 <?php
 
-namespace app\Model\UseCase\Usuario\ValidaLogin;
+namespace app\Application\UseCase\Usuario\ValidaLogin;
 
-use app\Model\Service\Usuario\ValidaLogin\ValidaLoginRepository;
+use app\Domain\Service\Usuario\ValidaLogin\ValidaLoginRepository;
 
 class ValidaLoginUseCase
 {
-    public function execute(string $login, string $senha, ValidaLoginRepository $strategy)
+    private ValidaLoginRepository $strategy;
+
+    public function __construct(ValidaLoginRepository $strategy)
     {
-        return $strategy->validaLogin($login,$senha);
+        $this->strategy = $strategy;
+    }
+
+    public function execute(string $login, string $senha)
+    {
+        return $this->strategy->validaLogin($login, $senha);
     }
 }

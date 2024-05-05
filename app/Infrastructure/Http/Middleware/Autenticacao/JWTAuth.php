@@ -1,10 +1,10 @@
 <?php
 
-namespace app\Http\Middleware\Autenticacao;
+namespace app\Infrastructure\Http\Middleware\Autenticacao;
 
-use app\Http\Request;
-use app\Model\Dao\Usuario\UsuarioDao;
-use app\Model\Entity\Usuario;
+use app\Domain\Entity\Usuario;
+use app\Infrastructure\Dao\Usuario\UsuarioDao;
+use app\Infrastructure\Http\Request;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 

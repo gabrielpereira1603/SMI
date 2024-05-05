@@ -1,10 +1,10 @@
 <?php
 
-namespace app\Controller\Api\Autenticacao;
+namespace app\Presentation\Controller\Api\Autenticacao;
 
 
-use app\Model\Dao\Usuario\UsuarioDao;
-use app\Model\Entity\Usuario;
+use app\Domain\Entity\Usuario;
+use app\Infrastructure\Dao\Usuario\UsuarioDao;
 use Firebase\JWT\JWT;
 
 class AutenticacaoControllerJWT

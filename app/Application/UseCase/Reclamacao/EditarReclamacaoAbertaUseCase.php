@@ -1,10 +1,10 @@
 <?php
 
-namespace app\Model\UseCase\Reclamacao;
+namespace app\Application\UseCase\Reclamacao;
 
-use app\Exceptions\ReclamacaoExceptions\ErrorAtualizarReclamacaoException;
-use app\Model\Service\Reclamacao\AtualizaReclamacaoRepository;
-use app\Model\Service\ReclamacaoComponente\EditarComponenteReclamacaoRepository;
+use app\Domain\Exceptions\ReclamacaoExceptions\ErrorAtualizarReclamacaoException;
+use app\Domain\Service\Reclamacao\AtualizaReclamacaoRepository;
+use app\Domain\Service\ReclamacaoComponente\EditarComponenteReclamacaoRepository;
 
 class EditarReclamacaoAbertaUseCase
 {
@@ -25,7 +25,7 @@ class EditarReclamacaoAbertaUseCase
     {
         $codReclamacao = $dadosReclamacao['codreclamacao'];
         $descricao = $dadosReclamacao['editarDescricao'];
-        $componentesSelecionados = explode(",", $dadosReclamacao['componentesSelecionados']); // Convert string to array
+        $componentesSelecionados = explode(",", $dadosReclamacao['componentesSelecionados']);
 
         if (!$this->atualizaReclamacaoRepository->atualizaReclamacao($codReclamacao, ['descricao' => $descricao])){
             throw new ErrorAtualizarReclamacaoException("Error ao atualizar a reclamação.");

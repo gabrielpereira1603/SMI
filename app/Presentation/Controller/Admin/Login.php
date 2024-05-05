@@ -1,12 +1,12 @@
 <?php
 
-namespace app\Controller\Admin;
+namespace app\Presentation\Controller\Admin;
 
 use app\Application\UseCase\Usuario\ValidaLogin\LoginAdminStrategy;
 use app\Application\UseCase\Usuario\ValidaLogin\ValidaLoginUseCase;
-use app\Exceptions\LoginExeptions\LoginOuSenhaInvalidosException;
-use app\Exceptions\LoginExeptions\PermissaoDeAcessoNegadaException;
-use app\Session\Admin\Login as SessionAdminLogin;
+use app\Domain\Exceptions\LoginExeptions\LoginOuSenhaInvalidosException;
+use app\Domain\Exceptions\LoginExeptions\PermissaoDeAcessoNegadaException;
+use app\Infrastructure\Session\Admin\Login as SessionAdminLogin;
 use app\Utils\View;
 
 class Login extends Page
@@ -27,15 +27,11 @@ class Login extends Page
             $login = $postVars['login'] ?? '';
             $senha = $postVars['senha'] ?? '';
 
-            $validaLoginUseCase = new ValidaLoginUseCase();
-            $validaLoginUseCase->execute($login, $senha, new LoginAdminStrategy());
+            $validaLoginUseCase = new ValidaLoginUseCase(new LoginAdminStrategy());
+            $validaLoginUseCase->execute($login, $senha);
 
             $request->getRouter()->redirect('/admin');
-        } catch (LoginOuSenhaInvalidosException $e) {
-            // Se o login ou senha estiverem incorretos, redireciona para a página de login com mensagem de erro
-            $request->getRouter()->redirect('/admin/login?error=' . urlencode($e->getMessage()));
-        } catch (PermissaoDeAcessoNegadaException $e) {
-            // Se o acesso for negado, redireciona para a página de login com mensagem de erro
+        } catch (LoginOuSenhaInvalidosException|PermissaoDeAcessoNegadaException $e) {
             $request->getRouter()->redirect('/admin/login?error=' . urlencode($e->getMessage()));
         }
     }

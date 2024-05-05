@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Domain\Repository\Usuario\ValidaLogin;
+namespace app\Domain\Service\Usuario\ValidaLogin;
 
 interface ValidaLoginRepository
 {

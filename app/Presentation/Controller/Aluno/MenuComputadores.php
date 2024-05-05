@@ -1,12 +1,12 @@
 <?php
 
-namespace app\Controller\Aluno;
+namespace app\Presentation\Controller\Aluno;
 
-use app\Controller\Pagination\Pagination;
-use app\Http\Request;
-use app\Model\Dao\Laboratorio\LaboratorioDao;
-use app\Utils\Componentes\Cards\cardComputadoresPagination;
-use app\Utils\Service\Computador\AlunoComputadorStrategy;
+use app\Infrastructure\Dao\Laboratorio\LaboratorioDao;
+use app\Infrastructure\Http\Request;
+use app\Presentation\Controller\Pagination\Pagination;
+use app\Presentation\Utilitarios\Componentes\Cards\cardComputadoresPagination;
+use app\Presentation\Utilitarios\Service\Computador\AlunoComputadorStrategy;
 use app\Utils\View;
 
 class MenuComputadores extends Page

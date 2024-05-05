@@ -1,7 +1,7 @@
 <?php
 
 use app\Controller\Api;
-use app\Http\Response;
+use app\Infrastructure\Http\Response;
 
 $obRouter->post('/api/v1/computador/{codlaboratorio}',[
     'middlewares' => [
@@ -9,6 +9,6 @@ $obRouter->post('/api/v1/computador/{codlaboratorio}',[
         'jwt-auth'
     ],
     function($request,$codlaboratorio) {
-        return new Response(200, Api\Computador\ComputadorApi::getComputadoresPorLab($request,$codlaboratorio), 'application/json');
+        return new Response(200, \app\Presentation\Controller\Api\Computador\ComputadorApi::getComputadoresPorLab($request,$codlaboratorio), 'application/json');
     }
 ]);

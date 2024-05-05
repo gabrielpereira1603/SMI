@@ -1,9 +1,9 @@
 <?php
 
-namespace app\Utils\Service\Laboratorio;
+namespace app\Presentation\Utilitarios\Service\Laboratorio;
 
-use app\Model\Dao\Computador\ComputadorDao;
-use app\Model\Dao\Laboratorio\LaboratorioDao;
+use app\Infrastructure\Dao\Computador\ComputadorDao;
+use app\Infrastructure\Dao\Laboratorio\LaboratorioDao;
 use app\Utils\View;
 
 class AlunoLaboratorioStrategy implements LaboratorioStrategy

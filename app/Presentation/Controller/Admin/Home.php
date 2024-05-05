@@ -1,12 +1,9 @@
 <?php
 
-namespace app\Controller\Admin;
+namespace app\Presentation\Controller\Admin;
 
-use app\Http\Request;
-use app\Model\Dao\Computador\ComputadorDao;
-use app\Model\Dao\Laboratorio\LaboratorioDao;
-use app\Utils\Componentes\Cards\cardLaboratorios;
-use app\Utils\Service\Laboratorio\AdminLaboratorioStrategy;
+use app\Presentation\Utilitarios\Componentes\Cards\cardLaboratorios;
+use app\Presentation\Utilitarios\Service\Laboratorio\AdminLaboratorioStrategy;
 use app\Utils\View;
 
 class Home extends Page

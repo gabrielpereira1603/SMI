@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Utils\Componentes\Select;
+namespace app\Presentation\Utilitarios\Componentes\Select;
 
-use app\Model\Dao\Laboratorio\LaboratorioDao;
+use app\Infrastructure\Dao\Laboratorio\LaboratorioDao;
 use app\Presentation\Controller\Admin\Page;
 use app\Utils\View;
 

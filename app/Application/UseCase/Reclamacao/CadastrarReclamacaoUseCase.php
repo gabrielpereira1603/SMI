@@ -1,13 +1,13 @@
 <?php
 
-namespace app\Model\UseCase\Reclamacao;
+namespace app\Application\UseCase\Reclamacao;
 
-use app\Exceptions\ReclamacaoExceptions\FalhaCadastroReclamacao;
-use app\Model\Service\Computador\AtualizaStatusRepository;
-use app\Model\Service\Foto\InserirFotoReclamacaoRepository;
-use app\Model\Service\Reclamacao\CadastrarReclamacaoRepository;
-use app\Model\Service\ReclamacaoComponente\InserirComponenteReclamacaoRepository;
-use app\Utils\Email\CadastrarReclamacao\CadastroReclamacaoEmail;
+use app\Domain\Exceptions\ReclamacaoExceptions\FalhaCadastroReclamacao;
+use app\Domain\Service\Computador\AtualizaStatusRepository;
+use app\Domain\Service\Foto\InserirFotoReclamacaoRepository;
+use app\Domain\Service\Reclamacao\CadastrarReclamacaoRepository;
+use app\Domain\Service\ReclamacaoComponente\InserirComponenteReclamacaoRepository;
+use app\Presentation\Utilitarios\Email\CadastrarReclamacao\CadastroReclamacaoEmail;
 
 class CadastrarReclamacaoUseCase
 {

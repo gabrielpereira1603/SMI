@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Utils\Componentes\Select;
+namespace app\Presentation\Utilitarios\Componentes\Select;
 
-use app\Model\Dao\NivelAcesso\NivelAcessoDao;
+use app\Infrastructure\Dao\NivelAcesso\NivelAcessoDao;
 use app\Presentation\Controller\Admin\Page;
 use app\Utils\View;
 

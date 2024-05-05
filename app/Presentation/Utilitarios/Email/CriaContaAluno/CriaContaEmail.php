@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Utils\Email\CriaContaAluno;
+namespace app\Presentation\Utilitarios\Email\CriaContaAluno;
 
 use app\Infrastructure\Drivers\PHPMailer\EmailSender;
 use app\Utils\View;

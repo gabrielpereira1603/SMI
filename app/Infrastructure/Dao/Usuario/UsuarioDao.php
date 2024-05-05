@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Domain\Dao\Usuario;
+namespace app\Infrastructure\Dao\Usuario;
 
 use app\Domain\Entity\NivelAcesso;
 use app\Domain\Entity\Usuario;

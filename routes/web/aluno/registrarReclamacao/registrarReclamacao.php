@@ -1,7 +1,7 @@
 <?php
 
-use \app\Http\Response;
-use \app\Controller\Aluno;
+use app\Controller\Aluno;
+use app\Infrastructure\Http\Response;
 
 //ROTA Admin
 $obRouter->get('/aluno/reclamacao/{codcomputador}',[
@@ -9,7 +9,7 @@ $obRouter->get('/aluno/reclamacao/{codcomputador}',[
         'required-aluno-login'
     ],
     function($request,$codcomputador) {
-        return new Response(200,Aluno\RegistrarReclamacao::getViewReclamacao($request,$codcomputador));
+        return new Response(200, \app\Presentation\Controller\Aluno\Reclamacoes\RegistrarReclamacao::getViewReclamacao($request,$codcomputador));
     }
 ]);
 
@@ -18,7 +18,7 @@ $obRouter->post('/aluno/reclamacao/{codcomputador}',[
         'required-aluno-login'
     ],
     function($request, $codcomputador) {
-        $registrarReclamacao = new Aluno\RegistrarReclamacao();
+        $registrarReclamacao = new \app\Presentation\Controller\Aluno\Reclamacoes\RegistrarReclamacao();
         return new Response(200, $registrarReclamacao->setReclamacao($request, $codcomputador));
     }
 ]);

@@ -1,9 +1,9 @@
 <?php
 
-namespace app\Controller\Aluno;
+namespace app\Presentation\Controller\Aluno;
 
-use app\Utils\Componentes\Cards\cardLaboratorios;
-use app\Utils\Service\Laboratorio\AlunoLaboratorioStrategy;
+use app\Presentation\Utilitarios\Componentes\Cards\cardLaboratorios;
+use app\Presentation\Utilitarios\Service\Laboratorio\AlunoLaboratorioStrategy;
 use app\Utils\View;
 
 class Home extends Page

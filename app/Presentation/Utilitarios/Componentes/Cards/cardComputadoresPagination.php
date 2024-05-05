@@ -1,9 +1,9 @@
 <?php
 
-namespace app\Utils\Componentes\Cards;
+namespace app\Presentation\Utilitarios\Componentes\Cards;
 
 use app\Presentation\Controller\Admin\Page;
-use app\Utils\Service\Computador\ComputadorStrategy;
+use app\Presentation\Utilitarios\Service\Computador\ComputadorStrategy;
 
 class cardComputadoresPagination extends Page
 {

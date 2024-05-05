@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Controller\Admin\GerarRelatorio;
+namespace app\Presentation\Controller\Admin\GerarRelatorio;
 
-use app\Controller\Admin\Page;
+use app\Presentation\Controller\Admin\Page;
 use app\Utils\View;
 
 class GerarRelatorio extends Page

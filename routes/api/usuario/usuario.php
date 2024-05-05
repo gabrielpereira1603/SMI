@@ -1,7 +1,7 @@
 <?php
 
-use \app\Http\Response;
-use \app\Controller\Api;
+use app\Controller\Api;
+use app\Infrastructure\Http\Response;
 
 $obRouter->post('/api/v1/user/{codusuario}',[
     'middlewares' => [
@@ -9,7 +9,7 @@ $obRouter->post('/api/v1/user/{codusuario}',[
         'jwt-auth'
     ],
     function($request,$codusuario) {
-        return new Response(200,Api\Usuario\UsuarioApi::buscarUsuarioPorID($request,$codusuario), 'application/json');
+        return new Response(200, \app\Presentation\Controller\Api\Usuario\UsuarioApi::buscarUsuarioPorID($request,$codusuario), 'application/json');
     }
 ]);
 
@@ -20,6 +20,6 @@ $obRouter->get('/api/v1/me',[
         'jwt-auth'
     ],
     function($request) {
-        return new Response(200,Api\Api::getDetails($request), 'application/json');
+        return new Response(200, \app\Presentation\Controller\Api\Api::getDetails($request), 'application/json');
     }
 ]);

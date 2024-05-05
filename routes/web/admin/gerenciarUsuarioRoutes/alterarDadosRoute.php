@@ -1,6 +1,6 @@
 <?php
 
-use app\Http\Response;
+use app\Infrastructure\Http\Response;
 
 $obRouter->get('/admin/user/update',[
 'middlewares' => [

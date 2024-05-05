@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Domain\Dao\Reclamacao;
+namespace app\Infrastructure\Dao\Reclamacao;
 
 use app\Domain\Entity\Computador;
 use app\Domain\Entity\Laboratorio;

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Utils\Email\CadastrarReclamacao;
+namespace app\Presentation\Utilitarios\Email\CadastrarReclamacao;
 
 use app\Infrastructure\Drivers\PHPMailer\EmailSender;
 use app\Utils\View;

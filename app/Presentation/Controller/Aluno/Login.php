@@ -1,13 +1,13 @@
 <?php
 
-namespace app\Controller\Aluno;
+namespace app\Presentation\Controller\Aluno;
 
 
 use app\Application\UseCase\Usuario\ValidaLogin\LoginAlunoStrategy;
 use app\Application\UseCase\Usuario\ValidaLogin\ValidaLoginUseCase;
-use app\Exceptions\LoginExeptions\LoginOuSenhaInvalidosException;
-use app\Exceptions\LoginExeptions\PermissaoDeAcessoNegadaException;
-use app\Session\Aluno\Login as SessionLoginAluno;
+use app\Domain\Exceptions\LoginExeptions\LoginOuSenhaInvalidosException;
+use app\Domain\Exceptions\LoginExeptions\PermissaoDeAcessoNegadaException;
+use app\Infrastructure\Session\Aluno\Login as SessionLoginAluno;
 use app\Utils\View;
 
 class Login extends Page
@@ -26,15 +26,11 @@ class Login extends Page
             $login = $postVars['login'] ?? '';
             $senha = $postVars['senha'] ?? '';
 
-            $validaLoginUseCase = new ValidaLoginUseCase();
-            $validaLoginUseCase->execute($login, $senha, new LoginAlunoStrategy());
+            $validaLoginUseCase = new ValidaLoginUseCase(new LoginAlunoStrategy());
+            $validaLoginUseCase->execute($login, $senha);
 
             $request->getRouter()->redirect('/aluno/home');
-        } catch (LoginOuSenhaInvalidosException $e) {
-            // Se o login ou senha estiverem incorretos, redireciona para a página de login com mensagem de erro
-            $request->getRouter()->redirect('/login?error=' . urlencode($e->getMessage()));
-        } catch (PermissaoDeAcessoNegadaException $e) {
-            // Se o acesso for negado, redireciona para a página de login com mensagem de erro
+        } catch (LoginOuSenhaInvalidosException|PermissaoDeAcessoNegadaException $e) {
             $request->getRouter()->redirect('/login?error=' . urlencode($e->getMessage()));
         }
     }

@@ -1,11 +1,10 @@
 <?php
 
-namespace app\Model\UseCase\Usuario\Aluno\CriarConta;
+namespace app\Application\UseCase\Usuario\Aluno\CriarConta;
 
-use app\Controller\EnviaEmail\EmailSender;
-use app\Exceptions\CriarUsuarioAluno\LoginOuEmailExistentes;
-use app\Model\Dao\Usuario\UsuarioDao;
-use app\Utils\Email\CriaContaAluno\CriaContaEmail;
+use app\Domain\Exceptions\CriarUsuarioAluno\LoginOuEmailExistentes;
+use app\Infrastructure\Dao\Usuario\UsuarioDao;
+use app\Presentation\Utilitarios\Email\CriaContaAluno\CriaContaEmail;
 
 class CriarUsuarioAlunoUseCase
 {

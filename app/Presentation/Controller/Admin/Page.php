@@ -1,7 +1,7 @@
 <?php
-namespace app\Controller\Admin;
+namespace app\Presentation\Controller\Admin;
 
-use \app\Utils\View;
+use app\Utils\View;
 
 class Page {
 

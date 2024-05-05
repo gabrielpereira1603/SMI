@@ -1,7 +1,7 @@
 <?php
 
-use \app\Http\Response;
-use \app\Controller\Aluno;
+use app\Controller\Aluno;
+use app\Infrastructure\Http\Response;
 
 
 //ROTA LOGIN
@@ -10,7 +10,7 @@ $obRouter->get('/login',[
         'required-aluno-logout'
     ],
     function($request) {
-        return new Response(200,Aluno\Login::getLogin($request));
+        return new Response(200, \app\Presentation\Controller\Aluno\Login::getLogin($request));
     }
 ]);
 
@@ -20,7 +20,7 @@ $obRouter->post('/login',[
         'required-aluno-logout'
     ],
     function($request) {
-        return new Response(200,Aluno\Login::setLogin($request));
+        return new Response(200, \app\Presentation\Controller\Aluno\Login::setLogin($request));
     }
 
 ]);
@@ -31,6 +31,6 @@ $obRouter->get('/logout',[
         'required-aluno-login'
     ],
     function($request) {
-        return new Response(200,Aluno\Login::setLogout($request));
+        return new Response(200, \app\Presentation\Controller\Aluno\Login::setLogout($request));
     }
 ]);

@@ -1,11 +1,11 @@
 <?php
 
-namespace app\Controller\Admin;
+namespace app\Presentation\Controller\Admin;
 
 use app\Application\UseCase\Manutencao\InserirManutencaoUseCase;
 use app\Application\UseCase\Reclamacao\BuscarDadosReclamacaoUseCase;
-use app\Utils\Componentes\Carrousel\carrouselFotosReclamacao;
-use app\Utils\Componentes\CheckBox\checkBoxSelected;
+use app\Presentation\Utilitarios\Componentes\Carrousel\carrouselFotosReclamacao;
+use app\Presentation\Utilitarios\Componentes\CheckBox\checkBoxSelected;
 use app\Utils\View;
 
 class RegistrarManutencao extends Page

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Domain\Dao\Foto;
+namespace app\Infrastructure\Dao\Foto;
 
 use app\Domain\Service\Foto\InserirFotoReclamacaoRepository;
 use WilliamCosta\DatabaseManager\Database;

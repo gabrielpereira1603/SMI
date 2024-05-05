@@ -1,12 +1,12 @@
 <?php
 
-namespace app\Controller\Aluno\Reclamacoes;
+namespace app\Presentation\Controller\Aluno\Reclamacoes;
 
 use app\Application\UseCase\Reclamacao\EditarReclamacaoAbertaUseCase;
-use app\Exceptions\ReclamacaoExceptions\ErrorAtualizarReclamacaoException;
-use app\Http\Request;
-use app\Model\Dao\Reclamacao\AtualizaReclamacaoRepositoryImpl;
-use app\Model\Dao\ReclamacaoComponente\EditarComponenteReclamacaoRepositoryImpl;
+use app\Domain\Exceptions\ReclamacaoExceptions\ErrorAtualizarReclamacaoException;
+use app\Infrastructure\Dao\Reclamacao\AtualizaReclamacaoRepositoryImpl;
+use app\Infrastructure\Dao\ReclamacaoComponente\EditarComponenteReclamacaoRepositoryImpl;
+use app\Infrastructure\Http\Request;
 
 class EditarReclamacao
 {

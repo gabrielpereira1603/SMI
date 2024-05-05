@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Domain\Dao\Relatorio;
+namespace app\Infrastructure\Dao\Relatorio;
 
 use WilliamCosta\DatabaseManager\Database;
 

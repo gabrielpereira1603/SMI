@@ -1,13 +1,13 @@
 <?php
 
-namespace app\Model\UseCase\Reclamacao;
+namespace app\Application\UseCase\Reclamacao;
 
 
-use app\Exceptions\ReclamacaoExceptions\ErrorAoExcluirReclamacaoException;
-use app\Model\Service\Computador\AtualizaStatusRepository;
-use app\Model\Service\Foto\ExcluirFotoRepository;
-use app\Model\Service\Reclamacao\ExcluirReclamacaoRepository;
-use app\Model\Service\ReclamacaoComponente\ExcluirComponenteReclamacaoRepository;
+use app\Domain\Exceptions\ReclamacaoExceptions\ErrorAoExcluirReclamacaoException;
+use app\Domain\Service\Computador\AtualizaStatusRepository;
+use app\Domain\Service\Foto\ExcluirFotoRepository;
+use app\Domain\Service\Reclamacao\ExcluirReclamacaoRepository;
+use app\Domain\Service\ReclamacaoComponente\ExcluirComponenteReclamacaoRepository;
 
 class ExcluirReclamacaoUseCase
 {

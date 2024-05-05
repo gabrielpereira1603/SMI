@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Model\UseCase\Reclamacao;
+namespace app\Application\UseCase\Reclamacao;
 
-use app\Model\Dao\Reclamacao\ReclamacaoDao;
+use app\Infrastructure\Dao\Reclamacao\ReclamacaoDao;
 
 class BuscarDadosReclamacaoUseCase
 {

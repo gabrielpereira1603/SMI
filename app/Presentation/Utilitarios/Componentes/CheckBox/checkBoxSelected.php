@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Utils\Componentes\CheckBox;
+namespace app\Presentation\Utilitarios\Componentes\CheckBox;
 
-use app\Model\Dao\ReclamacaoComponente\ReclamacaoComponenteDao;
+use app\Infrastructure\Dao\ReclamacaoComponente\ReclamacaoComponenteDao;
 use app\Presentation\Controller\Admin\Page;
 use app\Utils\View;
 

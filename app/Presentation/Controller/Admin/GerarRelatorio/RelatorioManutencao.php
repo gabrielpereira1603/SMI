@@ -1,11 +1,11 @@
 <?php
 
-namespace app\Controller\Admin\GerarRelatorio;
+namespace app\Presentation\Controller\Admin\GerarRelatorio;
 
-use app\Controller\Admin\Page;
-use app\Utils\Componentes\Select\SelectAdminUsuarios;
-use app\Utils\Componentes\Select\SelectTodosLaboratorios;
-use app\Utils\Componentes\Table\TableRelatorioManutencao;
+use app\Presentation\Controller\Admin\Page;
+use app\Presentation\Utilitarios\Componentes\Select\SelectAdminUsuarios;
+use app\Presentation\Utilitarios\Componentes\Select\SelectTodosLaboratorios;
+use app\Presentation\Utilitarios\Componentes\Table\TableRelatorioManutencao;
 use app\Utils\View;
 
 class RelatorioManutencao extends Page

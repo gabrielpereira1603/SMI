@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Model\Entity;
+namespace app\Domain\Entity;
 
 class NivelAcesso {
 

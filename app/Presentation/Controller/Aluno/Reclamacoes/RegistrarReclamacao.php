@@ -1,17 +1,17 @@
 <?php
 
-namespace app\Controller\Aluno\Reclamacoes;
+namespace app\Presentation\Controller\Aluno\Reclamacoes;
 
 use app\Application\UseCase\Reclamacao\CadastrarReclamacaoUseCase;
-use app\Controller\Aluno\Page;
-use app\Exceptions\ReclamacaoExceptions\FalhaCadastroReclamacao;
-use app\Model\Dao\Computador\AtualizaStatusRepositoryImpl;
-use app\Model\Dao\Computador\ComputadorDao;
-use app\Model\Dao\Foto\CadastrarFotoReclamacaoRepositoryImpl;
-use app\Model\Dao\Reclamacao\CadastraReclamacaoRepositoryImpl;
-use app\Model\Dao\ReclamacaoComponente\InserirReclamacaoComponenteReclamacaoRepositoryImpl;
-use app\Utils\Componentes\CheckBox\allCheckBoxComponentes;
-use app\Utils\UploadFotos\GerenciarArquivosFotos;
+use app\Domain\Exceptions\ReclamacaoExceptions\FalhaCadastroReclamacao;
+use app\Infrastructure\Dao\Computador\AtualizaStatusRepositoryImpl;
+use app\Infrastructure\Dao\Computador\ComputadorDao;
+use app\Infrastructure\Dao\Foto\CadastrarFotoReclamacaoRepositoryImpl;
+use app\Infrastructure\Dao\Reclamacao\CadastraReclamacaoRepositoryImpl;
+use app\Infrastructure\Dao\ReclamacaoComponente\InserirReclamacaoComponenteReclamacaoRepositoryImpl;
+use app\Presentation\Controller\Aluno\Page;
+use app\Presentation\Utilitarios\Componentes\CheckBox\allCheckBoxComponentes;
+use app\Presentation\Utilitarios\UploadFotos\GerenciarArquivosFotos;
 use app\Utils\View;
 
 class RegistrarReclamacao extends Page

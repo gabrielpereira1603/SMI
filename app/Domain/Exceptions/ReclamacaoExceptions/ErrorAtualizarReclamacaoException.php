@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Exceptions\ReclamacaoExceptions;
+namespace app\Domain\Exceptions\ReclamacaoExceptions;
 use Exception;
 
 class ErrorAtualizarReclamacaoException extends Exception

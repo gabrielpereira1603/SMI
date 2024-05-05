@@ -1,6 +1,9 @@
 <?php
 
-namespace app\Http\Middleware;
+namespace app\Infrastructure\Http\Middleware;
+
+use app\Http\Middleware\Request;
+use app\Http\Middleware\Response;
 
 class Manutencao {
 

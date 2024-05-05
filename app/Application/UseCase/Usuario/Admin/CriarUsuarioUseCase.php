@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Model\UseCase\Usuario\Admin;
+namespace app\Application\UseCase\Usuario\Admin;
 
-use app\Model\Dao\Usuario\UsuarioDao;
+use app\Infrastructure\Dao\Usuario\UsuarioDao;
 
 class CriarUsuarioUseCase
 {

@@ -1,7 +1,7 @@
 <?php
 
-use \app\Http\Response;
-use \app\Controller\Admin;
+use app\Controller\Admin;
+use app\Infrastructure\Http\Response;
 
 //ROTA Admin
 $obRouter->get('/admin/user',[

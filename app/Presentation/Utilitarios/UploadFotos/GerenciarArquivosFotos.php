@@ -1,8 +1,9 @@
 <?php
 
-namespace app\Utils\UploadFotos;
+namespace app\Presentation\Utilitarios\UploadFotos;
 
-class GerenciarArquivosFotos
+class
+GerenciarArquivosFotos
 {
     public static function getUploadedPhotos($files): array
     {

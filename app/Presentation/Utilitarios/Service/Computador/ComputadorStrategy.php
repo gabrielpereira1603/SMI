@@ -1,9 +1,9 @@
 <?php
 
-namespace app\Utils\Service\Computador;
-use WilliamCosta\DatabaseManager\Pagination;
+namespace app\Presentation\Utilitarios\Service\Computador;
 
-interface ComputadorStrategy
+interface
+ComputadorStrategy
 {
     public static function getComputadorItems($request, $codlaboratorio, &$obPagination): string;
 }

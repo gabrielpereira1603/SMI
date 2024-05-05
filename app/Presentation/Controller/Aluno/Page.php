@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Controller\Aluno;
+namespace app\Presentation\Controller\Aluno;
 
-use \app\Utils\View;
+use app\Utils\View;
 
 class Page {
 

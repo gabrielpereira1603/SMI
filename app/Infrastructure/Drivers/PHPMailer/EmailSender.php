@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Presentation\Controller\EnviaEmail;
+namespace app\Infrastructure\Drivers\PHPMailer;
 
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;

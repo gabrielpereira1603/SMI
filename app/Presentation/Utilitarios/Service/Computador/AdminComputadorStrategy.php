@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Utils\Service\Computador;
+namespace app\Presentation\Utilitarios\Service\Computador;
 
-use app\Model\Dao\Computador\ComputadorDao;
+use app\Infrastructure\Dao\Computador\ComputadorDao;
 use app\Utils\View;
 use WilliamCosta\DatabaseManager\Pagination;
 

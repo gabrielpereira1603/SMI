@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Domain\Dao\NivelAcesso;
+namespace app\Infrastructure\Dao\NivelAcesso;
 
 use app\Domain\Entity\NivelAcesso;
 use WilliamCosta\DatabaseManager\Database;

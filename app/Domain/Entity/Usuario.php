@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Model\Entity; 
+namespace app\Domain\Entity;
 
-class Usuario 
+class Usuario
 {
     private int $codusuario;
     private string $nome_usuario;

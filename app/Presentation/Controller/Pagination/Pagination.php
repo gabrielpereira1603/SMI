@@ -1,7 +1,8 @@
 <?php
 
-namespace app\Controller\Pagination;
+namespace app\Presentation\Controller\Pagination;
 
+use app\Controller\Pagination\Request;
 use app\Utils\View;
 
 class Pagination

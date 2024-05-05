@@ -1,7 +1,6 @@
 <?php
 
-namespace app\Model\Entity;
-use \WilliamCosta\DatabaseManager\Database;
+namespace app\Domain\Entity;
 
 class Componente {
 

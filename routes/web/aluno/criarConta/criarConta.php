@@ -1,7 +1,7 @@
 <?php
 
-use \app\Http\Response;
-use \app\Controller\Aluno;
+use app\Controller\Aluno;
+use app\Infrastructure\Http\Response;
 
 //ROTA Admin
 $obRouter->get('/aluno/novaConta',[
@@ -9,7 +9,7 @@ $obRouter->get('/aluno/novaConta',[
         'required-aluno-logout'
     ],
     function($request) {
-        return new Response(200, Aluno\CriarConta\CriarConta::getViewCriarConta($request));
+        return new Response(200, \app\Presentation\Controller\Aluno\CriarConta\CriarConta::getViewCriarConta($request));
     }
 ]);
 
@@ -19,7 +19,7 @@ $obRouter->post('/aluno/novaConta',[
         'required-aluno-logout'
     ],
     function($request) {
-        return new Response(200, Aluno\CriarConta\CriarConta::setNovoUsuarioAluno($request));
+        return new Response(200, \app\Presentation\Controller\Aluno\CriarConta\CriarConta::setNovoUsuarioAluno($request));
     }
 ]);
 

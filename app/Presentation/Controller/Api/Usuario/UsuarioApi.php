@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Controller\Api\Usuario;
+namespace app\Presentation\Controller\Api\Usuario;
 
-use app\Model\Dao\Usuario\UsuarioDao;
+use app\Infrastructure\Dao\Usuario\UsuarioDao;
 
 class UsuarioApi
 {

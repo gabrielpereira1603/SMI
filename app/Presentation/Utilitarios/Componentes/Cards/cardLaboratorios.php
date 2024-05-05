@@ -1,11 +1,8 @@
 <?php
 
-namespace app\Utils\Componentes\Cards;
+namespace app\Presentation\Utilitarios\Componentes\Cards;
 
-use app\Model\Dao\Computador\ComputadorDao;
-use app\Model\Dao\Laboratorio\LaboratorioDao;
-use app\Utils\Service\Laboratorio\LaboratorioStrategy;
-use app\Utils\View;
+use app\Presentation\Utilitarios\Service\Laboratorio\LaboratorioStrategy;
 
 class cardLaboratorios
 {

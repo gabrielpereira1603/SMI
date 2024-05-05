@@ -1,11 +1,11 @@
 <?php
 
-namespace app\Controller\Admin;
+namespace app\Presentation\Controller\Admin;
 
-use app\Controller\Pagination\Pagination;
-use app\Model\Dao\Laboratorio\LaboratorioDao;
-use app\Utils\Componentes\Cards\cardComputadoresPagination;
-use app\Utils\Service\Computador\adminComputadorStrategy;
+use app\Infrastructure\Dao\Laboratorio\LaboratorioDao;
+use app\Presentation\Controller\Pagination\Pagination;
+use app\Presentation\Utilitarios\Componentes\Cards\cardComputadoresPagination;
+use app\Presentation\Utilitarios\Service\Computador\adminComputadorStrategy;
 use app\Utils\View;
 
 class MenuComputadores extends Page

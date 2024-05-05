@@ -1,7 +1,7 @@
 <?php
 
-use \app\Http\Response;
-use \app\Controller\Admin;
+use app\Controller\Admin;
+use app\Infrastructure\Http\Response;
 
 //ROTA DE INSERIR RECLAMACAO (GET)
 $obRouter->get('/admin/computador/{codlaboratorio}',[
@@ -9,6 +9,6 @@ $obRouter->get('/admin/computador/{codlaboratorio}',[
         'required-admin-login'
     ],
     function($request,$codlaboratorio) {
-        return new Response(200,Admin\MenuComputadores::getComputador($request, $codlaboratorio));
+        return new Response(200, \app\Presentation\Controller\Admin\MenuComputadores::getComputador($request, $codlaboratorio));
     }
 ]);

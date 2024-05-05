@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Domain\Dao\Manutencao;
+namespace app\Infrastructure\Dao\Manutencao;
 
 use app\Domain\Service\Manutencao\ManutencaoRepository;
 use WilliamCosta\DatabaseManager\Database;

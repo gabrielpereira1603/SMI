@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Utils\Componentes\Table;
+namespace app\Presentation\Utilitarios\Componentes\Table;
 
-use app\Model\Dao\Usuario\UsuarioDao;
+use app\Infrastructure\Dao\Usuario\UsuarioDao;
 use app\Presentation\Controller\Admin\Page;
 use app\Utils\View;
 

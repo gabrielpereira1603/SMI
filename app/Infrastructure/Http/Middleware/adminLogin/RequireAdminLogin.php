@@ -1,10 +1,10 @@
 <?php
 
-namespace app\Http\Middleware\adminLogin;
+namespace app\Infrastructure\Http\Middleware\adminLogin;
 
-use app\Http\Request;
-use app\Http\Response;
-use app\Session\Admin\Login as SessionAdminLogin;
+use app\Infrastructure\Http\Request;
+use app\Infrastructure\Http\Response;
+use app\Infrastructure\Session\Admin\Login as SessionAdminLogin;
 
 class RequireAdminLogin{
 

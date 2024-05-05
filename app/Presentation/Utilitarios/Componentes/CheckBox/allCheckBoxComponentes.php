@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Utils\Componentes\CheckBox;
+namespace app\Presentation\Utilitarios\Componentes\CheckBox;
 
-use app\Model\Dao\Componente\ComponenteDao;
+use app\Infrastructure\Dao\Componente\ComponenteDao;
 use app\Utils\View;
 
 class allCheckBoxComponentes

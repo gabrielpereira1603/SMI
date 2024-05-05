@@ -1,9 +1,9 @@
 <?php
 
-namespace app\Controller\Api\Componente;
+namespace app\Presentation\Controller\Api\Componente;
 
-use app\Model\Dao\Componente\ComponenteDao;
-use app\Model\Dao\ReclamacaoComponente\ReclamacaoComponenteDao;
+use app\Infrastructure\Dao\Componente\ComponenteDao;
+use app\Infrastructure\Dao\ReclamacaoComponente\ReclamacaoComponenteDao;
 
 class ComponenteApi
 {

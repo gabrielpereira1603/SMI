@@ -1,11 +1,11 @@
 <?php
 
-namespace app\Http;
+namespace app\Infrastructure\Http;
 
-use \Closure;
-use \Exception;
-use \ReflectionFunction;
-use \app\Http\Middleware\Queue as MiddlewareQueue;
+use app\Infrastructure\Http\Middleware\Queue as MiddlewareQueue;
+use Closure;
+use Exception;
+use ReflectionFunction;
 
 class Router {
     /**

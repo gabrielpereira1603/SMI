@@ -1,14 +1,14 @@
 <?php
 
 use app\Controller\Admin;
-use app\Http\Response;
+use app\Infrastructure\Http\Response;
 
 $obRouter->get('/admin/user/add',[
     'middlewares' => [
         'required-admin-login'
     ],
     function($request) {
-        return new Response(200,Admin\GerenciarUser\AdicionarUsuario::getNewUser($request));
+        return new Response(200, \app\Presentation\Controller\Admin\GerenciarUser\AdicionarUsuario::getNewUser($request));
     }
 ]);
 
@@ -18,6 +18,6 @@ $obRouter->post('/admin/user/add',[
         'required-admin-login'
     ],
     function($request) {
-        return new Response(200,Admin\GerenciarUser\AdicionarUsuario::setNewUser($request));
+        return new Response(200, \app\Presentation\Controller\Admin\GerenciarUser\AdicionarUsuario::setNewUser($request));
     }
 ]);

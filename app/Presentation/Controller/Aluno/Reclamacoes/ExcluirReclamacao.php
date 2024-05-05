@@ -1,13 +1,14 @@
 <?php
 
-namespace app\Controller\Aluno\Reclamacoes;
+namespace app\Presentation\Controller\Aluno\Reclamacoes;
 
 use app\Application\UseCase\Reclamacao\ExcluirReclamacaoUseCase;
-use app\Http\Request;
-use app\Model\Dao\Computador\AtualizaStatusRepositoryImpl;
-use app\Model\Dao\Foto\ExcluirFotoRepositoryImpl;
-use app\Model\Dao\Reclamacao\ExcluirReclamacaoRepositoryImpl;
-use app\Model\Dao\ReclamacaoComponente\ExcluirComponenteReclamacaoRepositoryImpl;
+use app\Domain\Exceptions\ReclamacaoExceptions\ErrorAoExcluirReclamacaoException;
+use app\Infrastructure\Dao\Computador\AtualizaStatusRepositoryImpl;
+use app\Infrastructure\Dao\Foto\ExcluirFotoRepositoryImpl;
+use app\Infrastructure\Dao\Reclamacao\ExcluirReclamacaoRepositoryImpl;
+use app\Infrastructure\Dao\ReclamacaoComponente\ExcluirComponenteReclamacaoRepositoryImpl;
+use app\Infrastructure\Http\Request;
 
 class ExcluirReclamacao
 {
@@ -25,15 +26,22 @@ class ExcluirReclamacao
     }
     public function excluirReclamacao(Request $request): void
     {
-        $dadosReclamacao = $request->getPostVars();
+        try {
+            $dadosReclamacao = $request->getPostVars();
 
-        $useCase = new ExcluirReclamacaoUseCase(
-            $this->excluirReclamacaoRepository,
-            $this->excluirComponenteReclamacaoRepository,
-            $this->atualizaStatusRepository,
-            $this->excluirFotoRepository
-        );
+            $useCase = new ExcluirReclamacaoUseCase(
+                $this->excluirReclamacaoRepository,
+                $this->excluirComponenteReclamacaoRepository,
+                $this->atualizaStatusRepository,
+                $this->excluirFotoRepository
+            );
 
-        $useCase->excluirReclamacao($dadosReclamacao);
+            $useCase->excluirReclamacao($dadosReclamacao);
+            $request->getRouter()->redirect('/aluno/reclamacoesAbertas?success='. urlencode('Reclamação excluida com sucesso.'));
+        } catch (ErrorAoExcluirReclamacaoException $e){
+            $request->getRouter()->redirect('/aluno/reclamacoesAbertas?error=' . urlencode($e->getMessage()));
+
+        }
+
     }
 }

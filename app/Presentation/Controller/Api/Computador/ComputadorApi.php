@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Controller\Api\Computador;
+namespace app\Presentation\Controller\Api\Computador;
 
-use app\Model\Dao\Computador\ComputadorDao;
+use app\Infrastructure\Dao\Computador\ComputadorDao;
 
 class ComputadorApi
 {

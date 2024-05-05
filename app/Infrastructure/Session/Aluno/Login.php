@@ -1,6 +1,8 @@
 <?php
 
-namespace app\Session\Aluno;
+namespace app\Infrastructure\Session\Aluno;
+
+use app\Session\Aluno\User;
 
 class Login {
 

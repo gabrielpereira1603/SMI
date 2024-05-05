@@ -1,7 +1,7 @@
 <?php
 
 use app\Controller\Api;
-use app\Http\Response;
+use app\Infrastructure\Http\Response;
 
 $obRouter->post('/api/v1/componente',[
     'middlewares' => [
@@ -9,7 +9,7 @@ $obRouter->post('/api/v1/componente',[
         'jwt-auth'
     ],
     function($request) {
-        return new Response(200, Api\Componente\ComponenteApi::getAllComponentes($request), 'application/json');
+        return new Response(200, \app\Presentation\Controller\Api\Componente\ComponenteApi::getAllComponentes($request), 'application/json');
     }
 ]);
 
@@ -20,6 +20,6 @@ $obRouter->post('/api/v1/componente/{codreclamacao}',[
         'jwt-auth'
     ],
     function($request,$codreclamacao) {
-        return new Response(200, Api\Componente\ComponenteApi::getComponentesReclamacao($request,$codreclamacao), 'application/json');
+        return new Response(200, \app\Presentation\Controller\Api\Componente\ComponenteApi::getComponentesReclamacao($request,$codreclamacao), 'application/json');
     }
 ]);

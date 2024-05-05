@@ -1,7 +1,8 @@
 <?php
 
-namespace app\Model\Entity;
+namespace app\Domain\Entity;
 use DateTime;
+
 class Manutencao {
 
     private int $codmanutencao;

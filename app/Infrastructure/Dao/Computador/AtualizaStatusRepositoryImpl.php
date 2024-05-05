@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Domain\Dao\Computador;
+namespace app\Infrastructure\Dao\Computador;
 
 use app\Domain\Service\Computador\AtualizaStatusRepository;
 use WilliamCosta\DatabaseManager\Database;

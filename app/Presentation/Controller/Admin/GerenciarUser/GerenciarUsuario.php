@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Controller\Admin\GerenciarUser;
+namespace app\Presentation\Controller\Admin\GerenciarUser;
 
-use app\Controller\Admin\Page;
+use app\Presentation\Controller\Admin\Page;
 use app\Utils\View;
 
 class GerenciarUsuario extends Page

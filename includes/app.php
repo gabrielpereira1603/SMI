@@ -3,13 +3,12 @@
 require __DIR__ ."/../vendor/autoload.php";
 
 //DEPENDENCIA DO DOMPDF
-use Dompdf\Dompdf;
-use app\Http\Middleware\adminLogin\RequireAdminLogin;
-use app\Http\Middleware\adminLogin\RequireAdminLogout;
-use app\Http\Middleware\alunoLogin\RequireAlunoLogin;
-use app\Http\Middleware\alunoLogin\RequireAlunoLogout;
-use app\Http\Middleware\Manutencao;
-use app\Http\Middleware\Queue as MiddlewareQueue;
+use app\Infrastructure\Http\Middleware\adminLogin\RequireAdminLogin;
+use app\Infrastructure\Http\Middleware\adminLogin\RequireAdminLogout;
+use app\Infrastructure\Http\Middleware\alunoLogin\RequireAlunoLogin;
+use app\Infrastructure\Http\Middleware\alunoLogin\RequireAlunoLogout;
+use app\Infrastructure\Http\Middleware\Manutencao;
+use app\Infrastructure\Http\Middleware\Queue as MiddlewareQueue;
 use app\Utils\View;
 use WilliamCosta\DatabaseManager\Database;
 use WilliamCosta\DotEnv\Environment;
@@ -41,9 +40,9 @@ MiddlewareQueue::setMap([
     'required-admin-login' => RequireAdminLogin::class,
     'required-aluno-login' => RequireAlunoLogin::class,
     'required-aluno-logout' => RequireAlunoLogout::class,
-    'api' => \app\Http\Middleware\ApiMiddleware\Api::class,
-    'basic-auth' => \app\Http\Middleware\Autenticacao\BasicAuth::class,
-    'jwt-auth' => \app\Http\Middleware\Autenticacao\JWTAuth::class,
+    'api' => \app\Infrastructure\Http\Middleware\ApiMiddleware\Api::class,
+    'basic-auth' => \app\Infrastructure\Http\Middleware\Autenticacao\BasicAuth::class,
+    'jwt-auth' => \app\Infrastructure\Http\Middleware\Autenticacao\JWTAuth::class,
 ]);
 
 //DEFINE O MAPEAMENTO DE MIDDLWARES PADROES (EXECUTADOS EM TODAS AS ROTAS)

@@ -1,8 +1,8 @@
 <?php
 
 
-use \app\Http\Response;
-use \app\Controller\Admin;
+use app\Controller\Admin;
+use app\Infrastructure\Http\Response;
 
 
 //ROTA MANUTENCAO
@@ -11,7 +11,7 @@ $obRouter->get('/admin/manutencao/{codcomputador}', [
         'required-admin-login'
     ],
     function ($request, $codcomputador) {
-        return new Response(200, Admin\RegistrarManutencao::getManutencao($request, $codcomputador));
+        return new Response(200, \app\Presentation\Controller\Admin\RegistrarManutencao::getManutencao($request, $codcomputador));
     }
 ]);
 
@@ -20,6 +20,6 @@ $obRouter->post('/admin/manutencao/{codcomputador}',[
         'required-admin-login'
     ],
     function($request,$codcomputador) {
-        return new Response(200,Admin\RegistrarManutencao::setManutencao($request,$codcomputador));
+        return new Response(200, \app\Presentation\Controller\Admin\RegistrarManutencao::setManutencao($request,$codcomputador));
     }
 ]);

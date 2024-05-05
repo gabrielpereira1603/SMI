@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Domain\Dao\ReclamacaoComponente;
+namespace app\Infrastructure\Dao\ReclamacaoComponente;
 
 use app\Domain\Service\ReclamacaoComponente\EditarComponenteReclamacaoRepository;
 use WilliamCosta\DatabaseManager\Database;

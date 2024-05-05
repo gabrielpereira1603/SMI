@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Http\Middleware\ApiMiddleware;
+namespace app\Infrastructure\Http\Middleware\ApiMiddleware;
 
 class Api
 {

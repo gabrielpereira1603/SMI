@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Utils\Componentes\Table;
+namespace app\Presentation\Utilitarios\Componentes\Table;
 
-use app\Model\Dao\Reclamacao\ReclamacaoDao;
+use app\Infrastructure\Dao\Reclamacao\ReclamacaoDao;
 use app\Utils\View;
 
 class TableReclamacoesAbertas

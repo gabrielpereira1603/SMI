@@ -1,9 +1,9 @@
 <?php
 
-namespace app\Controller\Admin\GerarRelatorio;
+namespace app\Presentation\Controller\Admin\GerarRelatorio;
 
-use app\Controller\Admin\Page;
-use app\Utils\PDF\Manutencao\relatorioManutencaoPDF;
+use app\Presentation\Controller\Admin\Page;
+use app\Presentation\Utilitarios\PDF\Manutencao\relatorioManutencaoPDF;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 

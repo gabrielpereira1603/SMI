@@ -1,9 +1,8 @@
 <?php
 
-namespace app\Utils\Componentes\Table;
+namespace app\Presentation\Utilitarios\Componentes\Table;
 
-use app\Model\Dao\Manutencao\ManutencaoDao;
-use app\Model\Dao\Relatorio\RelatorioManutencaoDao;
+use app\Infrastructure\Dao\Relatorio\RelatorioManutencaoDao;
 use app\Utils\View;
 
 class TableRelatorioManutencao

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Domain\Dao\Reclamacao;
+namespace app\Infrastructure\Dao\Reclamacao;
 
 use app\Domain\Service\Reclamacao\ExcluirReclamacaoRepository;
 use WilliamCosta\DatabaseManager\Database;
