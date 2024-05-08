@@ -118,7 +118,7 @@ class ReclamacaoDao implements ReclamacaoRepository
                     GROUP_CONCAT(componente.nome_componente SEPARATOR \', \') AS componentes';
 
         $result = (new Database('reclamacao'))->select($where, null, null,null, $fields, $join)->fetchAll();
-
+        var_dump($result);
         if (empty($result)) {
             return null;
         }

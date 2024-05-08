@@ -1,19 +1,18 @@
 <?php
 
-namespace app\Infrastructure\Dao\Computador;
+namespace app\Infrastructure\DataBase\Computador;
 
-use app\Domain\Service\Computador\AtualizaStatusRepository;
+use app\Domain\Repository\Computador\AtualizaStatusRepository;
 use WilliamCosta\DatabaseManager\Database;
 
-class AtualizaStatusRepositoryImpl implements AtualizaStatusRepository
+class AtualizaSituacaoComputadorDAO implements AtualizaStatusRepository
 {
     public function atualizaStatus(int $codcomputador, array $valoresParaAlterar): bool
     {
         if (empty($valoresParaAlterar)) {
             return false;
         }
-
-
+        var_dump($valoresParaAlterar);
         $whereClause = "codcomputador = $codcomputador";
 
         $database = new Database('computador');

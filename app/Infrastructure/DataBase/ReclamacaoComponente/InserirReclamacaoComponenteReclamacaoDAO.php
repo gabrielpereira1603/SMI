@@ -1,11 +1,11 @@
 <?php
 
-namespace app\Infrastructure\Dao\ReclamacaoComponente;
+namespace app\Infrastructure\DataBase\ReclamacaoComponente;
 
-use app\Domain\Service\ReclamacaoComponente\InserirComponenteReclamacaoRepository;
+use app\Domain\Repository\ReclamacaoComponente\InserirComponenteReclamacaoRepository;
 use WilliamCosta\DatabaseManager\Database;
 
-class InserirReclamacaoComponenteReclamacaoRepositoryImpl implements InserirComponenteReclamacaoRepository
+class InserirReclamacaoComponenteReclamacaoDAO implements InserirComponenteReclamacaoRepository
 {
 
     public function inserirComponente(int $codreclamacao, int $codComponente): bool

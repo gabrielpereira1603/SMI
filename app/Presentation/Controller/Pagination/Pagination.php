@@ -2,8 +2,8 @@
 
 namespace app\Presentation\Controller\Pagination;
 
-use app\Controller\Pagination\Request;
 use app\Utils\View;
+use WilliamCosta\DatabaseManager\Pagination as obPagination;
 
 class Pagination
 {
@@ -13,7 +13,7 @@ class Pagination
      * @param Pagination $obPagination
      * @return string
      */
-    public static function getPagination($request,$obPagination): array|bool|string
+    public static function getPagination($request,obPagination $obPagination): array|bool|string
     {
         //PAGINAS
         $pages = $obPagination->getPages();

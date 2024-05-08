@@ -4,51 +4,30 @@ namespace app\Presentation\Controller\Aluno\Reclamacoes;
 
 use app\Application\UseCase\Reclamacao\CadastrarReclamacaoUseCase;
 use app\Domain\Exceptions\ReclamacaoExceptions\FalhaCadastroReclamacao;
-use app\Infrastructure\Dao\Computador\AtualizaStatusRepositoryImpl;
-use app\Infrastructure\Dao\Computador\ComputadorDao;
-use app\Infrastructure\Dao\Foto\CadastrarFotoReclamacaoRepositoryImpl;
 use app\Infrastructure\Dao\Reclamacao\CadastraReclamacaoRepositoryImpl;
-use app\Infrastructure\Dao\ReclamacaoComponente\InserirReclamacaoComponenteReclamacaoRepositoryImpl;
+use app\Infrastructure\DataBase\Computador\AtualizaSituacaoComputadorDAO;
+use app\Infrastructure\DataBase\Foto\InserirFotoReclamacaoDAO;
+use app\Infrastructure\DataBase\ReclamacaoComponente\InserirReclamacaoComponenteReclamacaoDAO;
 use app\Presentation\Controller\Aluno\Page;
-use app\Presentation\Utilitarios\Componentes\CheckBox\allCheckBoxComponentes;
 use app\Presentation\Utilitarios\UploadFotos\GerenciarArquivosFotos;
-use app\Utils\View;
 
 class RegistrarReclamacao extends Page
 {
-    private AtualizaStatusRepositoryImpl $atualizaStatusRepository;
+    private AtualizaSituacaoComputadorDAO $atualizaStatusRepository;
     private CadastraReclamacaoRepositoryImpl $cadastraReclamacaoRepository;
-    private InserirReclamacaoComponenteReclamacaoRepositoryImpl $cadastrarComponenteReclamacao;
-    private CadastrarFotoReclamacaoRepositoryImpl $cadastrarFotoReclamacao;
+    private InserirReclamacaoComponenteReclamacaoDAO $cadastrarComponenteReclamacao;
+    private InserirFotoReclamacaoDAO $cadastrarFotoReclamacao;
 
     public function __construct()
     {
-        $this->atualizaStatusRepository = new AtualizaStatusRepositoryImpl();
+        $this->atualizaStatusRepository = new AtualizaSituacaoComputadorDAO();
         $this->cadastraReclamacaoRepository = new CadastraReclamacaoRepositoryImpl();
-        $this->cadastrarComponenteReclamacao = new InserirReclamacaoComponenteReclamacaoRepositoryImpl();
-        $this->cadastrarFotoReclamacao = new CadastrarFotoReclamacaoRepositoryImpl();
-    }
-
-    public static function getViewReclamacao($request,$codcomputador): string
-    {
-        $checkBoxComponente = allCheckBoxComponentes::getComponenteCheckBox($request);
-        $obComputador = (new ComputadorDao())->getById($codcomputador);
-        $content = View::render('aluno/modules/inserirReclamacao/index', [
-            'itens' => $checkBoxComponente,
-            'nav' => parent::getNav($request),
-            'codcomputador' => $codcomputador,
-            'codlaboratorio'=> $obComputador->getLaboratorio()->getCodlaboratorio(),
-            'numerolaboratorio' => $obComputador->getLaboratorio()->getNumeroLaboratorio(),
-            'patrimonio' => $obComputador->getPatrimonio(),
-        ]);
-
-        //RETORNA A PAGINA COMPLETA
-        return parent::getPage('Reclamação',$content);
+        $this->cadastrarComponenteReclamacao = new InserirReclamacaoComponenteReclamacaoDAO();
+        $this->cadastrarFotoReclamacao = new InserirFotoReclamacaoDAO();
     }
 
     public function setReclamacao($request, $codComputador): void
     {
-
         try {
             $dadosReclamacao = [
                 'componente' => $componente,
@@ -57,6 +36,7 @@ class RegistrarReclamacao extends Page
                 'codcomputador' => $codcomputador,
                 'codlaboratorio' => $codlaboratorio
             ] = $request->getPostVars();
+
             $foto = GerenciarArquivosFotos::getUploadedPhotos($_FILES);
 
             $useCase = new CadastrarReclamacaoUseCase(

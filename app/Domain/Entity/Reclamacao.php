@@ -27,7 +27,7 @@ class Reclamacao {
         $this->usuario = $usuario;
     }
 
-    public function getCodreclamaca(): int
+    public function getCodreclamacao(): int
     {
         return $this->codreclamaca;
     }
@@ -125,5 +125,26 @@ class Reclamacao {
         $this->usuario = $usuario;
         return $this;
     }
+
+    public static function factoryReclamacao(array $data): Reclamacao {
+        $laboratorio = new Laboratorio($data['codlaboratorio_fk'], $data['numerolaboratorio']);
+        $situacao = new Situacao($data['codsituacao'], $data['tiposituacao']);
+        $nivelAcesso = new NivelAcesso($data['codnivel_acesso'], $data['tipo_acesso']);
+        $computador = new Computador($data['codcomputador_fk'], $data['patrimonio'], $situacao, $laboratorio);
+        $usuario = new Usuario($data['codusuario_fk'], $data['nome_usuario'], $data['email_usuario'], $data['login'], '', $nivelAcesso);
+
+        return new Reclamacao(
+            $data['codreclamacao'],
+            $data['descricao'],
+            $data['prazo_reclamacao'],
+            $data['status'],
+            new \DateTime($data['datahora_reclamacao']),
+            new \DateTime($data['datahora_fimreclamacao']),
+            $computador,
+            $laboratorio,
+            $usuario
+        );
+    }
+
 
 }

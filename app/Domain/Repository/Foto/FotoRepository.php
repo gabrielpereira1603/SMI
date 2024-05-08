@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Domain\Service\Foto;
+namespace app\Domain\Repository\Foto;
 
 interface FotoRepository
 {

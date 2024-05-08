@@ -12,7 +12,7 @@ class BuscarDadosReclamacaoUseCase
         $results = $reclamacaoDao->getDetalhesByComputador($codcomputador);
 
         return [
-            'codreclamacao' => $results ? $results->getCodreclamaca() : '0',
+            'codreclamacao' => $results ? $results->getCodreclamacao() : '0',
             'descricao'   => $results ? $results->getDescricao() : 'Nenhuma descrição Encontrada',
             'status'   => $results ? $results->getStatus() : 'Nenhum Status Encontrado',
             'dataHora'   => $results ? $results->getDataHoraReclamacao()->format('Y-m-d H:i:s') : 'Nenhuma Hora Encontrada',

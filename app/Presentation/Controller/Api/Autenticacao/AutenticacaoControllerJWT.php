@@ -32,7 +32,7 @@ class AutenticacaoControllerJWT
 
         //payload
         $payload = [
-            'login' => $obUser->getLogin()
+            'login' => 'gay'
         ];
 
         return [

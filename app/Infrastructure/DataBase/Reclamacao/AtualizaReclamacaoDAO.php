@@ -1,11 +1,11 @@
 <?php
 
-namespace app\Infrastructure\Dao\Reclamacao;
+namespace app\Infrastructure\DataBase\Reclamacao;
 
-use app\Domain\Service\Reclamacao\AtualizaReclamacaoRepository;
+use app\Domain\Repository\Reclamacao\AtualizaReclamacaoRepository;
 use WilliamCosta\DatabaseManager\Database;
 
-class AtualizaReclamacaoRepositoryImpl implements AtualizaReclamacaoRepository
+class AtualizaReclamacaoDAO implements AtualizaReclamacaoRepository
 {
 
     public function atualizaReclamacao(int $codreclamacao, array $valoresParaAlterar): bool

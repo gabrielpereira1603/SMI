@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Domain\Service\ReclamacaoComponente;
+namespace app\Domain\Repository\ReclamacaoComponente;
 
 interface InserirComponenteReclamacaoRepository
 {

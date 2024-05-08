@@ -1,11 +1,11 @@
 <?php
 
-namespace app\Infrastructure\Dao\ReclamacaoComponente;
+namespace app\Infrastructure\DataBase\ReclamacaoComponente;
 
-use app\Domain\Service\ReclamacaoComponente\ExcluirComponenteReclamacaoRepository;
+use app\Domain\Repository\ReclamacaoComponente\ExcluirComponenteReclamacaoRepository;
 use WilliamCosta\DatabaseManager\Database;
 
-class ExcluirComponenteReclamacaoRepositoryImpl implements ExcluirComponenteReclamacaoRepository
+class ExcluirComponenteReclamacaoDAO implements ExcluirComponenteReclamacaoRepository
 {
     public function excluirComponenteReclamacao(int $codreclamacao): bool
     {

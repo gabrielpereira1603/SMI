@@ -1,20 +1,22 @@
 <?php
 
-namespace app\Infrastructure\Dao\Reclamacao;
+namespace app\Infrastructure\DataBase\Reclamacao;
 
-use app\Domain\Service\Reclamacao\ExcluirReclamacaoRepository;
+use app\Domain\Repository\Reclamacao\ExcluirReclamacaoRepository;
 use WilliamCosta\DatabaseManager\Database;
 
-class ExcluirReclamacaoRepositoryImpl implements ExcluirReclamacaoRepository
+class ExcluirReclamacaoDAO implements ExcluirReclamacaoRepository
 {
 
     public function excluirReclamacao(int $codreclamacao): bool
     {
+
         $database = new Database('reclamacao');
         $where = "codreclamacao = $codreclamacao";
         if ($database->delete($where)){
             return true;
         }
+        var_dump($where);exit();
         return false;
     }
 }

@@ -1,15 +1,18 @@
 <?php
 
-use app\Controller\Aluno;
+use app\Infrastructure\DataBase\Computador\ComputadorPorIdDAO;
+use app\Infrastructure\Http\Request;
 use app\Infrastructure\Http\Response;
+use app\Presentation\Controller\Aluno\Reclamacoes\ViewRegistrarReclamacao;
 
 //ROTA Admin
 $obRouter->get('/aluno/reclamacao/{codcomputador}',[
     'middlewares' => [
         'required-aluno-login'
     ],
-    function($request,$codcomputador) {
-        return new Response(200, \app\Presentation\Controller\Aluno\Reclamacoes\RegistrarReclamacao::getViewReclamacao($request,$codcomputador));
+    function(Request $request, $codcomputador) {
+        $viewRegistrarReclamacao = new ViewRegistrarReclamacao(new ComputadorPorIdDAO());
+        return new Response(200,$viewRegistrarReclamacao->getViewRegistrarReclamacao($request,$codcomputador));
     }
 ]);
 

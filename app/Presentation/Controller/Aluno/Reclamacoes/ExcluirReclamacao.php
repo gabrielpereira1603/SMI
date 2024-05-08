@@ -4,25 +4,25 @@ namespace app\Presentation\Controller\Aluno\Reclamacoes;
 
 use app\Application\UseCase\Reclamacao\ExcluirReclamacaoUseCase;
 use app\Domain\Exceptions\ReclamacaoExceptions\ErrorAoExcluirReclamacaoException;
-use app\Infrastructure\Dao\Computador\AtualizaStatusRepositoryImpl;
-use app\Infrastructure\Dao\Foto\ExcluirFotoRepositoryImpl;
-use app\Infrastructure\Dao\Reclamacao\ExcluirReclamacaoRepositoryImpl;
-use app\Infrastructure\Dao\ReclamacaoComponente\ExcluirComponenteReclamacaoRepositoryImpl;
+use app\Infrastructure\DataBase\Computador\AtualizaSituacaoComputadorDAO;
+use app\Infrastructure\DataBase\Foto\ExcluirFotoPorReclamacaoDAO;
+use app\Infrastructure\DataBase\Reclamacao\ExcluirReclamacaoDAO;
+use app\Infrastructure\DataBase\ReclamacaoComponente\ExcluirComponenteReclamacaoDAO;
 use app\Infrastructure\Http\Request;
 
 class ExcluirReclamacao
 {
-    private ExcluirReclamacaoRepositoryImpl $excluirReclamacaoRepository;
-    private ExcluirComponenteReclamacaoRepositoryImpl $excluirComponenteReclamacaoRepository;
-    private AtualizaStatusRepositoryImpl $atualizaStatusRepository;
-    private ExcluirFotoRepositoryImpl $excluirFotoRepository;
+    private ExcluirReclamacaoDAO $excluirReclamacaoRepository;
+    private ExcluirComponenteReclamacaoDAO $excluirComponenteReclamacaoRepository;
+    private AtualizaSituacaoComputadorDAO $atualizaStatusRepository;
+    private ExcluirFotoPorReclamacaoDAO $excluirFotoRepository;
 
     public function __construct()
     {
-        $this->excluirReclamacaoRepository = new ExcluirReclamacaoRepositoryImpl();
-        $this->excluirComponenteReclamacaoRepository = new ExcluirComponenteReclamacaoRepositoryImpl();
-        $this->atualizaStatusRepository = new AtualizaStatusRepositoryImpl();
-        $this->excluirFotoRepository = new ExcluirFotoRepositoryImpl();
+        $this->excluirReclamacaoRepository = new ExcluirReclamacaoDAO();
+        $this->excluirComponenteReclamacaoRepository = new ExcluirComponenteReclamacaoDAO();
+        $this->atualizaStatusRepository = new AtualizaSituacaoComputadorDAO();
+        $this->excluirFotoRepository = new ExcluirFotoPorReclamacaoDAO();
     }
     public function excluirReclamacao(Request $request): void
     {
@@ -40,7 +40,6 @@ class ExcluirReclamacao
             $request->getRouter()->redirect('/aluno/reclamacoesAbertas?success='. urlencode('Reclamação excluida com sucesso.'));
         } catch (ErrorAoExcluirReclamacaoException $e){
             $request->getRouter()->redirect('/aluno/reclamacoesAbertas?error=' . urlencode($e->getMessage()));
-
         }
 
     }

@@ -2,7 +2,7 @@
 
 namespace app\Infrastructure\Dao\Reclamacao;
 
-use app\Domain\Service\Reclamacao\CadastrarReclamacaoRepository;
+use app\Domain\Repository\Reclamacao\CadastrarReclamacaoRepository;
 use WilliamCosta\DatabaseManager\Database;
 
 class CadastraReclamacaoRepositoryImpl implements CadastrarReclamacaoRepository

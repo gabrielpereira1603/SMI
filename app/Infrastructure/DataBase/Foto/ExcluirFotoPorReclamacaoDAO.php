@@ -1,11 +1,11 @@
 <?php
 
-namespace app\Infrastructure\Dao\Foto;
+namespace app\Infrastructure\DataBase\Foto;
 
-use app\Domain\Service\Foto\ExcluirFotoRepository;
+use app\Domain\Repository\Foto\ExcluirFotoRepository;
 use WilliamCosta\DatabaseManager\Database;
 
-class ExcluirFotoRepositoryImpl implements ExcluirFotoRepository
+class ExcluirFotoPorReclamacaoDAO implements ExcluirFotoRepository
 {
     public function exlcuirFoto(int $codreclamacao): bool
     {

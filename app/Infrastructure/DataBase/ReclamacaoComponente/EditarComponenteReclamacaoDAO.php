@@ -1,11 +1,11 @@
 <?php
 
-namespace app\Infrastructure\Dao\ReclamacaoComponente;
+namespace app\Infrastructure\DataBase\ReclamacaoComponente;
 
-use app\Domain\Service\ReclamacaoComponente\EditarComponenteReclamacaoRepository;
+use app\Domain\Repository\ReclamacaoComponente\EditarComponenteReclamacaoRepository;
 use WilliamCosta\DatabaseManager\Database;
 
-class EditarComponenteReclamacaoRepositoryImpl implements EditarComponenteReclamacaoRepository
+class EditarComponenteReclamacaoDAO implements EditarComponenteReclamacaoRepository
 {
     public function removerComponenteReclamacao(int $codreclamacao): bool
     {

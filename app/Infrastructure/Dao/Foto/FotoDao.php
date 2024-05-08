@@ -2,7 +2,7 @@
 
 namespace app\Infrastructure\Dao\Foto;
 
-use app\Domain\Service\Foto\FotoRepository;
+use app\Domain\Repository\Foto\FotoRepository;
 use WilliamCosta\DatabaseManager\Database;
 
 class FotoDao implements FotoRepository

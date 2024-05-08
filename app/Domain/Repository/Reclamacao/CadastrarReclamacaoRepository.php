@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Domain\Service\Reclamacao;
+namespace app\Domain\Repository\Reclamacao;
 
 interface CadastrarReclamacaoRepository
 {

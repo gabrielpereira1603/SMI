@@ -2,33 +2,44 @@
 
 namespace app\Presentation\Controller\Aluno;
 
-use app\Infrastructure\Dao\Laboratorio\LaboratorioDao;
+use app\Application\UseCase\Laboratorio\BuscarLaboratorioPorIdUseCase;
+use app\Infrastructure\DataBase\Computador\ComputadorPorLaboratorioPaginationDAO;
+use app\Infrastructure\DataBase\Laboratorio\BuscarLaboratorioPorIdDAO;
+use app\Utils\View;
 use app\Infrastructure\Http\Request;
 use app\Presentation\Controller\Pagination\Pagination;
-use app\Presentation\Utilitarios\Componentes\Cards\cardComputadoresPagination;
-use app\Presentation\Utilitarios\Service\Computador\AlunoComputadorStrategy;
-use app\Utils\View;
+use app\Application\UseCase\Computador\CardComputadoresPaginationUseCase;
+use app\Infrastructure\DataBase\Computador\ComputadoresPorLaboratorioDAO;
+use app\Presentation\Utilitarios\Service\Computador\cardComputadoresPagination\AlunoComputadorStrategy;
 
 class MenuComputadores extends Page
 {
     public static function getComputador(Request $request,$codlaboratorio): string
     {
-        $cardsComputadores = cardComputadoresPagination::getComputadorItems($request,$codlaboratorio,$obPagination, new AlunoComputadorStrategy());
-        $numeroLaboratorio = (new LaboratorioDao())->getById($codlaboratorio)->getNumeroLaboratorio();
-        $pagination = (new Pagination())->getPagination($request, $obPagination);
+        $useCase = new CardComputadoresPaginationUseCase(
+            new AlunoComputadorStrategy(
+                new ComputadorPorLaboratorioPaginationDAO(),
+                new ComputadoresPorLaboratorioDAO()
+            )
+        );
+
+        $laboratorioPorId = new BuscarLaboratorioPorIdUseCase(new BuscarLaboratorioPorIdDAO());
+
+        $numerolaboratorio = $laboratorioPorId->execute($request,$codlaboratorio)->getNumeroLaboratorio();
+        [$cardsComputadores, $obPagination] = $useCase->execute($request, $pagination, $codlaboratorio);
+
+        $ViewPagination = (new Pagination())->getPagination($request, $obPagination);
 
         //CONTEUDO DA PAGINA DE RECLAMACAO
         $content = View::render('aluno/modules/computadoresReclamacao/index', [
             'nav' => parent::getNav($request),
             'itens' => $cardsComputadores,
-            'pagination' => $pagination,
             'codlaboratorio' => $codlaboratorio,
-            'numerolaboratorio' => $numeroLaboratorio,
+            'pagination' => $ViewPagination,
+            'numerolaboratorio' => $numerolaboratorio
+
         ]);
 
-        //RETORNA A PAGINA COMPLETA
         return parent::getPage('Computadores',$content);
     }
-
-
 }

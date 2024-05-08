@@ -4,10 +4,10 @@ namespace app\Application\UseCase\Reclamacao;
 
 
 use app\Domain\Exceptions\ReclamacaoExceptions\ErrorAoExcluirReclamacaoException;
-use app\Domain\Service\Computador\AtualizaStatusRepository;
-use app\Domain\Service\Foto\ExcluirFotoRepository;
-use app\Domain\Service\Reclamacao\ExcluirReclamacaoRepository;
-use app\Domain\Service\ReclamacaoComponente\ExcluirComponenteReclamacaoRepository;
+use app\Domain\Repository\Computador\AtualizaStatusRepository;
+use app\Domain\Repository\Foto\ExcluirFotoRepository;
+use app\Domain\Repository\Reclamacao\ExcluirReclamacaoRepository;
+use app\Domain\Repository\ReclamacaoComponente\ExcluirComponenteReclamacaoRepository;
 
 class ExcluirReclamacaoUseCase
 {
@@ -37,7 +37,7 @@ class ExcluirReclamacaoUseCase
         $codComputador = $dadosReclamacao['codcomputador'];
 
         if(!$this->excluirComponenteReclamacaoRepository->excluirComponenteReclamacao($codReclamacao)){
-            throw new ErrorAoExcluirReclamacaoException("Error ao excluir os componentes relacionados à reclamação");
+           throw new ErrorAoExcluirReclamacaoException("Error ao excluir os componentes relacionados à reclamação");
         }
 
         if ($this->excluirFotoRepository->fotoExiste((int)$codReclamacao)) {

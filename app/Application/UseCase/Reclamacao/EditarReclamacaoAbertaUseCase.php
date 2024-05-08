@@ -3,8 +3,8 @@
 namespace app\Application\UseCase\Reclamacao;
 
 use app\Domain\Exceptions\ReclamacaoExceptions\ErrorAtualizarReclamacaoException;
-use app\Domain\Service\Reclamacao\AtualizaReclamacaoRepository;
-use app\Domain\Service\ReclamacaoComponente\EditarComponenteReclamacaoRepository;
+use app\Domain\Repository\Reclamacao\AtualizaReclamacaoRepository;
+use app\Domain\Repository\ReclamacaoComponente\EditarComponenteReclamacaoRepository;
 
 class EditarReclamacaoAbertaUseCase
 {

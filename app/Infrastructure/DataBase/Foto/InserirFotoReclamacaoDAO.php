@@ -1,11 +1,11 @@
 <?php
 
-namespace app\Infrastructure\Dao\Foto;
+namespace app\Infrastructure\DataBase\Foto;
 
-use app\Domain\Service\Foto\InserirFotoReclamacaoRepository;
+use app\Domain\Repository\Foto\InserirFotoReclamacaoRepository;
 use WilliamCosta\DatabaseManager\Database;
 
-class CadastrarFotoReclamacaoRepositoryImpl implements InserirFotoReclamacaoRepository
+class InserirFotoReclamacaoDAO implements InserirFotoReclamacaoRepository
 {
     public function cadastrarFotoReclamacao(array $foto, int $codreclamacao): int|bool
     {

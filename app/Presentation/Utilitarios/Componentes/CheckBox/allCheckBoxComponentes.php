@@ -2,22 +2,25 @@
 
 namespace app\Presentation\Utilitarios\Componentes\CheckBox;
 
-use app\Infrastructure\Dao\Componente\ComponenteDao;
+use app\Application\UseCase\Componente\BuscarTodosComponenteUseCase;
+use app\Infrastructure\DataBase\Componente\BuscarTodosComponentesDAO;
 use app\Utils\View;
 
 class allCheckBoxComponentes
 {
     public static function getComponenteCheckBox($request): string
     {
-        $componenteDao = new ComponenteDao();
-        $results = $componenteDao->getAllComponentes();
+        $useCase = new BuscarTodosComponenteUseCase(
+            new BuscarTodosComponentesDAO()
+        );
 
+        $componentes = $useCase->execute($request);
         $itens = '';
 
-        foreach ($results as $componente) { // Alteração aqui
+        foreach ($componentes as $componente) {
             $itens .= View::render('aluno/componente/item', [
-                'nome_componente' => $componente->getNomeComponente(), // Alteração aqui
-                'codcomponente' => $componente->getCodcomponente(), // Alteração aqui
+                'nome_componente' => $componente->getNomeComponente(),
+                'codcomponente' => $componente->getCodComponente(),
             ]);
         }
 

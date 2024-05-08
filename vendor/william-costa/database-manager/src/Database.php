@@ -140,7 +140,7 @@ class Database{
 
         // MONTA A QUERY
         $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$join.' '.$where.' '.$order.' '.$limit.' '.$offset;
-        //echo $query."<br>";exit();
+        //echo $query."<br>";
         // EXECUTA A QUERY
         return $this->execute($query);
     }
