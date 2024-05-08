@@ -157,6 +157,7 @@ class Database{
 
     //MONTA A QUERY
     $query = 'UPDATE '.$this->table.' SET '.implode('=?,',$fields).'=? WHERE '.$where;
+    //var_dump($query);exit();
     //EXECUTAR A QUERY
     $this->execute($query,array_values($values));
 

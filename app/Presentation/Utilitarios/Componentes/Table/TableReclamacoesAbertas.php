@@ -46,6 +46,7 @@ class TableReclamacoesAbertas
             $obComponentes = $componenteUseCase->execute($request, $codreclamacao);
             $content .= View::render('aluno/modules/reclamacoesAbertas/itensTable', [
                 'codreclamacao' => $reclamacao->getCodreclamacao(),
+                'codcomputador' => $reclamacao->getComputador()->getCodcomputador(),
                 'descricao' => $reclamacao->getDescricao(),
                 'status' => $reclamacao->getStatus(),
                 'patrimonio' => $reclamacao->getComputador()->getPatrimonio(),

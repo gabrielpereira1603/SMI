@@ -32,11 +32,10 @@ class ExcluirReclamacaoUseCase
 
     public function excluirReclamacao(array $dadosReclamacao): void
     {
-
         $codReclamacao = $dadosReclamacao['codreclamacao'];
         $codComputador = $dadosReclamacao['codcomputador'];
 
-        if(!$this->excluirComponenteReclamacaoRepository->excluirComponenteReclamacao($codReclamacao)){
+       if(!$this->excluirComponenteReclamacaoRepository->excluirComponenteReclamacao($codReclamacao)){
            throw new ErrorAoExcluirReclamacaoException("Error ao excluir os componentes relacionados à reclamação");
         }
 
@@ -50,7 +49,8 @@ class ExcluirReclamacaoUseCase
             throw new ErrorAoExcluirReclamacaoException("Error ao excluir a reclamação");
         }
 
-        if(!$this->atualizaStatusRepository->atualizaStatus($codComputador, ['codsituacao_fk' => '1'])){
+        if(!$this->atualizaStatusRepository->atualizaStatus((int)$codComputador, ['codsituacao_fk' => '1'])){
+
             throw new ErrorAoExcluirReclamacaoException("Error ao atualizar situação do computador.");
         }
     }

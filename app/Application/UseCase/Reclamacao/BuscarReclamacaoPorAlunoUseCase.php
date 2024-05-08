@@ -20,7 +20,7 @@ class BuscarReclamacaoPorAlunoUseCase
         $obReclamacao = $this->buscarReclamacaoPorAlunoRepository->buscarReclamacao($request,$codusuario);
 
         if (!$obReclamacao){
-            throw new ReclamacoesNaoEncontradasExceptions("Nenhuma reclamação encontrada!");
+            throw new ReclamacoesNaoEncontradasExceptions("Voçe não possui reclamações em aberto!");
         }
 
         return $obReclamacao;

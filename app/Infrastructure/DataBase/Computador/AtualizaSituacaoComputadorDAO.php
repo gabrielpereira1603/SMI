@@ -12,7 +12,7 @@ class AtualizaSituacaoComputadorDAO implements AtualizaStatusRepository
         if (empty($valoresParaAlterar)) {
             return false;
         }
-        var_dump($valoresParaAlterar);
+
         $whereClause = "codcomputador = $codcomputador";
 
         $database = new Database('computador');
