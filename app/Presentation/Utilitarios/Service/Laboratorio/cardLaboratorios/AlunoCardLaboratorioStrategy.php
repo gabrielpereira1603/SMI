@@ -1,13 +1,15 @@
 <?php
 
-namespace app\Presentation\Utilitarios\Service\Laboratorio;
+namespace app\Presentation\Utilitarios\Service\Laboratorio\cardLaboratorios;
 
+use app\Domain\Repository\Laboratorio\BuscarTodosLaboratoriosRepository;
 use app\Infrastructure\Dao\Computador\ComputadorDao;
 use app\Infrastructure\Dao\Laboratorio\LaboratorioDao;
 use app\Utils\View;
 
 class AlunoLaboratorioStrategy implements LaboratorioStrategy
 {
+
     public static function getLaboratorioItems($request): string
     {
         $itens = '';

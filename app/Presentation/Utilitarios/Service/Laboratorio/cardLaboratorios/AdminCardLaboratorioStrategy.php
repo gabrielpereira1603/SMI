@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Presentation\Utilitarios\Service\Laboratorio;
+namespace app\Presentation\Utilitarios\Service\Laboratorio\cardLaboratorios;
 
 use app\Infrastructure\Dao\Computador\ComputadorDao;
 use app\Infrastructure\Dao\Laboratorio\LaboratorioDao;
