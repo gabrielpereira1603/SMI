@@ -15,9 +15,9 @@ class BuscarReclamacaoPorAlunoUseCase
         $this->buscarReclamacaoPorAlunoRepository = $buscarReclamacaoPorAlunoRepository;
     }
 
-    public function execute(Request $request, $codusuario): ?array
+    public function execute(Request $request, $codusuario, $statusReclamacao): ?array
     {
-        $obReclamacao = $this->buscarReclamacaoPorAlunoRepository->buscarReclamacao($request,$codusuario);
+        $obReclamacao = $this->buscarReclamacaoPorAlunoRepository->buscarReclamacao($request,$codusuario,$statusReclamacao);
 
         if (!$obReclamacao){
             throw new ReclamacoesNaoEncontradasExceptions("Voçe não possui reclamações em aberto!");

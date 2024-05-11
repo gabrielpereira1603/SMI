@@ -7,5 +7,5 @@ use app\Infrastructure\Http\Request;
 
 interface BuscarReclamacaoPorAlunoRepository
 {
-    public function buscarReclamacao(Request $request, $codusuario): ?array;
+    public function buscarReclamacao(Request $request, $codusuario, $statusReclamacao): ?array;
 }

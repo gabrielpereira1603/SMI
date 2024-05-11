@@ -38,7 +38,7 @@ class TableReclamacoesAbertas
             $this->buscarComponentePorReclamacaoDAO
         );
 
-        $obReclamacao = $useCase->execute($request,$codusuario);
+        $obReclamacao = $useCase->execute($request,$codusuario, $statusReclamacao = 'Enviado');
 
 
         foreach ($obReclamacao as $reclamacao) {

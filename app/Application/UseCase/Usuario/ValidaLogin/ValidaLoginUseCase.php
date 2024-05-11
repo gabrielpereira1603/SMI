@@ -3,6 +3,7 @@
 namespace app\Application\UseCase\Usuario\ValidaLogin;
 
 use app\Domain\Service\Usuario\ValidaLogin\ValidaLoginRepository;
+use app\Infrastructure\Http\Request;
 
 class ValidaLoginUseCase
 {
@@ -13,8 +14,8 @@ class ValidaLoginUseCase
         $this->strategy = $strategy;
     }
 
-    public function execute(string $login, string $senha)
+    public function execute(Request $request, string $login, string $senha)
     {
-        return $this->strategy->validaLogin($login, $senha);
+        return $this->strategy->validaLogin($request,$login, $senha);
     }
 }

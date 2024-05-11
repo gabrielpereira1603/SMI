@@ -15,9 +15,9 @@ use WilliamCosta\DatabaseManager\Database;
 class BuscarReclamacaoPorUsuarioDAO implements BuscarReclamacaoPorAlunoRepository
 {
 
-    public function buscarReclamacao(Request $request, $codusuario): ?array
+    public function buscarReclamacao(Request $request, $codusuario, $statusReclamacao): ?array
     {
-        $where = "reclamacao.codusuario_fk = $codusuario AND reclamacao.status = 'Em aberto' GROUP BY reclamacao.codreclamacao";
+        $where = "reclamacao.codusuario_fk = $codusuario AND reclamacao.status = '$statusReclamacao' GROUP BY reclamacao.codreclamacao";
         $join = 'INNER JOIN usuario ON reclamacao.codusuario_fk = usuario.codusuario 
                 INNER JOIN laboratorio ON reclamacao.codlaboratorio_fk = laboratorio.codlaboratorio 
                 INNER JOIN computador ON reclamacao.codcomputador_fk = computador.codcomputador 

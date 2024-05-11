@@ -4,9 +4,9 @@ namespace app\Presentation\Controller\Aluno\Reclamacoes;
 
 use app\Application\UseCase\Reclamacao\CadastrarReclamacaoUseCase;
 use app\Domain\Exceptions\ReclamacaoExceptions\FalhaCadastroReclamacao;
-use app\Infrastructure\Dao\Reclamacao\CadastraReclamacaoRepositoryImpl;
 use app\Infrastructure\DataBase\Computador\AtualizaSituacaoComputadorDAO;
 use app\Infrastructure\DataBase\Foto\InserirFotoReclamacaoDAO;
+use app\Infrastructure\DataBase\Reclamacao\InserirReclamacaoRepositoryDAO;
 use app\Infrastructure\DataBase\ReclamacaoComponente\InserirReclamacaoComponenteReclamacaoDAO;
 use app\Presentation\Controller\Aluno\Page;
 use app\Presentation\Utilitarios\UploadFotos\GerenciarArquivosFotos;
@@ -14,14 +14,14 @@ use app\Presentation\Utilitarios\UploadFotos\GerenciarArquivosFotos;
 class RegistrarReclamacao extends Page
 {
     private AtualizaSituacaoComputadorDAO $atualizaStatusRepository;
-    private CadastraReclamacaoRepositoryImpl $cadastraReclamacaoRepository;
+    private InserirReclamacaoRepositoryDAO $cadastraReclamacaoRepository;
     private InserirReclamacaoComponenteReclamacaoDAO $cadastrarComponenteReclamacao;
     private InserirFotoReclamacaoDAO $cadastrarFotoReclamacao;
 
     public function __construct()
     {
         $this->atualizaStatusRepository = new AtualizaSituacaoComputadorDAO();
-        $this->cadastraReclamacaoRepository = new CadastraReclamacaoRepositoryImpl();
+        $this->cadastraReclamacaoRepository = new InserirReclamacaoRepositoryDAO();
         $this->cadastrarComponenteReclamacao = new InserirReclamacaoComponenteReclamacaoDAO();
         $this->cadastrarFotoReclamacao = new InserirFotoReclamacaoDAO();
     }

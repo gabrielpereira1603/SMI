@@ -27,7 +27,7 @@ class Login extends Page
             $senha = $postVars['senha'] ?? '';
 
             $validaLoginUseCase = new ValidaLoginUseCase(new LoginAlunoStrategy());
-            $validaLoginUseCase->execute($login, $senha);
+            $validaLoginUseCase->execute($request,$login, $senha);
 
             $request->getRouter()->redirect('/aluno/home');
         } catch (LoginOuSenhaInvalidosException|PermissaoDeAcessoNegadaException $e) {

@@ -1,11 +1,11 @@
 <?php
 
-namespace app\Infrastructure\Dao\Reclamacao;
+namespace app\Infrastructure\DataBase\Reclamacao;
 
 use app\Domain\Repository\Reclamacao\CadastrarReclamacaoRepository;
 use WilliamCosta\DatabaseManager\Database;
 
-class CadastraReclamacaoRepositoryImpl implements CadastrarReclamacaoRepository
+class InserirReclamacaoRepositoryDAO implements CadastrarReclamacaoRepository
 {
     public function cadastrarReclamacao(array $dadosReclamacao): int
     {
@@ -15,17 +15,15 @@ class CadastraReclamacaoRepositoryImpl implements CadastrarReclamacaoRepository
         $codUsuario = $userData['codusuario'];
         $database = new Database('reclamacao');
 
-        $lastIdReclamacao = $database->insert([
+        return $database->insert([
             'descricao' => $dadosReclamacao['descricao'],
             'prazo_reclamacao' => 1,
-            'status' => 'Em aberto',
+            'status' => 'Enviada',
             'datahora_reclamacao' => $datahora_reclamacao,
             'datahora_fimreclamacao' => '',
             'codcomputador_fk' => $dadosReclamacao['codcomputador'],
             'codlaboratorio_fk' => $dadosReclamacao['codlaboratorio'],
             'codusuario_fk' => $codUsuario
         ]);
-
-        return $lastIdReclamacao;
     }
 }

@@ -28,7 +28,7 @@ class Login extends Page
             $senha = $postVars['senha'] ?? '';
 
             $validaLoginUseCase = new ValidaLoginUseCase(new LoginAdminStrategy());
-            $validaLoginUseCase->execute($login, $senha);
+            $validaLoginUseCase->execute($request,$login, $senha);
 
             $request->getRouter()->redirect('/admin');
         } catch (LoginOuSenhaInvalidosException|PermissaoDeAcessoNegadaException $e) {

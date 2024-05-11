@@ -9,15 +9,17 @@ class Usuario
     private string $email_usuario;
     private string $login;
     private string $senha;
+    private string $token;
     private NivelAcesso $nivelAcesso;
 
-    public function __construct(int $codusuario, string $nome_usuario, string $email_usuario, string $login, string $senha, NivelAcesso $nivelAcesso)
+    public function __construct(int $codusuario, string $nome_usuario, string $email_usuario, string $login, string $senha,$token, NivelAcesso $nivelAcesso)
     {
         $this->codusuario = $codusuario;
         $this->nome_usuario = $nome_usuario;
         $this->email_usuario = $email_usuario;
         $this->login = $login;
         $this->senha = $senha;
+        $this->token = $token;
         $this->nivelAcesso = $nivelAcesso;
     }
 
@@ -85,5 +87,19 @@ class Usuario
     {
         $this->nivelAcesso = $nivelAcesso;
         return $this;
+    }
+
+    public static function factoryUsuario(array $data): Usuario
+    {
+        $nivelAcesso = new NivelAcesso($data['codnivel_acesso'], $data['tipo_acesso']);
+
+        return new Usuario(
+            $data['codusuario'],
+            $data['nome'],
+            $data['email'],
+            $data['login'],
+            $data['senha'],
+            $nivelAcesso
+        );
     }
 }
