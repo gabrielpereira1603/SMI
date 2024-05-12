@@ -32,14 +32,8 @@ class CriarConta extends Page
     public static function setNovoUsuarioAluno(Request $request): void
     {
         try {
-            $dadosUsuario = [
-                'nome' => $nome,
-                'email' => $email,
-                'login' => $login,
-                'senha' => $senha,
-                'codnivel_acesso' => $codnivel_acesso,
-                'tipo_acesso' => $tipo_acesso,
-            ] = $request->getPostVars();
+
+            $dadosUsuario = $request->getPostVars();
 
             $useCase = new CriarUsuarioAlunoUseCase(
                 new CriarUsuarioDAO(),
@@ -50,7 +44,7 @@ class CriarConta extends Page
 
             $request->getRouter()->redirect('/login?success=' . urlencode("Usuário cadastrado com sucesso!"));
         } catch (ErrorAoCriarUsuarioException $e) {
-            $request->getRouter()->redirect('/login?error=' . urlencode($e->getMessage()));
+            $request->getRouter()->redirect('/aluno/novaConta?error=' . urlencode($e->getMessage()));
         }
     }
 }

@@ -25,6 +25,7 @@ class CriarUsuarioDAO implements CriarUsuarioRepository
         if ($lastID === null){
             return false;
         }
+
         return true;
     }
 }

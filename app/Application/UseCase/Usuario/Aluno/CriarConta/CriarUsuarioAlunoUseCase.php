@@ -44,10 +44,10 @@ class CriarUsuarioAlunoUseCase
             throw new ErrorAoCriarUsuarioException("Não foi possível cadastrar usuário!");
         }
 
-        if (!empty($dadosReclamacao['email'])){
-            $enviarEmail = (new CadastroReclamacaoEmail())->enviarReclamacaoRealizada($dadosReclamacao['email']);
+        if (!empty($dadosUsuario['email'])){
+            $cadastroReclamacaoEmail = new CriaContaEmail();
+            $cadastroReclamacaoEmail->enviarEmailBoasVindas($dadosUsuario['nome'],$dadosUsuario['email']);
         }
-
         return true;
     }
 
