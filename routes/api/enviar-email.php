@@ -1,6 +1,5 @@
 <?php
 
-use app\Controller\Api;
 use app\Infrastructure\Http\Response;
 use app\Presentation\Utilitarios\Email\CriaContaAluno\CriaContaEmail;
 

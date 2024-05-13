@@ -30,6 +30,7 @@ class UsuarioDao implements UsuarioRepository
             $usuarioData['email_usuario'],
             $usuarioData['login'],
             $usuarioData['senha'],
+            '',
             $nivelAcesso
         );
     }

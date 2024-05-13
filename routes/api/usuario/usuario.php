@@ -1,6 +1,5 @@
 <?php
 
-use app\Controller\Api;
 use app\Infrastructure\Http\Response;
 
 $obRouter->post('/api/v1/user/{codusuario}',[

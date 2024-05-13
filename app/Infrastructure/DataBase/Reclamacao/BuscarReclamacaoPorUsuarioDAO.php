@@ -17,6 +17,7 @@ class BuscarReclamacaoPorUsuarioDAO implements BuscarReclamacaoPorAlunoRepositor
 
     public function buscarReclamacao(Request $request, $codusuario, $statusReclamacao): ?array
     {
+
         $where = "reclamacao.codusuario_fk = $codusuario AND reclamacao.status = '$statusReclamacao' GROUP BY reclamacao.codreclamacao";
         $join = 'INNER JOIN usuario ON reclamacao.codusuario_fk = usuario.codusuario 
                 INNER JOIN laboratorio ON reclamacao.codlaboratorio_fk = laboratorio.codlaboratorio 

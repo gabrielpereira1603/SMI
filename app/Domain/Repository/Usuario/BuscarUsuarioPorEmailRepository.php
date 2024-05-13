@@ -1,8 +1,10 @@
 <?php
 
-namespace app\Domain\Exceptions\Usuario;
+namespace app\Domain\Repository\Usuario;
 
-class BuscarUsuarioPorEmailRepository
+use app\Domain\Entity\Usuario;
+
+interface BuscarUsuarioPorEmailRepository
 {
-
+    public function buscarPorEmail(string $email): ?Usuario;
 }

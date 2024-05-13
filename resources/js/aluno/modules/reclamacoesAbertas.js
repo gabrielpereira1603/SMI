@@ -25,7 +25,7 @@ function openComponentesModal(codReclamacao, componentesSelecionados) {
     });
 
     // Realiza o fetch para obter todos os componentes
-    fetch('http://localhost/manutencaoIntegrada/api/v1/componente', requestOptions)
+    fetch('https://teste.somosdevteam.com/api/v1/componente', requestOptions)
         .then(response => response.json())
         .then(data => {
             // Limpa o container de checkboxes
@@ -82,7 +82,7 @@ $('.btn-editar').on('click', function () {
     const codReclamacao = $(this).closest('tr').find('td:first').text();
 
     // Obtém os componentes selecionados pelo usuário na reclamação
-    fetch(`http://localhost/manutencaoIntegrada/api/v1/componente/${codReclamacao}`, requestOptions)
+    fetch(`https://teste.somosdevteam.com/api/v1/componente/${codReclamacao}`, requestOptions)
         .then(response => response.json())
         .then(data => {
             const componentesSelecionados = data.map(componente => componente.codcomponente);

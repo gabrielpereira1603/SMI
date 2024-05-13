@@ -20,7 +20,6 @@ class AutenticacaoControllerJWT
 
         //buscar usuario pelo email
         $obUser = (new UsuarioDao())->getByLogin($postVars['login']);
-
         if (!$obUser instanceof Usuario){
             throw new \Exception("Usuário ou senha sao inválidos", 400);
         }

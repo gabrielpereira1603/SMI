@@ -27,19 +27,18 @@ class TableReclamacoesAbertas
 
     public function getTableReclamacaoAberta(Request $request): string
     {
+
         $userData = $_SESSION['aluno']['usuario'];
         $codusuario = $userData['codusuario'];
 
         $useCase = new BuscarReclamacaoPorAlunoUseCase(
             $this->buscarReclamacaoPorUsuarioDAO
         );
-
         $componenteUseCase = new BuscarComponentePorReclamacaoUseCase(
             $this->buscarComponentePorReclamacaoDAO
         );
 
         $obReclamacao = $useCase->execute($request,$codusuario, $statusReclamacao = 'Enviado');
-
 
         foreach ($obReclamacao as $reclamacao) {
             $codreclamacao = $reclamacao->getCodreclamacao();
