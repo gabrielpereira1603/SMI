@@ -4,6 +4,16 @@ namespace app\Domain\Entity;
 
 class Usuario
 {
+    public function getToken(): string
+    {
+        return $this->token;
+    }
+
+    public function setToken(string $token): Usuario
+    {
+        $this->token = $token;
+        return $this;
+    }
     private int $codusuario;
     private string $nome_usuario;
     private string $email_usuario;

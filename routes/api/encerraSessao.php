@@ -4,12 +4,12 @@ use app\Infrastructure\Http\Response;
 use app\Infrastructure\Session\RedefinirSenha\SessionRedefinirSenha;
 
 //ROTA Admin
-$obRouter->get('/encerraSessaoRedefinirSenha',[
+$obRouter->get('/api/v1/encerraSessaoRedefinirSenha',[
     'middlewares' => [
-        'required-aluno-login'
+        'api',
     ],
     function($request) {
-        return new Response(200, SessionRedefinirSenha::logout());
+        return new Response(200, SessionRedefinirSenha::logout(), 'application/json');
     }
 ]);
 

@@ -1,0 +1,69 @@
+<style>
+    /* Estilo para esconder as setas de incremento e decremento */
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+</style>
+<section class="login mt-5">
+    <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+        <div class="container">
+            <div class="row gx-lg-5 align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h1 class="my-5 display-3 fw-bold ls-tight">
+                        Somos <span style="color: #facc15;">Dev's</span><br>
+                        the best<br/>
+                        <span style="color: #facc15;">for your business</span>
+                    </h1>
+                    <p style="color: hsl(217, 10%, 50.8%)">
+                        Bem-vindo ao Sistema de Manutenções Integrado (SMI),
+                        a solução completa para gerenciar e controlar o andamento dos serviços em seus laboratórios.
+                        O SMI oferece uma plataforma centralizada que permite monitorar e supervisionar todas as atividades de manutenção em um único lugar.
+                    </p>
+                </div>
+
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="card">
+                        <div class="card-body py-5 px-md-5">
+                            <div class="title p-2">
+                                <h3>Valida Token</h3>
+                            </div>
+                            <form id="tokenForm" method="post">
+                                <div class="mb-4">
+                                    <!-- Adiciona o atributo "pattern" para permitir apenas números positivos -->
+                                    <input type="number" id="form3Example4" class="form-control" name="token" placeholder="Insira o token enviado em seu e-mail" pattern="\d+" required>
+                                </div>
+
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-block" style="background-color: #facc15;">
+                                        Validar Token
+                                    </button>
+                                </div>
+                                <div class="d-flex justify-content-center gap-5 mt-3">
+                                    <p><a href="{{URL}}/login" style="color: #facc15;"><i class='bx bx-arrow-back' ></i> Tela de Login</a></p>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+
+    // Adiciona um evento de escuta ao campo de entrada
+    document.getElementById('form3Example4').addEventListener('input', function(event) {
+        // Obtém o valor atual do campo de entrada
+        let value = event.target.value;
+
+        // Remove todos os caracteres não numéricos do valor
+        value = value.replace(/\D/g, '');
+
+        // Atualiza o valor do campo de entrada
+        event.target.value = value;
+    });
+</script>

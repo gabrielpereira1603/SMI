@@ -17,11 +17,11 @@ class Page {
         ],
         'historicoReclamacao' =>[
             'label' => 'Histórico Reclamação',
-            'link' => URL.'/historicoReclamacao'
+            'link' => URL.'/aluno/historicoReclamacao'
         ],
         'termosDeUso' => [
             'label' => 'Termos De Uso',
-            'link'=> URL.'/regras'
+            'link'=> URL.'/aluno/regras'
         ],
         'configuracao'=> [
             'label'=> 'Settings',

@@ -7,6 +7,7 @@ use app\Domain\Exceptions\Usuario\UsuarioNaoEncontradoException;
 use app\Domain\Repository\Usuario\BuscarUsuarioPorEmailRepository;
 use app\Domain\Repository\Usuario\GerarTokenRedefinirSenharRepository;
 use app\Infrastructure\Http\Request;
+use app\Infrastructure\Session\RedefinirSenha\SessionRedefinirSenha;
 use app\Presentation\Utilitarios\Email\GerarTokenRedefinirSenha\EnviarEmailTokenRedefinirSenha;
 
 class GerarTokenRedefinirSenhaUseCase
@@ -41,7 +42,8 @@ class GerarTokenRedefinirSenhaUseCase
 
         $cadastroReclamacaoEmail = new EnviarEmailTokenRedefinirSenha();
         $cadastroReclamacaoEmail->enviarEmailToken($nome,$token,$email);
-        $request->getRouter()->redirect('/admin/login');
+
+        SessionRedefinirSenha::iniciaSessao($usuario);
     }
 
     private function gerarToken(int $length): string

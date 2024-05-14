@@ -31,7 +31,7 @@ class LoginAlunoStrategy implements ValidaLoginRepository
         }
 
         if(!password_verify($senha, $obUsuario->getSenha())){
-            throw new PermissaoDeAcessoNegadaException("Usuário sem permissão para acessar.");
+            throw new LoginOuSenhaInvalidosException("Login ou Senha incorretos");
         }
 
         SessionAlunoLogin::login($obUsuario);

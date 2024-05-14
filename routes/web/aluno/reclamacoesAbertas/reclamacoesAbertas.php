@@ -1,6 +1,5 @@
 <?php
 
-use app\Controller\Aluno;
 use app\Infrastructure\Http\Response;
 use app\Presentation\Controller\Aluno\Reclamacoes\ReclamacoesAbertas;
 

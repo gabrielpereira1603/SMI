@@ -9,6 +9,7 @@ use app\Infrastructure\Http\Middleware\alunoLogin\RequireAlunoLogin;
 use app\Infrastructure\Http\Middleware\alunoLogin\RequireAlunoLogout;
 use app\Infrastructure\Http\Middleware\Manutencao;
 use app\Infrastructure\Http\Middleware\Queue as MiddlewareQueue;
+use app\Infrastructure\Http\Middleware\RedefinirSenha\RequireSessionRedefinirSenha;
 use app\Utils\View;
 use WilliamCosta\DatabaseManager\Database;
 use WilliamCosta\DotEnv\Environment;
@@ -43,6 +44,7 @@ MiddlewareQueue::setMap([
     'api' => \app\Infrastructure\Http\Middleware\ApiMiddleware\Api::class,
     'basic-auth' => \app\Infrastructure\Http\Middleware\Autenticacao\BasicAuth::class,
     'jwt-auth' => \app\Infrastructure\Http\Middleware\Autenticacao\JWTAuth::class,
+    'required-redefinirSenha' => RequireSessionRedefinirSenha::class,
 ]);
 
 //DEFINE O MAPEAMENTO DE MIDDLWARES PADROES (EXECUTADOS EM TODAS AS ROTAS)
