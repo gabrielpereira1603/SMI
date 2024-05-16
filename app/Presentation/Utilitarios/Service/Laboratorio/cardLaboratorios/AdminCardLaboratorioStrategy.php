@@ -2,59 +2,53 @@
 
 namespace app\Presentation\Utilitarios\Service\Laboratorio\cardLaboratorios;
 
+use app\Application\UseCase\Computador\BuscarComputadoresPorLaboratorioUseCase;
+use app\Application\UseCase\Laboratorio\BuscarTodosLaboratoriosUseCase;
+use app\Domain\Entity\Laboratorio;
+use app\Domain\Repository\Computador\BuscarComputadorPorLaboratorioRepository;
+use app\Domain\Repository\Laboratorio\BuscarTodosLaboratoriosRepository;
 use app\Domain\Repository\Laboratorio\CardLaboratorioStrategy;
 use app\Infrastructure\Dao\Computador\ComputadorDao;
 use app\Infrastructure\Dao\Laboratorio\LaboratorioDao;
+use app\Infrastructure\Http\Request;
 use app\Utils\View;
 
 class AdminCardLaboratorioStrategy implements CardLaboratorioStrategy
 {
-    public static function getLaboratorioItems($request): string
+    private BuscarTodosLaboratoriosUseCase $buscarTodosLaboratoriosUseCase;
+    private BuscarComputadoresPorLaboratorioUseCase $buscarComputadoresPorLaboratorioUseCase;
+
+    public function __construct(
+        BuscarTodosLaboratoriosRepository $buscarTodosLaboratoriosRepository,
+        BuscarComputadorPorLaboratorioRepository $buscarComputadorPorLaboratorioRepository
+    )
     {
-        $itens = '';
-
-        $obLaboratorios = new LaboratorioDao();
-        $laboratorios = $obLaboratorios->getAllLaboratorios();
-
-        foreach ($laboratorios as $laboratorio) {
-            $codLaboratorio = $laboratorio->getCodLaboratorio();
-            $numeroLaboratorio = $laboratorio->getNumeroLaboratorio();
-
-            $computadores = (new ComputadorDao())->getComputadoresLaboratorio($codLaboratorio);
-
-            $quantidadeTotalComputadores = count($computadores);
-
-            $computadoresHTML = '';
-
-            $disponiveis = 0;
-            $indisponiveis = 0;
-            $emManutencao = 0;
-
-            foreach ($computadores as $computador) {
-                switch ($computador->getSituacao()->getCodSituacao()) {
-                    case 1:
-                        $disponiveis++;
-                        break;
-                    case 2:
-                        $emManutencao++;
-                        break;
-                    case 3:
-                        $indisponiveis++;
-                        break;
-                    default:
-                        // Situação inválida
-                        break;
-                }
-            }
-            $itens .= View::render('admin/laboratorio/item', [
-                'codlaboratorio' => $codLaboratorio,
-                'numerolaboratorio' => $numeroLaboratorio,
-                'quantidade_disponiveis' => $disponiveis,
-                'quantidade_indisponiveis' => $indisponiveis,
-                'quantidade_em_manutencao' => $emManutencao,
-                'quantidade_total_computadores' => $quantidadeTotalComputadores
-            ]);
-        }
-        return $itens;
+        $this->buscarTodosLaboratoriosUseCase = new BuscarTodosLaboratoriosUseCase($buscarTodosLaboratoriosRepository);
+        $this->buscarComputadoresPorLaboratorioUseCase = new BuscarComputadoresPorLaboratorioUseCase($buscarComputadorPorLaboratorioRepository);
     }
+
+    public function renderCardsLaboratorios(Request $request): string
+    {
+        $laboratorios = $this->buscarTodosLaboratoriosUseCase->execute($request);
+
+        $itens = array_map(function(Laboratorio $laboratorio) use ($request) {
+            $computadores = $this->buscarComputadoresPorLaboratorioUseCase->execute($request, $laboratorio->getCodLaboratorio());
+
+            $quantidades = array_count_values(array_map(function($computador) {
+                return $computador->getSituacao()->getCodSituacao();
+            }, $computadores));
+
+            return View::render('admin/laboratorio/item', [
+                'codlaboratorio' => $laboratorio->getCodLaboratorio(),
+                'numerolaboratorio' => $laboratorio->getNumeroLaboratorio(),
+                'quantidade_disponiveis' => $quantidades[1] ?? 0,
+                'quantidade_indisponiveis' => $quantidades[3] ?? 0,
+                'quantidade_em_manutencao' => $quantidades[2] ?? 0,
+                'quantidade_total_computadores' => count($computadores)
+            ]);
+        }, $laboratorios);
+
+        return implode('', $itens);
+    }
+
 }

@@ -2,22 +2,37 @@
 
 namespace app\Presentation\Utilitarios\Service\Computador;
 
+use app\Application\UseCase\Computador\BuscarComputadoresPorLaboratorioUseCase;
+use app\Application\UseCase\Computador\BuscarComputadorPorLaboratorioPaginationUseCase;
+use app\Domain\Repository\Computador\BuscarComputadorLaboratorioPaginationRepository;
+use app\Domain\Repository\Computador\BuscarComputadorPorLaboratorioRepository;
+use app\Domain\Repository\Computador\CardComputadorStrategy;
 use app\Infrastructure\Dao\Computador\ComputadorDao;
+use app\Infrastructure\Http\Request;
 use app\Utils\View;
 use WilliamCosta\DatabaseManager\Pagination;
 
-class AdminComputadorStrategy implements ComputadorStrategy
+class AdminComputadorStrategy implements CardComputadorStrategy
 {
+    private BuscarComputadorPorLaboratorioPaginationUseCase $buscarComputadorPorLaboratorioPaginationUseCase;
+    private BuscarComputadoresPorLaboratorioUseCase $buscarComputadoresPorLaboratorioUseCase;
 
-    public static function getComputadorItems($request,$codlaboratorio,&$obPagination): string
+    public function __construct(
+        BuscarComputadorLaboratorioPaginationRepository $buscarComputadorLaboratorioPaginationRepository,
+        BuscarComputadorPorLaboratorioRepository $buscarComputadorPorLaboratorioRepository
+    )
+    {
+        $this->buscarComputadorPorLaboratorioPaginationUseCase = new BuscarComputadorPorLaboratorioPaginationUseCase($buscarComputadorLaboratorioPaginationRepository);
+        $this->buscarComputadoresPorLaboratorioUseCase = new BuscarComputadoresPorLaboratorioUseCase($buscarComputadorPorLaboratorioRepository);
+    }
+
+    public function renderCardComputadores(Request $request, &$obPagination, $codlaboratorio): array
     {
         $itens = '';
-        $icones = '';
-        $status = '';
+        $statusClasses = ['', 'btn-success', 'btn-warning', 'btn-danger'];
+        $statusIcons = ['', 'bi bi-check-circle-fill', 'bi bi-tools', 'bi bi-exclamation-octagon-fill'];
 
-        $computadores = (new ComputadorDao())->getComputadoresLaboratorio($codlaboratorio);
-
-        $quantidadetotal = count($computadores);
+        $quantidadetotal = count($this->buscarComputadoresPorLaboratorioUseCase->execute($request,$codlaboratorio));
 
         $queryParams = $request->getQueryParams();
         $paginaAtual = $queryParams['page'] ?? 1;
@@ -26,10 +41,11 @@ class AdminComputadorStrategy implements ComputadorStrategy
 
         $limit = $obPagination->getLimit();
         $offset = $obPagination->getOffset();
-        $results = ComputadorDao::getComputadoresLaboratorioPagination($codlaboratorio,$obPagination,$limit,$offset);
-
+        $results = $this->buscarComputadorPorLaboratorioPaginationUseCase->execute($request, $obPagination, $codlaboratorio, $limit, $offset);
 
         foreach ($results as $obComputador) {
+            $statusClass = $statusClasses[$obComputador->getSituacao()->getCodSituacao()] ?? '';
+            $statusIcon = $statusIcons[$obComputador->getSituacao()->getCodSituacao()] ?? '';
 
             switch ($obComputador->getSituacao()->getCodSituacao()) {
                 case 1:
@@ -56,12 +72,12 @@ class AdminComputadorStrategy implements ComputadorStrategy
                 'codlaboratorio' => $obComputador->getLaboratorio()->getCodLaboratorio(),
                 'laboratorio' => $obComputador->getLaboratorio()->getNumeroLaboratorio(),
                 'situacao' => $obComputador->getSituacao()->getTipoSituacao(),
-                'icone' => $icone,
-                'status' => $status
+                'icone' => $statusIcon,
+                'status' => "status-itens $statusClass btn",
             ]);
         }
 
-        return $itens;
+        return [$itens, $obPagination];
     }
 
 }
