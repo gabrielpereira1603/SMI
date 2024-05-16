@@ -12,7 +12,7 @@ use app\Utils\View;
 class Login extends Page
 {
 
-    public static function getLogin($request): string
+    public static function getViewLogin($request): string
     {
         $content = View::render('admin/login',[
         ]);
@@ -28,6 +28,7 @@ class Login extends Page
             $senha = $postVars['senha'] ?? '';
 
             $validaLoginUseCase = new ValidaLoginUseCase(new LoginAdminStrategy());
+
             $validaLoginUseCase->execute($request,$login, $senha);
 
             $request->getRouter()->redirect('/admin');

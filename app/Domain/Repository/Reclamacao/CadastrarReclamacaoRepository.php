@@ -4,6 +4,6 @@ namespace app\Domain\Repository\Reclamacao;
 
 interface CadastrarReclamacaoRepository
 {
-    public function cadastrarReclamacao(array $dadosReclamacao): int;
+    public function cadastrarReclamacao(array $dadosReclamacao, $foto): int;
 
 }

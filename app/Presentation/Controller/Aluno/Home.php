@@ -19,6 +19,7 @@ class Home extends Page
                 new ComputadoresPorLaboratorioDAO()
             )
         );
+
         $cardLaboratorio = $useCase->execute($request);
 
         $content = View::render('aluno/modules/home/index',[

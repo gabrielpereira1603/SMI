@@ -9,21 +9,18 @@ use app\Infrastructure\DataBase\Foto\InserirFotoReclamacaoDAO;
 use app\Infrastructure\DataBase\Reclamacao\InserirReclamacaoRepositoryDAO;
 use app\Infrastructure\DataBase\ReclamacaoComponente\InserirReclamacaoComponenteReclamacaoDAO;
 use app\Presentation\Controller\Aluno\Page;
-use app\Presentation\Utilitarios\UploadFotos\GerenciarArquivosFotos;
 
 class RegistrarReclamacao extends Page
 {
     private AtualizaSituacaoComputadorDAO $atualizaStatusRepository;
     private InserirReclamacaoRepositoryDAO $cadastraReclamacaoRepository;
     private InserirReclamacaoComponenteReclamacaoDAO $cadastrarComponenteReclamacao;
-    private InserirFotoReclamacaoDAO $cadastrarFotoReclamacao;
 
     public function __construct()
     {
         $this->atualizaStatusRepository = new AtualizaSituacaoComputadorDAO();
         $this->cadastraReclamacaoRepository = new InserirReclamacaoRepositoryDAO();
         $this->cadastrarComponenteReclamacao = new InserirReclamacaoComponenteReclamacaoDAO();
-        $this->cadastrarFotoReclamacao = new InserirFotoReclamacaoDAO();
     }
 
     public function setReclamacao($request, $codComputador): void
@@ -37,13 +34,11 @@ class RegistrarReclamacao extends Page
                 'codlaboratorio' => $codlaboratorio
             ] = $request->getPostVars();
 
-            $foto = GerenciarArquivosFotos::getUploadedPhotos($_FILES);
-
+            $foto = $this->encodePhotos($_FILES);
             $useCase = new CadastrarReclamacaoUseCase(
                 $this->cadastraReclamacaoRepository,
                 $this->atualizaStatusRepository,
                 $this->cadastrarComponenteReclamacao,
-                $this->cadastrarFotoReclamacao
             );
 
             $useCase->cadastrarReclamacao($dadosReclamacao, $foto);
@@ -53,5 +48,23 @@ class RegistrarReclamacao extends Page
         }
     }
 
+    private function encodePhotos($files): array
+    {
+        $encodedPhotos = [];
+
+        if (!empty($files['foto-reclamacao']['tmp_name'][0])) {
+            $numFiles = count($files['foto-reclamacao']['tmp_name']);
+
+            for ($i = 0; $i < $numFiles; $i++) {
+                $tmpName = $files['foto-reclamacao']['tmp_name'][$i];
+                $content = file_get_contents($tmpName);
+                // Codificar para base64
+                $encodedContent = base64_encode($content);
+                $encodedPhotos[] = $encodedContent;
+            }
+        }
+
+        return $encodedPhotos;
+    }
 
 }

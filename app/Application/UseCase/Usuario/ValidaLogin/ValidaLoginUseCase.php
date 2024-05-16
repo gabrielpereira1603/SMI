@@ -2,7 +2,7 @@
 
 namespace app\Application\UseCase\Usuario\ValidaLogin;
 
-use app\Domain\Service\Usuario\ValidaLogin\ValidaLoginRepository;
+use app\Domain\Repository\Usuario\ValidaLoginRepository;
 use app\Infrastructure\Http\Request;
 
 class ValidaLoginUseCase

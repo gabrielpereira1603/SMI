@@ -23,7 +23,9 @@ class MenuComputadores extends Page
             )
         );
 
-        $laboratorioPorId = new BuscarLaboratorioPorIdUseCase(new BuscarLaboratorioPorIdDAO());
+        $laboratorioPorId = new BuscarLaboratorioPorIdUseCase(
+            new BuscarLaboratorioPorIdDAO()
+        );
 
         $numerolaboratorio = $laboratorioPorId->execute($request,$codlaboratorio)->getNumeroLaboratorio();
         [$cardsComputadores, $obPagination] = $useCase->execute($request, $pagination, $codlaboratorio);

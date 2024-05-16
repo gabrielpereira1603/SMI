@@ -15,14 +15,12 @@ class ExcluirReclamacao
     private ExcluirReclamacaoDAO $excluirReclamacaoRepository;
     private ExcluirComponenteReclamacaoDAO $excluirComponenteReclamacaoRepository;
     private AtualizaSituacaoComputadorDAO $atualizaStatusRepository;
-    private ExcluirFotoPorReclamacaoDAO $excluirFotoRepository;
 
     public function __construct()
     {
         $this->excluirReclamacaoRepository = new ExcluirReclamacaoDAO();
         $this->excluirComponenteReclamacaoRepository = new ExcluirComponenteReclamacaoDAO();
         $this->atualizaStatusRepository = new AtualizaSituacaoComputadorDAO();
-        $this->excluirFotoRepository = new ExcluirFotoPorReclamacaoDAO();
     }
     public function excluirReclamacao(Request $request): void
     {
@@ -33,7 +31,6 @@ class ExcluirReclamacao
                 $this->excluirReclamacaoRepository,
                 $this->excluirComponenteReclamacaoRepository,
                 $this->atualizaStatusRepository,
-                $this->excluirFotoRepository
             );
 
             $useCase->excluirReclamacao($dadosReclamacao);

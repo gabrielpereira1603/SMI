@@ -14,20 +14,17 @@ class ExcluirReclamacaoUseCase
     private ExcluirReclamacaoRepository $excluirReclamacaoRepository;
     private ExcluirComponenteReclamacaoRepository $excluirComponenteReclamacaoRepository;
     private AtualizaStatusRepository $atualizaStatusRepository;
-    private ExcluirFotoRepository $excluirFotoRepository;
 
     public function __construct
     (
         ExcluirReclamacaoRepository $excluirReclamacaoRepository,
         ExcluirComponenteReclamacaoRepository $excluirComponenteReclamacaoRepository,
         AtualizaStatusRepository $atualizaStatusRepository,
-        ExcluirFotoRepository $excluirFotoRepository,
     )
     {
         $this->excluirReclamacaoRepository = $excluirReclamacaoRepository;
         $this->excluirComponenteReclamacaoRepository = $excluirComponenteReclamacaoRepository;
         $this->atualizaStatusRepository = $atualizaStatusRepository;
-        $this->excluirFotoRepository = $excluirFotoRepository;
     }
 
     public function excluirReclamacao(array $dadosReclamacao): void
@@ -37,12 +34,6 @@ class ExcluirReclamacaoUseCase
 
        if(!$this->excluirComponenteReclamacaoRepository->excluirComponenteReclamacao($codReclamacao)){
            throw new ErrorAoExcluirReclamacaoException("Error ao excluir os componentes relacionados à reclamação");
-        }
-
-        if ($this->excluirFotoRepository->fotoExiste((int)$codReclamacao)) {
-            if (!$this->excluirFotoRepository->exlcuirFoto((int)$codReclamacao)) {
-                throw new ErrorAoExcluirReclamacaoException("Erro ao excluir a foto da reclamação");
-            }
         }
 
         if(!$this->excluirReclamacaoRepository->excluirReclamacao($codReclamacao)){

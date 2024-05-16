@@ -2,7 +2,12 @@
 
 namespace app\Presentation\Controller\Admin;
 
+use app\Application\UseCase\Computador\CardComputadoresPaginationUseCase;
+use app\Application\UseCase\Laboratorio\BuscarLaboratorioPorIdUseCase;
 use app\Infrastructure\Dao\Laboratorio\LaboratorioDao;
+use app\Infrastructure\DataBase\Computador\ComputadoresPorLaboratorioDAO;
+use app\Infrastructure\DataBase\Computador\ComputadorPorLaboratorioPaginationDAO;
+use app\Infrastructure\DataBase\Laboratorio\BuscarLaboratorioPorIdDAO;
 use app\Presentation\Controller\Pagination\Pagination;
 use app\Presentation\Utilitarios\Componentes\Cards\cardComputadoresPagination;
 use app\Presentation\Utilitarios\Service\Computador\adminComputadorStrategy;
@@ -13,17 +18,28 @@ class MenuComputadores extends Page
 
     public static function getComputador($request,$codlaboratorio): string
     {
-        $cardsComputadores = cardComputadoresPagination::getComputadorItems($request,$codlaboratorio,$obPagination, new AdminComputadorStrategy());
-        $numeroLaboratorio = (new LaboratorioDao())->getById($codlaboratorio)->getNumeroLaboratorio();
-        $pagination = (new Pagination())->getPagination($request, $obPagination);
+        $useCase = new CardComputadoresPaginationUseCase(
+            new AdminComputadorStrategy(
+                new ComputadorPorLaboratorioPaginationDAO(),
+                new ComputadoresPorLaboratorioDAO()
+            )
+        );
+
+        $laboratorioPorId = new BuscarLaboratorioPorIdUseCase(
+            new BuscarLaboratorioPorIdDAO()
+        );
+        $numerolaboratorio = $laboratorioPorId->execute($request,$codlaboratorio)->getNumeroLaboratorio();
+        [$cardsComputadores, $obPagination] = $useCase->execute($request, $pagination, $codlaboratorio);
+
+        $ViewPagination = (new Pagination())->getPagination($request, $obPagination);
 
         //CONTEUDO DA PAGINA DE RECLAMACAO
         $content = View::render('admin/modules/computadoresManutencao/index', [
             'nav' => parent::getNav($request),
             'itens' => $cardsComputadores,
-            'pagination' => $pagination,
+            'pagination' => $ViewPagination,
             'codlaboratorio' => $codlaboratorio,
-            'numerolaboratorio' => $numeroLaboratorio,
+            'numerolaboratorio' => $numerolaboratorio
         ]);
 
         //RETORNA A PAGINA COMPLETA

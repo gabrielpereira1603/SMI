@@ -5,7 +5,7 @@ namespace app\Application\UseCase\Usuario\ValidaLogin;
 use app\Application\UseCase\Usuario\BuscarUsuarioPorLoginUseCase;
 use app\Domain\Exceptions\LoginExeptions\LoginOuSenhaInvalidosException;
 use app\Domain\Exceptions\LoginExeptions\PermissaoDeAcessoNegadaException;
-use app\Domain\Service\Usuario\ValidaLogin\ValidaLoginRepository;
+use app\Domain\Repository\Usuario\ValidaLoginRepository;
 use app\Infrastructure\DataBase\Usuario\BuscarUsuarioPorLoginDAO;
 use app\Infrastructure\Http\Request;
 use app\Infrastructure\Session\Aluno\Login as SessionAlunoLogin;

@@ -2,15 +2,26 @@
 
 namespace app\Presentation\Controller\Admin;
 
-use app\Presentation\Utilitarios\Componentes\Cards\cardLaboratorios;
+use app\Application\UseCase\Laboratorio\CardLaboratorioUseCase;
+use app\Infrastructure\DataBase\Computador\ComputadoresPorLaboratorioDAO;
+use app\Infrastructure\DataBase\Laboratorio\BuscarTodosLaboratoriosDAO;
+use app\Infrastructure\Http\Request;
 use app\Presentation\Utilitarios\Service\Laboratorio\cardLaboratorios\AdminCardLaboratorioStrategy;
 use app\Utils\View;
 
 class Home extends Page
 {
-    public static function getHome($request): string
+    public static function getHome(Request $request): string
     {
-        $cardLaboratorio = cardLaboratorios::getLaboratorioItems($request, new AdminCardLaboratorioStrategy());
+        $useCase = new CardLaboratorioUseCase(
+            new AdminCardLaboratorioStrategy(
+                new BuscarTodosLaboratoriosDAO(),
+                new ComputadoresPorLaboratorioDAO()
+            )
+        );
+
+        $cardLaboratorio = $useCase->execute($request);
+
         $content = View::render('admin/modules/home/index',[
             'itens' => $cardLaboratorio
         ]);

@@ -2,21 +2,30 @@
 
 namespace app\Presentation\Utilitarios\Componentes\CheckBox;
 
-use app\Infrastructure\Dao\ReclamacaoComponente\ReclamacaoComponenteDao;
+use app\Application\UseCase\Reclamacao\BuscarReclamacaoPorComputadorUseCase;
+use app\Application\UseCase\ReclamacaoComponente\BuscarComponentePorReclamacaoUseCase;
+use app\Infrastructure\DataBase\ReclamacaoComponente\BuscarComponentePorReclamacaoDAO;
+use app\Infrastructure\Http\Request;
 use app\Presentation\Controller\Admin\Page;
 use app\Utils\View;
 
 class checkBoxSelected extends Page
 {
-    public static function getComponentesView($codreclamacao): string
+    private BuscarComponentePorReclamacaoDAO $buscarComponentePorReclamacaoDAO;
+
+    public function __construct(BuscarComponentePorReclamacaoDAO $buscarComponentePorReclamacaoDAO)
     {
-        $reclamacaoComponenteDao = new ReclamacaoComponenteDao();
-        $results = $reclamacaoComponenteDao->getComponenteReclamacao($codreclamacao);
+        $this->buscarComponentePorReclamacaoDAO = $buscarComponentePorReclamacaoDAO;
+    }
+
+    public function getComponentesView(Request $request, $codreclamacao): string
+    {
+        $results = (new BuscarComponentePorReclamacaoUseCase($this->buscarComponentePorReclamacaoDAO))->execute($request,$codreclamacao);
 
         $content = '';
-        foreach ($results as $obReclamacao) {
+        foreach ($results as $obComponente) {
             $content .= View::render('admin/componente/item', [
-                'nome_componente'   => $obReclamacao->getNomeComponente(),
+                'nome_componente'   => $obComponente->getNomeComponente(),
             ]);
 
         }

@@ -2,7 +2,10 @@
 
 namespace app\Domain\Repository\Usuario;
 
-class ValidaLoginRepository
+use app\Infrastructure\Http\Request;
+
+interface ValidaLoginRepository
 {
+    public function validaLogin(Request $request, string $login, string $senha): void;
 
 }

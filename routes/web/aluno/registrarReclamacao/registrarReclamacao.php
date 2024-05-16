@@ -3,6 +3,7 @@
 use app\Infrastructure\DataBase\Computador\ComputadorPorIdDAO;
 use app\Infrastructure\Http\Request;
 use app\Infrastructure\Http\Response;
+use app\Presentation\Controller\Aluno\Reclamacoes\RegistrarReclamacao;
 use app\Presentation\Controller\Aluno\Reclamacoes\ViewRegistrarReclamacao;
 
 //ROTA Admin
@@ -21,7 +22,7 @@ $obRouter->post('/aluno/reclamacao/{codcomputador}',[
         'required-aluno-login'
     ],
     function($request, $codcomputador) {
-        $registrarReclamacao = new \app\Presentation\Controller\Aluno\Reclamacoes\RegistrarReclamacao();
+        $registrarReclamacao = new RegistrarReclamacao();
         return new Response(200, $registrarReclamacao->setReclamacao($request, $codcomputador));
     }
 ]);

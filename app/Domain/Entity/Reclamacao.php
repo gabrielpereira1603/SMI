@@ -10,11 +10,12 @@ class Reclamacao {
     private string $status;
     private \DateTime $dataHora_Reclamacao;
     private \DateTime $dataHora_fimReclamacao;
+    private string $imagem;
     private Computador $computador;
     private Laboratorio $laboratorio;
     private Usuario $usuario;
 
-    public function __construct(int $codreclamaca, string $descricao, int $prazoReclamacao, string $status, \DateTime $dataHora_Reclamacao, \DateTime $dataHora_fimReclamacao, Computador $computador, Laboratorio $laboratorio, Usuario $usuario)
+    public function __construct(int $codreclamaca, string $descricao, int $prazoReclamacao, string $status, \DateTime $dataHora_Reclamacao, \DateTime $dataHora_fimReclamacao, string $imagen, Computador $computador, Laboratorio $laboratorio, Usuario $usuario)
     {
         $this->codreclamaca = $codreclamaca;
         $this->descricao = $descricao;
@@ -22,9 +23,21 @@ class Reclamacao {
         $this->status = $status;
         $this->dataHora_Reclamacao = $dataHora_Reclamacao;
         $this->dataHora_fimReclamacao = $dataHora_fimReclamacao;
+        $this->imagem = $imagen;
         $this->computador = $computador;
         $this->laboratorio = $laboratorio;
         $this->usuario = $usuario;
+    }
+
+    public function getImagem(): string
+    {
+        return $this->imagem;
+    }
+
+    public function setImagem(string $imagem): Reclamacao
+    {
+        $this->imagem = $imagem;
+        return $this;
     }
 
     public function getCodreclamacao(): int
@@ -139,6 +152,7 @@ class Reclamacao {
             $data['status'],
             new \DateTime($data['datahora_reclamacao']),
             new \DateTime($data['datahora_fimreclamacao']),
+            $data['imagem'] ? : 'Não foi anexado fotos!',
             $computador,
             $laboratorio,
             $usuario
