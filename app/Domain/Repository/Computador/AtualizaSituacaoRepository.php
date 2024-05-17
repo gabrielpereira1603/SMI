@@ -2,7 +2,7 @@
 
 namespace app\Domain\Repository\Computador;
 
-interface AtualizaStatusRepository
+interface AtualizaSituacaoRepository
 {
     public function atualizaStatus(int $codcomputador, array $valoresParaAlterar): bool;
 

@@ -13,8 +13,6 @@ class AtualizaReclamacaoDAO implements AtualizaReclamacaoRepository
         if (empty($valoresParaAlterar)) {
             return false;
         }
-
-
         $whereClause = "codreclamacao = $codreclamacao";
 
         $database = new Database('reclamacao');

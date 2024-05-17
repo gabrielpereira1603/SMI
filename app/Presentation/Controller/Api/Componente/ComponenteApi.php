@@ -2,15 +2,22 @@
 
 namespace app\Presentation\Controller\Api\Componente;
 
-use app\Infrastructure\Dao\Componente\ComponenteDao;
+use app\Application\UseCase\Componente\BuscarTodosComponenteUseCase;
+use app\Infrastructure\DataBase\Componente\BuscarTodosComponentesDAO;
 
 class ComponenteApi
 {
-    public static function getAllComponentes($request): array
-    {
-        $componenteDao = new ComponenteDao();
+    private BuscarTodosComponentesDAO $buscarTodosComponentesDAO;
 
-        return $componenteDao->getAllComponentes();
+    public function __construct(BuscarTodosComponentesDAO $buscarTodosComponentesDAO)
+    {
+        $this->buscarTodosComponentesDAO = $buscarTodosComponentesDAO;
+    }
+
+
+    public function getAllComponentes($request): array
+    {
+        return (new BuscarTodosComponenteUseCase($this->buscarTodosComponentesDAO))->execute($request);
     }
 
 }

@@ -4,10 +4,9 @@ namespace app\Infrastructure\Dao\Usuario;
 
 use app\Domain\Entity\NivelAcesso;
 use app\Domain\Entity\Usuario;
-use app\Domain\Service\Usuario\UsuarioRepository;
 use WilliamCosta\DatabaseManager\Database;
 
-class UsuarioDao implements UsuarioRepository
+class UsuarioDao
 {
     public function getByLogin(string $login): ?Usuario
     {

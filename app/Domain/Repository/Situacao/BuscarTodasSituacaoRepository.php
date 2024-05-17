@@ -2,7 +2,10 @@
 
 namespace app\Domain\Repository\Situacao;
 
-class BuscarTodasSituacaoRepository
-{
+use app\Domain\Entity\NivelAcesso;
+use app\Infrastructure\Http\Request;
 
+interface BuscarTodasSituacaoRepository
+{
+    public function buscarTodos(Request $request): ?array;
 }

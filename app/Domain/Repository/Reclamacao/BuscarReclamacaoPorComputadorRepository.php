@@ -6,5 +6,5 @@ use app\Domain\Entity\Reclamacao;
 
 interface BuscarReclamacaoPorComputadorRepository
 {
-    public function buscarReclamacao($codcomputador): ?Reclamacao;
+    public function buscarReclamacao($codcomputador,$statusReclamacao): ?Reclamacao;
 }

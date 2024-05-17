@@ -2,10 +2,10 @@
 
 namespace app\Infrastructure\DataBase\Computador;
 
-use app\Domain\Repository\Computador\AtualizaStatusRepository;
+use app\Domain\Repository\Computador\AtualizaSituacaoRepository;
 use WilliamCosta\DatabaseManager\Database;
 
-class AtualizaSituacaoComputadorDAO implements AtualizaStatusRepository
+class AtualizaSituacaoComputadorDAO implements AtualizaSituacaoRepository
 {
     public function atualizaStatus(int $codcomputador, array $valoresParaAlterar): bool
     {

@@ -10,7 +10,7 @@ include __DIR__ . '/admin/home.php';
 include __DIR__ . '/admin/menuComputadores.php';
 
 //INCLUI AS ROTAS DE dados reclamacao ADMIN
-include __DIR__ . '/admin/registrarManutencao/registrarManutencao.php';
+include __DIR__ . '/admin/registrarManutencao/viewRegistrarManutencao.php';
 
 //INCLUI AS ROTAS DE gerenciamento de usuario
 include __DIR__ . '/admin/gerenciarUsuarioRoutes/gerenciarUsuarios.php';

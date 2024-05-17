@@ -8,6 +8,7 @@ $obRouter->post('/api/v1/auth',[
         'api'
     ],
     function($request) {
+
         return new Response(201, AutenticacaoControllerJWT::generateToken($request), 'application/json');
     }
 ]);

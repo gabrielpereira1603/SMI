@@ -3,7 +3,7 @@
 
 async function enviarEmailRedefinicaoSenha(email) {
     try {
-        const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbiI6IjEyMyJ9.Fc98BbWEJM79QUqUUVeXmSHxfSjfQnatptBlQQJp6Og"; 
+        const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbiI6IjEyMyJ9.Fc98BbWEJM79QUqUUVeXmSHxfSjfQnatptBlQQJp6Og";
 
         const apiURL = `https://teste.somosdevteam.com/api/v1/email/${email}`;
         const response = await fetch(apiURL, {

@@ -17,6 +17,7 @@ class BuscarComponentePorReclamacaoUseCase
 
     public function execute(Request $request, $codreclamacao): ?array
     {
+        
         $obComponente = $this->buscarComponentePorReclamacaoRepository->buscarComponenteReclamacao($request,$codreclamacao);
 
         if (!$obComponente)

@@ -16,7 +16,6 @@ class ExcluirReclamacaoDAO implements ExcluirReclamacaoRepository
         if ($database->delete($where)){
             return true;
         }
-        var_dump($where);exit();
         return false;
     }
 }

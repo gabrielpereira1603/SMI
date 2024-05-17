@@ -3,7 +3,7 @@
 namespace app\Application\UseCase\Reclamacao;
 
 use app\Domain\Exceptions\ReclamacaoExceptions\FalhaCadastroReclamacao;
-use app\Domain\Repository\Computador\AtualizaStatusRepository;
+use app\Domain\Repository\Computador\AtualizaSituacaoRepository;
 use app\Domain\Repository\Foto\InserirFotoReclamacaoRepository;
 use app\Domain\Repository\Reclamacao\CadastrarReclamacaoRepository;
 use app\Domain\Repository\ReclamacaoComponente\InserirComponenteReclamacaoRepository;
@@ -12,13 +12,13 @@ use app\Presentation\Utilitarios\Email\CadastrarReclamacao\CadastroReclamacaoEma
 class CadastrarReclamacaoUseCase
 {
     private CadastrarReclamacaoRepository $reclamacaoRepository;
-    private AtualizaStatusRepository $computadorRepository;
+    private AtualizaSituacaoRepository $computadorRepository;
     private InserirComponenteReclamacaoRepository $reclamacaoComponenteRepository;
 
     public function __construct
     (
         CadastrarReclamacaoRepository         $reclamacaoRepository,
-        AtualizaStatusRepository              $computadorRepository,
+        AtualizaSituacaoRepository            $computadorRepository,
         InserirComponenteReclamacaoRepository $reclamacaoComponenteRepository,
     )
     {

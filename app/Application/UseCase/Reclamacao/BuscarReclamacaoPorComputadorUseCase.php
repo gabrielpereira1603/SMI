@@ -18,9 +18,9 @@ class BuscarReclamacaoPorComputadorUseCase
 
     public function execute(Request $request, $codcomputador): ?Reclamacao
     {
-        $obReclamacao = $this->buscarReclamacaoPorComputadorRepository->buscarReclamacao($codcomputador);
 
-        if (!$obReclamacao) {
+        $obReclamacao = $this->buscarReclamacaoPorComputadorRepository->buscarReclamacao($codcomputador, $statusReclamacao = 'Aberta');
+        if ($obReclamacao === null) {
             throw new ReclamacoesNaoEncontradasExceptions("Nenhuma reclamação encontrada!");
         }
 

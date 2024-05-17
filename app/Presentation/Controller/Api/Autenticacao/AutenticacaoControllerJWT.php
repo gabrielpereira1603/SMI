@@ -3,8 +3,10 @@
 namespace app\Presentation\Controller\Api\Autenticacao;
 
 
+use app\Application\UseCase\Usuario\BuscarUsuarioPorLoginUseCase;
 use app\Domain\Entity\Usuario;
 use app\Infrastructure\Dao\Usuario\UsuarioDao;
+use app\Infrastructure\DataBase\Usuario\BuscarUsuarioPorLoginDAO;
 use Firebase\JWT\JWT;
 
 class AutenticacaoControllerJWT
@@ -15,11 +17,12 @@ class AutenticacaoControllerJWT
 
         //valida os campos obrigatorios
         if (!isset($postVars['login']) or !isset($postVars['senha'])) {
-            throw new \Exception("Email e senha são obrigatórios!",400);
+            throw new \Exception("Login e senha são obrigatórios!",400);
         }
 
         //buscar usuario pelo email
-        $obUser = (new UsuarioDao())->getByLogin($postVars['login']);
+        $obUser = (new BuscarUsuarioPorLoginUseCase(new BuscarUsuarioPorLoginDAO()))->execute($request,$postVars['login']);
+
         if (!$obUser instanceof Usuario){
             throw new \Exception("Usuário ou senha sao inválidos", 400);
         }
@@ -31,7 +34,7 @@ class AutenticacaoControllerJWT
 
         //payload
         $payload = [
-            'login' => 'gay'
+            'login' => '123'
         ];
 
         return [

@@ -2,14 +2,16 @@
 
 namespace app\Infrastructure\Http\Middleware\Autenticacao;
 
+use app\Application\UseCase\Usuario\BuscarUsuarioPorLoginUseCase;
 use app\Domain\Entity\Usuario;
-use app\Infrastructure\Dao\Usuario\UsuarioDao;
+use app\Infrastructure\DataBase\Usuario\BuscarUsuarioPorLoginDAO;
 use app\Infrastructure\Http\Request;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
 class JWTAuth
 {
+
     /*
      * Metodo responsavel por retorna uma isntacia de usuario autenticado
      */
@@ -22,7 +24,6 @@ class JWTAuth
         $jwt = isset($headers['Authorization']) ? str_replace('Bearer ', '', $headers['Authorization']) : '';
 
         try {
-            //decode
             $decode = (array)JWT::decode($jwt, new Key(getenv('JWT_KEY'), 'HS256'));
         }catch (\Exception $e) {
             throw new \Exception("Token Inválido", 400);
@@ -31,8 +32,10 @@ class JWTAuth
         //login passado pelo payload
         $login = $decode['login'] ?? '';
 
+        $useCase = new BuscarUsuarioPorLoginUseCase(new BuscarUsuarioPorLoginDAO());
+
         //busca usuario pelo login
-        $obUser = (new UsuarioDao())->getByLogin($login);
+        $obUser = $useCase->execute($request,$login);
 
         //VERIFICA SE É UMA INSTANCIA DE USUARIO E RETORNA USUARIO
         return $obUser instanceof Usuario ? $obUser : false;

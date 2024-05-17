@@ -24,9 +24,8 @@ class ComputadorPorIdDAO implements BuscarComputadorPorIdRepository
         }
 
         $computadorData = $result[0];
-        $situacao = new Situacao($computadorData['codsituacao'], $computadorData['tiposituacao']);
-        $laboratorio = new Laboratorio($computadorData['codlaboratorio'], $computadorData['numerolaboratorio']);
-
+        $situacao = new Situacao($computadorData['codsituacao_fk'], $computadorData['tiposituacao']);
+        $laboratorio = new Laboratorio($computadorData['codlaboratorio_fk'], $computadorData['numerolaboratorio']);
         return new Computador(
             $computadorData['codcomputador'],
             $computadorData['patrimonio'],

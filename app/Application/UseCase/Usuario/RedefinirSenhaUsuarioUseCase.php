@@ -23,7 +23,6 @@ class RedefinirSenhaUsuarioUseCase
 
         $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
-        var_dump($senhaHash,$codusuario);
         if (!$this->redefinirSenhaUsuarioRepository->redefinirSenha($codusuario,['senha' => $senhaHash])){
             throw new ErrorAoRedefinirSenhaException("Não foi possível redefinir a senha do usuário!");
         }

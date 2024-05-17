@@ -24,6 +24,7 @@ class RequireSessionRedefinirSenha
         }
 
         if (SessionRedefinirSenha::sessionExpired()) {
+            SessionRedefinirSenha::logout();
             // Se a sessão expirou, redireciona para a tela de login
             $request->getRouter()->redirect('/login');
         }

@@ -1,11 +1,13 @@
 <?php
 
+include __DIR__."/cadastrarManutencao.php";
+include __DIR__."/alterarSituacao.php";
+
 use app\Application\UseCase\Computador\BuscarComputadorPorIdUseCase;
 use app\Application\UseCase\Reclamacao\BuscarReclamacaoPorComputadorUseCase;
 use app\Infrastructure\DataBase\Computador\ComputadorPorIdDAO;
-use app\Infrastructure\DataBase\Reclamacao\BuscarReclamacaoPorComputadorDao;
+use app\Infrastructure\DataBase\Reclamacao\BuscarReclamacaoPorComputadorEStatusDao;
 use app\Infrastructure\Http\Response;
-use app\Presentation\Controller\Admin\RegistrarManutencao;
 use app\Presentation\Controller\Admin\RegistrarManutencao\ViewRegistrarManutencao;
 
 
@@ -16,18 +18,9 @@ $obRouter->get('/admin/manutencao/{codcomputador}', [
     ],
     function ($request, $codcomputador) {
         $registrarManutencao = new ViewRegistrarManutencao(
-            new BuscarReclamacaoPorComputadorUseCase(new BuscarReclamacaoPorComputadorDao()),
+            new BuscarReclamacaoPorComputadorUseCase(new BuscarReclamacaoPorComputadorEStatusDao()),
             new BuscarComputadorPorIdUseCase(new ComputadorPorIdDAO())
         );
         return new Response(200,$registrarManutencao->buscarDadosReclamacao($request,$codcomputador));
-    }
-]);
-
-$obRouter->post('/admin/manutencao/{codcomputador}',[
-    'middlewares' => [
-        'required-admin-login'
-    ],
-    function($request,$codcomputador) {
-        return new Response(200, RegistrarManutencao::setManutencao($request,$codcomputador));
     }
 ]);

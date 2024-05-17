@@ -6,11 +6,11 @@ use app\Domain\Entity\Reclamacao;
 use app\Domain\Repository\Reclamacao\BuscarReclamacaoPorComputadorRepository;
 use WilliamCosta\DatabaseManager\Database;
 
-class BuscarReclamacaoPorComputadorDao implements BuscarReclamacaoPorComputadorRepository
+class BuscarReclamacaoPorComputadorEStatusDao implements BuscarReclamacaoPorComputadorRepository
 {
-    public function buscarReclamacao($codcomputador): ?Reclamacao
+    public function buscarReclamacao($codcomputador, $statusReclamacao): ?Reclamacao
     {
-        $where = "reclamacao.codcomputador_fk = $codcomputador";
+        $where = "reclamacao.codcomputador_fk = $codcomputador AND reclamacao.status = '$statusReclamacao'";
         $join = 'INNER JOIN usuario ON reclamacao.codusuario_fk = usuario.codusuario 
             INNER JOIN laboratorio ON reclamacao.codlaboratorio_fk = laboratorio.codlaboratorio 
             INNER JOIN computador ON reclamacao.codcomputador_fk = computador.codcomputador 
@@ -25,11 +25,28 @@ class BuscarReclamacaoPorComputadorDao implements BuscarReclamacaoPorComputadorR
 
         $result = (new Database('reclamacao'))->select($where, null, 1, null, $fields, $join)->fetch();
 
-        if (empty($result) || in_array(null, $result, true)) {
-            return null;
+        if ($this->isValidResult($result)) {
+            return Reclamacao::factoryReclamacao($result);
         }
 
-        return Reclamacao::factoryReclamacao($result);
+        return null;
     }
 
+    private function isValidResult($result): bool
+    {
+        $mandatoryFields = [
+            'codreclamacao', 'descricao', 'prazo_reclamacao', 'status', 'datahora_reclamacao',
+            'codcomputador_fk', 'codlaboratorio_fk', 'codusuario_fk', 'login', 'nome_usuario',
+            'email_usuario', 'numerolaboratorio', 'patrimonio', 'codsituacao', 'tiposituacao',
+            'codnivel_acesso', 'tipo_acesso'
+        ];
+
+        foreach ($mandatoryFields as $field) {
+            if (is_null($result[$field])) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }

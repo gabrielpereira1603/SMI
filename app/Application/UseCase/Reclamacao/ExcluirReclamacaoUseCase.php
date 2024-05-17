@@ -4,7 +4,7 @@ namespace app\Application\UseCase\Reclamacao;
 
 
 use app\Domain\Exceptions\ReclamacaoExceptions\ErrorAoExcluirReclamacaoException;
-use app\Domain\Repository\Computador\AtualizaStatusRepository;
+use app\Domain\Repository\Computador\AtualizaSituacaoRepository;
 use app\Domain\Repository\Foto\ExcluirFotoRepository;
 use app\Domain\Repository\Reclamacao\ExcluirReclamacaoRepository;
 use app\Domain\Repository\ReclamacaoComponente\ExcluirComponenteReclamacaoRepository;
@@ -13,13 +13,13 @@ class ExcluirReclamacaoUseCase
 {
     private ExcluirReclamacaoRepository $excluirReclamacaoRepository;
     private ExcluirComponenteReclamacaoRepository $excluirComponenteReclamacaoRepository;
-    private AtualizaStatusRepository $atualizaStatusRepository;
+    private AtualizaSituacaoRepository $atualizaStatusRepository;
 
     public function __construct
     (
-        ExcluirReclamacaoRepository $excluirReclamacaoRepository,
+        ExcluirReclamacaoRepository           $excluirReclamacaoRepository,
         ExcluirComponenteReclamacaoRepository $excluirComponenteReclamacaoRepository,
-        AtualizaStatusRepository $atualizaStatusRepository,
+        AtualizaSituacaoRepository            $atualizaStatusRepository,
     )
     {
         $this->excluirReclamacaoRepository = $excluirReclamacaoRepository;

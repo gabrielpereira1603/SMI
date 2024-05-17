@@ -3,7 +3,7 @@
     <h1 class="text-dark">
         <span><span><i class='bx bx-desktop'></i> </span>Patrimônio: {{patrimonio}}</span>
     </h1>
-    <p><i class='bx {{classIcon}}'></i>Situação do Computador: <span style="padding: 2px; border-radius: 5px;">{{tipo_situacao}}</span></p>
+    <p>Situação do Computador: <span style="padding: 4px; border-radius: 5px;" class="btn {{classBtn}}"><i class='bx {{classIcon}}'></i> {{tipo_situacao}}</span></p>
 </div>
 
 <div class="container-fluid">
@@ -36,15 +36,16 @@
             <div class="card">
                 <h5 class="card-header">Alterar situação do computador</h5>
                 <div class="card-body">
-                    <form method="post">
+                    <form method="post" action="{{URL}}/admin/AlterarSituacao">
                         <div class="mb-3">
                             <input type="hidden" name="codreclamacao" value="{{codreclamacao}}">
-                            <select class="form-select" id="novaSituacao" name="novaSituacao">
-                                {{tipo_situacao}}
+                            <input type="hidden" name="codcomputador" value="{{codcomputador}}">
+                            <select class="form-select" id="novaSituacao" name="novaSituacao" required>
+                                {{todas_situacao}}
                             </select>
                         </div>
                         <div class="text-end">
-                            <button type="submit" class="btn btn-warning">Finalizar Manutenção</button>
+                            <button type="submit" class="btn btn-warning">Alterar Situação do Computador</button>
                         </div>
                     </form>
                 </div>
@@ -53,17 +54,15 @@
             <div class="card mt-5">
                 <h5 class="card-header">Finalizar Manutenção</h5>
                 <div class="card-body">
-                    <!-- Formulário para finalizar a manutenção da reclamação -->
-                    <form method="post">
-                        <!-- Adicione os campos do formulário conforme necessário -->
+                    <form method="post" action="">
                         <div class="mb-3">
                             <input type="hidden" name="codreclamacao" value="{{codreclamacao}}">
                             <label for="motivo">Descrição da finalização:</label>
                             <textarea class="form-control" id="motivo" name="descricao" rows="3"></textarea>
                         </div>
                         <div class="text-end">
-                            <button type="submit" class="btn btn-danger">Voltar Para Home</button>
-                            <button type="submit" class="btn btn-warning">Finalizar Manutenção</button>
+                            <a href="{{URL}}/admin" class="btn btn-danger" >Voltar Para Home</a>
+                            <button type="submit" class="btn btn-warning" {{btnActive}}>Finalizar Manutenção</button>
                         </div>
                     </form>
                 </div>
