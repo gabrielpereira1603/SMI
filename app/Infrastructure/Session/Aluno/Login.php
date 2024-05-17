@@ -1,9 +1,6 @@
 <?php
 
 namespace app\Infrastructure\Session\Aluno;
-
-use app\Session\Aluno\User;
-
 class Login {
 
     /**
@@ -25,7 +22,7 @@ class Login {
     {
         //INICIA A SESSAO
         self::init();
-
+        var_dump($obUser);exit();
         //DEFINE A SESSAO DO USUARIO
         $_SESSION['aluno']['usuario'] = [
             'codusuario' => $obUser->getCodusuario(),
