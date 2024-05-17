@@ -1,4 +1,9 @@
 <?php
+
+use app\Application\UseCase\Computador\BuscarComputadorPorIdUseCase;
+use app\Application\UseCase\Reclamacao\BuscarReclamacaoPorComputadorUseCase;
+use app\Infrastructure\DataBase\Computador\ComputadorPorIdDAO;
+use app\Infrastructure\DataBase\Reclamacao\BuscarReclamacaoPorComputadorDao;
 use app\Infrastructure\Http\Response;
 use app\Presentation\Controller\Admin\RegistrarManutencao;
 use app\Presentation\Controller\Admin\RegistrarManutencao\ViewRegistrarManutencao;
@@ -10,7 +15,11 @@ $obRouter->get('/admin/manutencao/{codcomputador}', [
         'required-admin-login'
     ],
     function ($request, $codcomputador) {
-        return new Response(200, ViewRegistrarManutencao::buscarDadosReclamacao($request,$codcomputador));
+        $registrarManutencao = new ViewRegistrarManutencao(
+            new BuscarReclamacaoPorComputadorUseCase(new BuscarReclamacaoPorComputadorDao()),
+            new BuscarComputadorPorIdUseCase(new ComputadorPorIdDAO())
+        );
+        return new Response(200,$registrarManutencao->buscarDadosReclamacao($request,$codcomputador));
     }
 ]);
 

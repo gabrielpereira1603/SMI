@@ -25,7 +25,7 @@ class BuscarReclamacaoPorComputadorDao implements BuscarReclamacaoPorComputadorR
 
         $result = (new Database('reclamacao'))->select($where, null, 1, null, $fields, $join)->fetch();
 
-        if (empty($result)) {
+        if (empty($result) || in_array(null, $result, true)) {
             return null;
         }
 
