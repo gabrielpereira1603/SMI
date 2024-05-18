@@ -8,7 +8,7 @@ use app\Infrastructure\DataBase\Computador\ComputadoresPorLaboratorioDAO;
 use app\Infrastructure\DataBase\Computador\ComputadorPorLaboratorioPaginationDAO;
 use app\Infrastructure\DataBase\Laboratorio\BuscarLaboratorioPorIdDAO;
 use app\Presentation\Controller\Pagination\Pagination;
-use app\Presentation\Utilitarios\Service\Computador\cardComputadoresPagination\adminComputadorStrategy;
+use app\Presentation\Utilitarios\Service\Computador\cardComputadoresPagination\AdminComputadorStrategy;
 use app\Utils\View;
 
 class MenuComputadores extends Page
