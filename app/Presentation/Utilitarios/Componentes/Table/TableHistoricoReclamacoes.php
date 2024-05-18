@@ -32,7 +32,7 @@ class TableHistoricoReclamacoes
             $this->buscarComponentePorReclamacaoDAO
         );
 
-        $obReclamacao = $useCase->execute($request,$codusuario, $statusReclamacao = 'Finalizado');
+        $obReclamacao = $useCase->execute($request,$codusuario, $statusReclamacao = 'Concluida');
 
         foreach ($obReclamacao as $reclamacao) {
             $codreclamacao = $reclamacao->getCodreclamacao();
