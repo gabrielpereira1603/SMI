@@ -79,7 +79,7 @@ class SessionRedefinirSenha
         }
 
         // Verifica se o tempo de início da sessão é maior que 15 minutos
-        if (time() - $_SESSION['redefinirSenha']['start_time'] > 5) { // 900 segundos = 15 minutos
+        if (time() - $_SESSION['redefinirSenha']['start_time'] > 900) { // 900 segundos = 15 minutos
             return true; // Sessão expirou
         }
 
