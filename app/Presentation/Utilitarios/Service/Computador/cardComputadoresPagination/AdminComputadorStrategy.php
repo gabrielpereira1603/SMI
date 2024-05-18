@@ -7,7 +7,6 @@ use app\Application\UseCase\Computador\BuscarComputadorPorLaboratorioPaginationU
 use app\Domain\Repository\Computador\BuscarComputadorLaboratorioPaginationRepository;
 use app\Domain\Repository\Computador\BuscarComputadorPorLaboratorioRepository;
 use app\Domain\Repository\Computador\CardComputadorStrategy;
-use app\Infrastructure\Dao\Computador\ComputadorDao;
 use app\Infrastructure\Http\Request;
 use app\Utils\View;
 use WilliamCosta\DatabaseManager\Pagination;
