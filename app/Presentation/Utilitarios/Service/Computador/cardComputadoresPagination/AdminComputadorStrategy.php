@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Presentation\Utilitarios\Service\Computador;
+namespace app\Presentation\Utilitarios\Service\Computador\cardComputadoresPagination;
 
 use app\Application\UseCase\Computador\BuscarComputadoresPorLaboratorioUseCase;
 use app\Application\UseCase\Computador\BuscarComputadorPorLaboratorioPaginationUseCase;

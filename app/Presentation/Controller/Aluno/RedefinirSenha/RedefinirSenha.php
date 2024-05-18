@@ -13,8 +13,6 @@ class RedefinirSenha extends Page
 {
     public static function getViewRedefinirSenha($request): bool|array|string
     {
-        var_dump($_SESSION['redefinirSenha']['usuario']);
-
         $content = View::render('aluno/modules/redefinirSenha/index',[
 
         ]);
