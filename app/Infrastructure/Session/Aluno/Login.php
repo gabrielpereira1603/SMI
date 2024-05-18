@@ -22,7 +22,6 @@ class Login {
     {
         //INICIA A SESSAO
         self::init();
-        var_dump($obUser);exit();
         //DEFINE A SESSAO DO USUARIO
         $_SESSION['aluno']['usuario'] = [
             'codusuario' => $obUser->getCodusuario(),
