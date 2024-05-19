@@ -101,14 +101,15 @@ class Usuario
 
     public static function factoryUsuario(array $data): Usuario
     {
-        $nivelAcesso = new NivelAcesso($data['codnivel_acesso'], $data['tipo_acesso']);
+        $nivelAcesso = new NivelAcesso($data['nivelacesso_fk'], $data['tipo_acesso']);
 
         return new Usuario(
             $data['codusuario'],
-            $data['nome'],
-            $data['email'],
+            $data['nome_usuario'],
+            $data['email_usuario'],
             $data['login'],
-            $data['senha'],
+            '',
+            '',
             $nivelAcesso
         );
     }

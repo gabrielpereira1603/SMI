@@ -1,13 +1,14 @@
 <?php
 
 use app\Infrastructure\Http\Response;
+use app\Presentation\Controller\Admin\GerarRelatorio\RelatorioManutencao\ViewRelatorioManutencao;
 
 $obRouter->get('/admin/relatorio/manutencao',[
     'middlewares' => [
         'required-admin-login'
     ],
     function($request) {
-        return new Response(200, );
+        return new Response(200, ViewRelatorioManutencao::getView($request));
     }
 ]);
 
