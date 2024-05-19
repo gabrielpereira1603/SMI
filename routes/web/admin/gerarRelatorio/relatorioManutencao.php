@@ -1,6 +1,5 @@
 <?php
 
-use app\Controller\Admin;
 use app\Infrastructure\Http\Response;
 
 $obRouter->get('/admin/relatorio/manutencao',[
@@ -8,7 +7,7 @@ $obRouter->get('/admin/relatorio/manutencao',[
         'required-admin-login'
     ],
     function($request) {
-        return new Response(200, \app\Presentation\Controller\Admin\GerarRelatorio\RelatorioManutencao::getViewRelatorioManutencao($request));
+        return new Response(200, );
     }
 ]);
 

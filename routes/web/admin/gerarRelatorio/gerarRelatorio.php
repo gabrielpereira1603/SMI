@@ -1,7 +1,7 @@
 <?php
 
-use app\Controller\Admin;
 use app\Infrastructure\Http\Response;
+use app\Presentation\Controller\Admin\GerarRelatorio\ViewGerarRelatorio;
 
 include __DIR__.'/relatorioManutencao.php';
 
@@ -11,6 +11,6 @@ $obRouter->get('/admin/relatorio',[
         'required-admin-login'
     ],
     function($request) {
-        return new Response(200, \app\Presentation\Controller\Admin\GerarRelatorio\GerarRelatorio::getRelatorio($request));
+        return new Response(200, ViewGerarRelatorio::getRelatorio($request));
     }
 ]);
