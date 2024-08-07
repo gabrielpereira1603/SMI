@@ -17,6 +17,7 @@ class CriarConta extends Page
 {
     public static function getViewCriarConta(Request $request): string
     {
+        $content = '';
         $useCase = new BuscarNivelAcessoPorTipoUseCase(
             new BuscarNivelAcessoPorTipoDAO()
         );
@@ -32,7 +33,7 @@ class CriarConta extends Page
     public static function setNovoUsuarioAluno(Request $request): void
     {
         try {
-
+            var_dump($request->getPostVars());exit();
             $dadosUsuario = $request->getPostVars();
 
             $useCase = new CriarUsuarioAlunoUseCase(

@@ -11,6 +11,7 @@ class SelectNivelAcesso extends Page
     public static function getNivelAcesso($request): string
     {
         $nivelAcessos = (new NivelAcessoDao())->getAllNivelAcesso();
+        $itens = '';
         foreach ($nivelAcessos as $nivelAcesso) {
             $itens .= View::render('admin/nivel_acesso/item', [
                 'codnivel_acesso' => $nivelAcesso->getCodNivelAcesso(),

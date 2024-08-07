@@ -11,6 +11,7 @@ class SelectTodosUsuarios extends Page
     public static function getAll($request): string
     {
         $usuarios = (new UsuarioDao())->getAll();
+        $itens = '';
         foreach ($usuarios as $obUsuario) {
             $itens .= View::render('admin/usuario/selectTodosUsuarios', [
                 'codusuario' => $obUsuario->getCodusuario(),

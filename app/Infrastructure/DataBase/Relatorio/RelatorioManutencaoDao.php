@@ -1,12 +1,13 @@
 <?php
 
-namespace app\Infrastructure\Dao\Relatorio;
+namespace app\Infrastructure\DataBase\Relatorio;
 
+use app\Domain\Repository\Relatorio\BuscarDadosRelatorioManutencaoRepository;
 use WilliamCosta\DatabaseManager\Database;
 
-class RelatorioManutencaoDao
+class RelatorioManutencaoDao implements BuscarDadosRelatorioManutencaoRepository
 {
-    public function buscarDadosRelatorioManutencao($usuario, $laboratorio, $computador, $dataInicio, $dataFim)
+    public function buscarDados($usuario, $laboratorio, $computador, $dataInicio, $dataFim): ?array
     {
         if($laboratorio == -1 && $computador == -1 && $usuario == -1)
         {

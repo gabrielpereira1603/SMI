@@ -23,10 +23,6 @@ class Page {
             'label' => 'Termos De Uso',
             'link'=> URL.'/aluno/regras'
         ],
-        'configuracao'=> [
-            'label'=> 'Settings',
-            'link'=> URL.'/settingsUser'
-        ],
     ];
 
     public static function getPage($title, $content): array|bool|string
@@ -57,10 +53,6 @@ class Page {
                 case 'termosDeUso':
                     $iconClass = 'bx bx-book';
                     break;
-                case 'configuracao':
-                    $iconClass = 'bx bx-cog';
-                    break;
-                // Adicione mais casos para outros módulos conforme necessário
             }
 
             // Renderiza o link com o ícone correspondente

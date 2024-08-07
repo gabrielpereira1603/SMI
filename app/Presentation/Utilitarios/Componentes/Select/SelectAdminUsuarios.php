@@ -18,6 +18,8 @@ class SelectAdminUsuarios extends Page
 
         $usuarios = $useCase->execute($request);
 
+        $itens = '';
+
         foreach ($usuarios as $obUsuario) {
             $itens .= View::render('admin/usuario/selectTodosUsuarios', [
                 'codusuario' => $obUsuario->getCodusuario(),

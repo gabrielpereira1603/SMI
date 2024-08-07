@@ -2,13 +2,15 @@
 
 namespace app\Presentation\Controller\Api\Computador;
 
+use app\Application\UseCase\Computador\BuscarComputadoresPorLaboratorioUseCase;
 use app\Infrastructure\Dao\Computador\ComputadorDao;
+use app\Infrastructure\DataBase\Computador\ComputadoresPorLaboratorioDAO;
 
 class ComputadorApi
 {
     public static function getComputadoresPorLab($request, $codlaboratorio): array
     {
-        $results = (new ComputadorDao())->getComputadoresLaboratorio($codlaboratorio);
+        $results = (new BuscarComputadoresPorLaboratorioUseCase(new ComputadoresPorLaboratorioDAO()))->execute($request,$codlaboratorio);
 
         $computadores = [];
 

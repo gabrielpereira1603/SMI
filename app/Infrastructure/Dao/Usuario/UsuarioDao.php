@@ -78,7 +78,7 @@ class UsuarioDao
     public function getAll(): array
     {
         $join = 'INNER JOIN nivel_acesso ON usuario.nivelacesso_fk = nivel_acesso.codnivel_acesso';
-        $result = (new Database('usuario'))->select($where, null, null, null, '*', $join)->fetchAll();
+        $result = (new Database('usuario'))->select(null, null, null, null, '*', $join)->fetchAll();
 
         $usuarios = []; // Novo array para armazenar os objetos Usuario
 
@@ -91,6 +91,7 @@ class UsuarioDao
                 $usuarioData['email_usuario'],
                 $usuarioData['login'],
                 $usuarioData['senha'],
+                '',
                 $nivelAcesso
             );
 

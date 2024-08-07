@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Presentation\Controller\Admin\GerarRelatorio;
+namespace app\Presentation\Controller\Admin\GerarRelatorio\RelatorioManutencao;
 
 use app\Presentation\Controller\Admin\Page;
 use app\Presentation\Utilitarios\PDF\Manutencao\relatorioManutencaoPDF;

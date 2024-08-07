@@ -18,7 +18,7 @@ $(document).ready(function () {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': token // Adiciona o token no cabeçalho
+                    'Authorization': token
                 },
                 body: JSON.stringify({
                     login: login,

@@ -34,6 +34,8 @@ class TableHistoricoReclamacoes
 
         $obReclamacao = $useCase->execute($request,$codusuario, $statusReclamacao = 'Concluida');
 
+        $content = '';
+
         foreach ($obReclamacao as $reclamacao) {
             $codreclamacao = $reclamacao->getCodreclamacao();
             $obComponentes = $componenteUseCase->execute($request, $codreclamacao);

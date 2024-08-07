@@ -13,8 +13,8 @@ class ViewRelatorioManutencao extends Page
     public static function getView(Request $request)
     {
         $SelectUsersAdmin = SelectAdminUsuarios::getAdminUsers($request);
-        
-       // $SelectTodosLaboratorios = SelectTodosLaboratorios::getLaboratorioItens($request);
+        $SelectTodosLaboratorios = SelectTodosLaboratorios::getLaboratorioItens($request);
+
         $content = View::render('admin/modules/relatorio/manutencao/index', [
             'user' => $SelectUsersAdmin,
             'laboratorio' => $SelectTodosLaboratorios

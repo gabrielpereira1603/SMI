@@ -1,6 +1,8 @@
 <?php
 
 use app\Infrastructure\Http\Response;
+use app\Presentation\Controller\Admin\GerarRelatorio\RelatorioManutencao\DataRelatorioManutencao;
+use app\Presentation\Controller\Admin\GerarRelatorio\RelatorioManutencao\PdfRelatorioManutencao;
 use app\Presentation\Controller\Admin\GerarRelatorio\RelatorioManutencao\ViewRelatorioManutencao;
 
 $obRouter->get('/admin/relatorio/manutencao',[
@@ -17,7 +19,7 @@ $obRouter->post('/admin/relatorio/manutencao',[
         'required-admin-login'
     ],
     function($request) {
-        return new Response(200, \app\Presentation\Controller\Admin\GerarRelatorio\RelatorioManutencao::getTableDataRelatorioManutencao($request));
+        return new Response(200, DataRelatorioManutencao::getTableDataRelatorioManutencao($request));
     }
 ]);
 
@@ -27,6 +29,6 @@ $obRouter->post('/admin/relatorio/PDF',[
         'required-admin-login'
     ],
     function($request) {
-        return new Response(200, \app\Presentation\Controller\Admin\GerarRelatorio\PdfRelatorioManutencao::gerarPdfRelatorioManutencao($request));
+        return new Response(200, PdfRelatorioManutencao::gerarPdfRelatorioManutencao($request));
     }
 ]);

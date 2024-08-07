@@ -2,14 +2,13 @@
 
 namespace app\Application\UseCase\Usuario\Admin;
 
+use app\Domain\Repository\Usuario\BuscarUsuarioPorLoginRepository;
 use app\Infrastructure\Dao\Usuario\UsuarioDao;
 
 class CriarUsuarioUseCase
 {
-    public const USUARIO_EXISTE = 1;
-    public const SEM_PERMISSAO = 2;
-    public const SUCESSO = 3;
-    public const ERROR = 4;
+    private BuscarUsuarioPorLoginRepository $buscarUsuarioPorLoginRepository;
+    private CadastrarUsuarioRepository $cadastrarUsuarioRepository;
 
     public function validaDadosUsuario($login,$email,$nome,$nivel_acesso,$senha): int
     {

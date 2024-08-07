@@ -2,15 +2,16 @@
 
 namespace app\Presentation\Utilitarios\Componentes\Table;
 
-use app\Infrastructure\Dao\Relatorio\RelatorioManutencaoDao;
+use app\Application\UseCase\Relatorio\RelatorioManutencaoUseCase;
+use app\Infrastructure\DataBase\Relatorio\RelatorioManutencaoDao;
 use app\Utils\View;
 
 class TableRelatorioManutencao
 {
     public static function buscarDadosRelatorioManutencao($usuario,$laboratorio,$computador,$dataInicio,$dataFim): string
     {
-        $result = (new RelatorioManutencaoDao())->buscarDadosRelatorioManutencao($usuario,$laboratorio,$computador,$dataInicio,$dataFim);
-
+        $result = (new RelatorioManutencaoUseCase(new RelatorioManutencaoDao()))->execute($usuario,$laboratorio,$computador,$dataInicio,$dataFim);
+        $itens = '';
         foreach ($result as $obManutencao) {
             $itens .= View::render('admin/modules/relatorio/manutencao/itensTable', [
                 'datahora_manutencao' => isset($obManutencao['datahora_manutencao']) ? $obManutencao['datahora_manutencao'] : 'Nenhuma data encontrada',

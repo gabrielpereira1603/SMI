@@ -1,3 +1,15 @@
+    <script>
+        function validateNameLoginInput(input) {
+            const invalidChars = /[^a-zA-Z0-9\s]/g;
+            input.value = input.value.replace(invalidChars, '');
+        }
+
+        function validateEmailInput(input) {
+            const invalidEmailChars = /[^a-zA-Z0-9@._-]/g;
+            input.value = input.value.replace(invalidEmailChars, '');
+        }
+
+    </script>
 <div class="title">
     <h2>Adicionar novo usuário</h2>
     <p>Preencha o form abaixo para adicionar um novo usuário</p>
@@ -9,19 +21,18 @@
         <div class="title-user">
             <legend>Preencha as informações do novo usuário:</legend>
         </div>
-        {{status}}
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nome" name="nome" placeholder="Selecionar nome do Usuário" required>
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Selecionar nome do Usuário" required oninput="validateNameLoginInput(this)">
             <label for="nome">*Nome:</label>
         </div>
 
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="email" name="email" placeholder="Selecionar email do Usuário" required>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Selecionar email do Usuário" required oninput="validateEmailInput(this)">
             <label for="email">*Email:</label>
         </div>
 
         <div class="form-floating mb-3">
-            <select class="form-select" name="nivel_acesso" aria-label="Nível de Acesso" required>
+            <select class="form-select" name="codnivel_acesso" aria-label="Nível de Acesso" required>
                 <option value="">*Selecione o nível de acesso:</option>
                 {{nivel_acesso}}
             </select>
@@ -29,18 +40,18 @@
         </div>
 
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="login" name="login" placeholder="Selecionar login do Usuario" required oninput="validateInput(this)">
+            <input type="text" class="form-control" id="login" name="login" placeholder="Selecionar login do Usuario" required oninput="validateNameLoginInput(this)">
             <label for="login">Login:</label>
         </div>
 
         <div class="form-floating mb-3 input-container">
             <input type="password" class="form-control" id="senha" name="senha" placeholder="Selecionar Senha do Usuario" required>
             <label for="senha">Senha:</label>
-            <button type="button" class="visibility-btn">👁️</button>
+            <button type="button" class="visibility-btn" onclick="togglePasswordVisibility()">👁️</button>
         </div>
 
         <div class="d-grid gap-2">
-            <button class="btn btn-primary" type="submit" name="criaruser">Registar Usuário</button>
+            <button class="btn btn-warning" type="submit" name="criaruser">Registar Usuário</button>
         </div>
         <hr>
     </div>
@@ -69,18 +80,3 @@
         </div>
     </div>
 </form>
-
-<script>
-    //FUNCAO PARA N DEIXAR USUARIO COLOCAR VALORES INVALIDOS
-    //DE LOGIN
-    function validateInput(input) {
-        var value = input.value.replace(/[^0-9]/g, '');
-        if (value !== input.value) {
-            input.value = value;
-        }
-
-        if (input.value <  0) {
-            input.value =  0;
-        }
-    }
-</script>
