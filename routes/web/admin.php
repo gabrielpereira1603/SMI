@@ -17,3 +17,5 @@ include __DIR__ . '/admin/gerenciarUsuarioRoutes/gerenciarUsuarios.php';
 
 //INCLUI AS ROTAS DE gerenciamento de gerar relatorio
 include __DIR__ . '/admin/gerarRelatorio/gerarRelatorio.php';
+
+include __DIR__ . '/admin/dashboard.php';

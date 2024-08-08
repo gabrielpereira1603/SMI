@@ -24,8 +24,7 @@ class PdfRelatorioManutencao extends Page
         $dataInicio = $postVars['dataInicio'];
         $dataFim = $postVars['dataFim'];
 
-        $ConteudoPDF = relatorioManutencaoPDF::gerarPDFemHTML($usuario,$laboratorio,$computador,$dataInicio,$dataFim);
-
+        $ConteudoPDF = relatorioManutencaoPDF::gerarPDFemHTML($usuario, $laboratorio, $computador, $dataInicio, $dataFim);
         $options = new Options();
         $options->setDefaultFont('Courier');
         $options->setIsRemoteEnabled(true);
@@ -41,5 +40,4 @@ class PdfRelatorioManutencao extends Page
         // Output the generated PDF to Browser
         $dompdf->stream("realtorio.pdf");
     }
-
 }

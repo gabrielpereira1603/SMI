@@ -10,7 +10,7 @@ class relatorioManutencaoPDF
     public static function gerarPDFemHTML($usuario,$laboratorio,$computador,$dataInicio,$dataFim): string
     {
         $tableData = TableRelatorioManutencao::buscarDadosRelatorioManutencao($usuario,$laboratorio,$computador,$dataInicio,$dataFim);
-
+        $content = '';
         $content .= View::render('admin/modules/relatorio/manutencao/PDFrelatorio', [
             'usuario' => $usuario,
             'laboratorio' => $laboratorio,
