@@ -12,3 +12,5 @@ include __DIR__ . '/enviar-email.php';
 include __DIR__ . '/usuario/enviarTokenRedefinirSenha.php';
 
 include __DIR__ . '/encerraSessao.php';
+
+include __DIR__ . '/Situaçao/SituacaoAPI.php';

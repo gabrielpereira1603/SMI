@@ -30,4 +30,24 @@ class BuscarTodasSituacaoDAO implements BuscarTodasSituacaoRepository
 
         return $situacoes;
     }
+
+    public function buscarTodosJSON(Request $request)
+    {
+        $results = (new Database('situacao'))->select(null, null, null, null, '*', null)->fetchAll();
+
+        if (!$results) {
+            return json_encode([]); // Retorna um array vazio em JSON
+        }
+
+        $situacoes = [];
+
+        foreach ($results as $situacaoData) {
+            $situacoes[] = [
+                'codsituacao' => $situacaoData['codsituacao'],
+                'tiposituacao' => $situacaoData['tiposituacao']
+            ];
+        }
+
+        return ($situacoes);
+    }
 }

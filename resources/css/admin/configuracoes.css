@@ -1,0 +1,26 @@
+.text{
+    margin: 40px;
+}
+
+.manutencao-labs{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin: 40px;
+}
+
+
+
+@media screen and (max-width: 720px) {
+    .text{
+        margin: 10px;
+    }
+
+    .manutencao-labs{
+        margin: 10px;
+    }
+
+    .form-manutencao{
+        margin-bottom: 40px;
+    }
+}
