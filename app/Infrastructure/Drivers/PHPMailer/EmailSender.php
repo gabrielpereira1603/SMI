@@ -22,7 +22,7 @@ class EmailSender
             $this->mailer->Host = 'smtp.titan.email';
             $this->mailer->SMTPAuth = true;
             $this->mailer->Username = 'suporte@somosdevteam.com';
-            $this->mailer->Password = '@G4b11416#';
+            $this->mailer->Password = '!somos0116!';
             $this->mailer->SMTPSecure = 'ssl';
             $this->mailer->Port = 465;
 

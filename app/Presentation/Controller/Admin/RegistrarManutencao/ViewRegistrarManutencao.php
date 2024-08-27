@@ -103,8 +103,10 @@ class ViewRegistrarManutencao extends Page
 
     private function classIconBtn(string $tipoSituacao)
     {
+        $classBtn = '';
+
         switch ($tipoSituacao) {
-            case "Disponível":
+            case "Disponivel":
                 $classIcon = 'bi bi-check-circle-fill';
                 $classBtn = 'btn-success';
                 break;
@@ -112,7 +114,7 @@ class ViewRegistrarManutencao extends Page
                 $classIcon = 'bi bi-tools';
                 $classBtn = 'btn-warning';
                 break;
-            case "Indisponível":
+            case "Indisponivel":
                 $classIcon = 'bi bi-exclamation-octagon-fill';
                 $classBtn = 'btn-danger';
                 break;

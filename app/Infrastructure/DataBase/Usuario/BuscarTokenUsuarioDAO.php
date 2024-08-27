@@ -24,7 +24,6 @@ class BuscarTokenUsuarioDAO implements BuscarTokenUsuarioRepository
         $usuarioData = $result[0];
 
         $nivelAcesso = new NivelAcesso($usuarioData['codnivel_acesso'], $usuarioData['tipo_acesso']);
-
         return new Usuario(
             $usuarioData['codusuario'],
             $usuarioData['nome_usuario'],
