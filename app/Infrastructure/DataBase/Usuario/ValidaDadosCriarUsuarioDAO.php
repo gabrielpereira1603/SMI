@@ -27,8 +27,8 @@ class ValidaDadosCriarUsuarioDAO implements ValidaDadosCriarUsuarioRepository
 
         return new Usuario(
             $usuarioData['codusuario'],
-            $usuarioData['nome_usuario'],
-            $usuarioData['email_usuario'],
+            $usuarioData['nome'],
+            $usuarioData['email'],
             $usuarioData['login'],
             $usuarioData['senha'],
             '',
@@ -38,7 +38,7 @@ class ValidaDadosCriarUsuarioDAO implements ValidaDadosCriarUsuarioRepository
 
     public function buscarPorEmail(string $email): ?Usuario
     {
-        $where = "usuario.email_usuario = '$email'";
+        $where = "usuario.email = '$email'";
         $join = 'INNER JOIN nivel_acesso ON usuario.nivelacesso_fk = nivel_acesso.codnivel_acesso';
 
         $result = (new Database('usuario'))->select($where, null, null, null, '*', $join)->fetchAll();
@@ -53,8 +53,8 @@ class ValidaDadosCriarUsuarioDAO implements ValidaDadosCriarUsuarioRepository
 
         return new Usuario(
             $usuarioData['codusuario'],
-            $usuarioData['nome_usuario'],
-            $usuarioData['email_usuario'],
+            $usuarioData['nome'],
+            $usuarioData['email'],
             $usuarioData['login'],
             $usuarioData['senha'],
             '',
@@ -64,7 +64,7 @@ class ValidaDadosCriarUsuarioDAO implements ValidaDadosCriarUsuarioRepository
 
     public function buscarPorNome(string $nome): ?Usuario
     {
-        $where = "usuario.nome_usuario = '$nome'";
+        $where = "usuario.nome = '$nome'";
         $join = 'INNER JOIN nivel_acesso ON usuario.nivelacesso_fk = nivel_acesso.codnivel_acesso';
 
         $result = (new Database('usuario'))->select($where, null, null, null, '*', $join)->fetchAll();
@@ -79,8 +79,8 @@ class ValidaDadosCriarUsuarioDAO implements ValidaDadosCriarUsuarioRepository
 
         return new Usuario(
             $usuarioData['codusuario'],
-            $usuarioData['nome_usuario'],
-            $usuarioData['email_usuario'],
+            $usuarioData['nome'],
+            $usuarioData['email'],
             $usuarioData['login'],
             $usuarioData['senha'],
             '',

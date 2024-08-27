@@ -13,8 +13,8 @@ async function enviarEmailRedefinicaoSenha(email) {
                 'Authorization': token
             },
             body: JSON.stringify({ 
-                login: "123",
-                senha: "123" 
+                login: "gabi1416",
+                senha: "gabi1416"
             })
         });
 

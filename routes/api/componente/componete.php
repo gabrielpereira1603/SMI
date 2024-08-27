@@ -10,7 +10,7 @@ use app\Presentation\Controller\Api\Componente\ComponenteApi;
 $obRouter->post('/api/v1/componente',[
     'middlewares' => [
         'api',
-        'jwt-auth'
+        //'jwt-auth'
     ],
     function($request) {
         $componenteApi = new ComponenteApi(new BuscarTodosComponentesDAO());
@@ -27,7 +27,7 @@ $obRouter->post('/api/v1/componente',[
 $obRouter->post('/api/v1/componente/{codreclamacao}',[
     'middlewares' => [
         'api',
-        'jwt-auth'
+        //'jwt-auth'
     ],
     function($request,$codreclamacao) {
         $useCase = new BuscarComponentePorReclamacaoUseCase(

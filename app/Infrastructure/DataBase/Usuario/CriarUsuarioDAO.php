@@ -15,8 +15,8 @@ class CriarUsuarioDAO implements CriarUsuarioRepository
         $database = new Database('usuario');
 
         $lastID = $database->insert([
-            'nome_usuario' => $usuario['nome'],
-            'email_usuario' => $usuario['email'],
+            'nome' => $usuario['nome'],
+            'email' => $usuario['email'],
             'login' => $usuario['login'],
             'senha' => $usuario['senha'],
             'nivelacesso_fk' => $usuario['codnivel_acesso'],

@@ -24,7 +24,6 @@ class BuscarUsuarioPorLoginDAO implements BuscarUsuarioPorLoginRepository
         $usuarioData = $result[0];
 
         $nivelAcesso = new NivelAcesso($usuarioData['codnivel_acesso'], $usuarioData['tipo_acesso']);
-        var_dump($usuarioData);
 
         return new Usuario(
             $usuarioData['codusuario'],
