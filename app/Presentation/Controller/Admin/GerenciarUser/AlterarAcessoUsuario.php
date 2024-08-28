@@ -33,13 +33,13 @@ class AlterarAcessoUsuario extends Page
         $data = $alterarAcessoUseCase->validaDadosUsuario($codusuario,$nivelAcesso);
 
         if ($data === AtualizaAcessoUsuarioUseCase::SUCESSO) {
-            $request->getRouter()->redirect('/admin/user/acesso?success=permissaoAdd');
+            $request->getRouter()->redirect('/admin/user/acesso?success=Permissão alterada com sucesso!');
         } else if ($data === AtualizaAcessoUsuarioUseCase::ERROR) {
-            $request->getRouter()->redirect('/admin/user/acesso?error=permissaoNot');
+            $request->getRouter()->redirect('/admin/user/acesso?error=Sem permissão.');
         } else if ($data === AtualizaAcessoUsuarioUseCase::NIVEL_ACESSO_NULL){
-            $request->getRouter()->redirect('/admin/user/acesso?error=camposVazios');
+            $request->getRouter()->redirect('/admin/user/acesso?error=Campos Vazios, Preencha todos os campos!');
         }else{
-            $request->getRouter()->redirect('/admin/user/acesso?error=permissaoNot');
+            $request->getRouter()->redirect('/admin/user/acesso?error=Sem permissã.');
         }
     }
 }

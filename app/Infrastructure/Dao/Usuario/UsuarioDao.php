@@ -8,7 +8,7 @@ use WilliamCosta\DatabaseManager\Database;
 
 class UsuarioDao
 {
-    public function getByLogin(string $login): ?Usuario
+    public static function getByLogin(string $login): ?Usuario
     {
         $where = "usuario.login = '$login'";
         $join = 'INNER JOIN nivel_acesso ON usuario.nivelacesso_fk = nivel_acesso.codnivel_acesso';
@@ -41,6 +41,7 @@ class UsuarioDao
             'email' => $email,
             'nome' => $nome,
             'senha' => $senha,
+            '',
             'nivelacesso_fk' => $nivel_acesso
         ]);
 
@@ -52,7 +53,7 @@ class UsuarioDao
     }
     public function getUsuarioSemPermissao(): array
     {
-        $where = "usuario.nivelacesso_fk = 4";
+        $where = "usuario.nivelacesso_fk = 3";
         $join = 'INNER JOIN nivel_acesso ON usuario.nivelacesso_fk = nivel_acesso.codnivel_acesso';
 
         $results = (new Database('usuario'))->select($where, null, null, null, '*', $join)->fetchAll();
@@ -67,6 +68,7 @@ class UsuarioDao
                 $usuarioData['email'],
                 $usuarioData['login'],
                 $usuarioData['senha'],
+                '',
                 $nivelAcesso
             );
 
@@ -111,6 +113,23 @@ class UsuarioDao
 
         $database = new Database('usuario');
         $result = $database->update($whereClause, $data);
+
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public static function setUpdateUser($login, $nome, $email)
+    {
+        $where = "login = '$login'";
+
+        $values = [
+            'nome' => $nome,
+            'email' => $email
+        ];
+
+        $result = (new Database('usuario'))->update($where, $values);
 
         if ($result) {
             return true;

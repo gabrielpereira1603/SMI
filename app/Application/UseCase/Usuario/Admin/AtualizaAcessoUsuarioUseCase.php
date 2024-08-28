@@ -16,7 +16,7 @@ class AtualizaAcessoUsuarioUseCase
         $userData = $_SESSION['admin']['usuario'];
         $nivel_acesso_Session = $userData['nivel_acesso'];
 
-        if ($nivel_acesso_Session <= 2){
+        if ($nivel_acesso_Session === 1){
             return self::SEM_PERMISSAO;
         }
 

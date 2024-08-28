@@ -87,7 +87,7 @@ class Configuracoes extends Page
 
     public static function editarComputador(Request $request){
         $postVars = $request->getPostVars();
-
+        var_dump($postVars);exit();
         // Verificar se algum campo está vazio
         if (empty($postVars['patrimonio']) || empty($postVars['situacao']) || empty($postVars['computadorId']) || empty($postVars['tiposituacao'])) {
             $request->getRouter()->redirect('/admin/gerenciar?error=' . urlencode("Erro: Todos os campos são obrigatórios."));

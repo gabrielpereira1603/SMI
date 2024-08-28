@@ -119,39 +119,47 @@
 
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <button class="btn btn-secondary" type="button" id="editComputadorBtn">Editar Computador</button>
-            <button class="btn btn-success" type="submit">Criar Computador</button>
+            <button class="btn btn-success" type="button" id="createComputadorBtn">Cadastrar Novo Computador</button>
         </div>
     </form>
 
-    <!-- Modal -->
+    <!-- Modal (usado tanto para edição quanto para criação) -->
     <div class="modal fade" id="computadorModal" tabindex="-1" aria-labelledby="computadorModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="computadorModalLabel">Editar Computador</h5>
+                    <h5 class="modal-title" id="computadorModalLabel">Editar Computador</h5> <!-- Este título será dinâmico -->
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="computadorForm" action="{{URL}}/admin/gerenciar/editPc" method="post">
+                    <form id="computadorForm" action="" method="post"> <!-- Action será definido dinamicamente -->
+                        <div class="mb-3" id="laboratorioDiv">
+                            <label for="laboratorioSelect" class="form-label">Laboratório</label>
+                            <select class="form-select" id="laboratorioSelect" name="laboratorio">
+                                <option value="">Selecione um laboratório</option>
+                                {{selectLabs}} <!-- Populado dinamicamente com os laboratórios -->
+                            </select>
+                        </div>
                         <div class="mb-3">
                             <label for="patrimonio" class="form-label">Patrimônio</label>
                             <input type="text" class="form-control" id="patrimonio" name="patrimonio" required>
+                            <div class="form-text">O patrimônio deve seguir a ordem: 1, 2, 3, 4...</div>
                         </div>
                         <div class="mb-3">
                             <label for="situacao" class="form-label">Situação</label>
                             <select class="form-select" id="situacao" name="situacao" required>
-                                <!-- Options will be added dynamically -->
+                                <!-- Options serão adicionadas dinamicamente -->
                             </select>
                         </div>
+
                         <input type="hidden" id="computadorId" name="computadorId">
-                        <input type="hidden" id="tipoSituacao" name="tiposituacao"> <!-- Campo oculto para o tipo de situação -->
+                        <input type="hidden" id="laboratorioId" name="laboratorioId">
                         <button type="submit" class="btn btn-primary">Salvar</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
 
     <script>
         document.getElementById('min-laboratorio').addEventListener('change', function() {
@@ -164,27 +172,17 @@
                         'Content-Type': 'application/json',
                     }
                 })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                        }
-                        return response.json();
-                    })
+                    .then(response => response.json())
                     .then(data => {
-                        if (Array.isArray(data)) {
-                            const computadorSelect = document.getElementById('min-computador');
-                            computadorSelect.innerHTML = '<option value="">Selecione um computador</option>';
+                        const computadorSelect = document.getElementById('min-computador');
+                        computadorSelect.innerHTML = '<option value="">Selecione um computador</option>';
 
-                            data.forEach(computador => {
-                                const option = document.createElement('option');
-                                option.value = computador.codcomputador;
-                                option.textContent = computador.patrimonio;
-                                computadorSelect.appendChild(option);
-                            });
-                        } else {
-                            console.error('Resposta da API não é um array:', data);
-                            document.getElementById('min-computador').innerHTML = '<option value="">Erro ao carregar computadores</option>';
-                        }
+                        data.forEach(computador => {
+                            const option = document.createElement('option');
+                            option.value = computador.codcomputador;
+                            option.textContent = computador.patrimonio;
+                            computadorSelect.appendChild(option);
+                        });
                     })
                     .catch(error => {
                         console.error('Erro ao buscar computadores:', error);
@@ -195,13 +193,6 @@
             }
         });
 
-        // Atualizar o valor do campo oculto 'tiposituacao' quando o usuário selecionar uma nova situação
-        document.getElementById('situacao').addEventListener('change', function() {
-            const selectedOption = this.options[this.selectedIndex];
-            document.getElementById('tipoSituacao').value = selectedOption.textContent; // Armazena o texto (tiposituacao)
-        });
-
-
         document.getElementById('editComputadorBtn').addEventListener('click', function() {
             const computadorSelect = document.getElementById('min-computador');
             const selectedOption = computadorSelect.options[computadorSelect.selectedIndex];
@@ -209,7 +200,6 @@
             if (selectedOption.value) {
                 const computadorId = selectedOption.value;
 
-                // Buscar todas as situações
                 fetch(`{{URL}}/api/v1/situacao/all`)
                     .then(response => response.json())
                     .then(situacoes => {
@@ -223,9 +213,11 @@
                             .then(data => {
                                 const computador = data.find(comp => comp.codcomputador == computadorId);
                                 if (computador) {
-                                    // Preenche os campos do modal
                                     document.getElementById('computadorId').value = computador.codcomputador;
                                     document.getElementById('patrimonio').value = computador.patrimonio;
+                                    // Preenche os campos ocultos
+                                    document.getElementById('tipoSituacao').value = computador.tiposituacao;  // Preenche o tipo de situação
+
 
                                     // Preenche o select de situação
                                     const situacaoSelect = document.getElementById('situacao');
@@ -236,13 +228,14 @@
                                         option.value = situacao.codsituacao;
                                         option.textContent = situacao.tiposituacao;
                                         if (situacao.tiposituacao === computador.tiposituacao) {
-                                            option.selected = true; // Marca a situação atual
+                                            option.selected = true;
                                         }
                                         situacaoSelect.appendChild(option);
                                     });
 
-                                    // Atualizar o campo oculto 'tiposituacao' com a situação atual
-                                    document.getElementById('tipoSituacao').value = computador.tiposituacao;
+                                    // Esconder o select de laboratório no modal de edição
+                                    document.getElementById('laboratorioDiv').style.display = 'none';
+                                    document.getElementById('computadorForm').action = `{{URL}}/admin/gerenciar/editPc`; // Define a action de edição
 
                                     // Abre o modal
                                     var myModal = new bootstrap.Modal(document.getElementById('computadorModal'));
@@ -263,6 +256,33 @@
             }
         });
 
+        document.getElementById('createComputadorBtn').addEventListener('click', function() {
+            // Resetando o modal para criação
+            document.getElementById('computadorId').value = '';
+            document.getElementById('patrimonio').value = '';
+            document.getElementById('laboratorioDiv').style.display = 'block'; // Mostrar o select de laboratório
+            document.getElementById('computadorForm').action = `{{URL}}/admin/gerenciar/createPc`; // Define a action de criação
+
+            // Preenche o select de situação
+            fetch(`{{URL}}/api/v1/situacao/all`)
+                .then(response => response.json())
+                .then(situacoes => {
+                    const situacaoSelect = document.getElementById('situacao');
+                    situacaoSelect.innerHTML = ''; // Limpa as opções
+
+                    situacoes.forEach(situacao => {
+                        const option = document.createElement('option');
+                        option.value = situacao.codsituacao;
+                        option.textContent = situacao.tiposituacao;
+                        situacaoSelect.appendChild(option);
+                    });
+
+                    // Abre o modal
+                    var myModal = new bootstrap.Modal(document.getElementById('computadorModal'));
+                    myModal.show();
+                })
+                .catch(error => console.error('Erro ao buscar todas as situações:', error));
+        });
     </script>
 
 

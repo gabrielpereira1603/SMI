@@ -2,6 +2,8 @@
 
 include __DIR__ . '/adicionarUserRoute.php';
 include __DIR__ . '/alterarAcessoRoute.php';
+include __DIR__ . '/alterarDadosRoute.php';
+
 
 use app\Controller\Admin;
 use app\Infrastructure\Http\Response;

@@ -22,7 +22,7 @@ class Usuario
     private string $token;
     private NivelAcesso $nivelAcesso;
 
-    public function __construct(int $codusuario, string $nome_usuario, string $email_usuario, string $login, string $senha,$token, NivelAcesso $nivelAcesso)
+    public function __construct(int $codusuario, string $nome_usuario, string $email_usuario, string $login, string $senha, $token, NivelAcesso $nivelAcesso)
     {
         $this->codusuario = $codusuario;
         $this->nome_usuario = $nome_usuario;

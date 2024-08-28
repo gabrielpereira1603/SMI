@@ -10,22 +10,32 @@ $(document).ready(function () {
         if (selectedUsuario === "") {
             document.getElementById("login-user").value = "";
         } else {
-            // Configura o token JWT no cabeçalho Authorization
-            const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbiI6IjEyMyJ9.Fc98BbWEJM79QUqUUVeXmSHxfSjfQnatptBlQQJp6Og"; // Substitua pelo seu token JWT válido
+            // Faz a requisição usando fetch com try-catch
+            try {
+                fetch('https://teste.somosdevteam.com/api/v1/user/' + selectedUsuario)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro na requisição: ' + response.statusText);
+                        }
+                        return response.json();
+                    })
+                    .then(jsonResponse => {
+                        // Exibe a resposta no console para depuração
+                        console.log('Resposta JSON:', jsonResponse);
 
-            // Faz a requisição usando fetch
-            fetch('https://teste.somosdevteam.com/api/v1/user/' + selectedUsuario)
-                .then(response => response.json())
-                .then(jsonResponse => {
-                    // Preenche o campo de login com o valor retornado no JSON
-                    if (jsonResponse.login !== undefined) {
-                        document.getElementById("login-user").value = jsonResponse.login;
-                    }
-
-                })
-                .catch(error => console.log('Erro:', error));
+                        // Preenche o campo de login com o valor retornado no JSON
+                        if (jsonResponse && jsonResponse.login !== undefined) {
+                            document.getElementById("login-user").value = jsonResponse.login;
+                        } else {
+                            console.log('O campo login não está definido na resposta JSON.');
+                        }
+                    })
+                    .catch(error => {
+                        console.log('Erro na requisição fetch:', error);
+                    });
+            } catch (error) {
+                console.log('Erro inesperado:', error);
+            }
         }
     });
 });
-
-

@@ -7,26 +7,30 @@ $(document).ready(function () {
     $('#select-alterarUser').on('select2:select', function (e) {
         var selectedUsuario = this.value;
 
-     
         if(selectedUsuario === "") {
-             document.getElementById("login").value = "";
-             document.getElementById("email").value = "";
-             document.getElementById("nome-input").value = "";
-         } else {
-            fetch('https://back-end-spring-boot-api-manutencao-labs-9rzd.onrender.com/usuario/all')
-            .then(response => response.json())
-            .then(jsonResponse => {
-                // console.log(jsonResponse)
-                if (jsonResponse[0].login !== undefined) {
-                    document.getElementById("login").value = jsonResponse[0].login;
-                }
-                if (jsonResponse[0].email_usuario !== undefined) {
-                    document.getElementById("email").value = jsonResponse[0].email_usuario;
-                }
-                if (jsonResponse[0].nome_usuario !== undefined) {
-                    document.getElementById("nome-input").value = jsonResponse[0].nome_usuario;
-                }
-            });
+            document.getElementById("login").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("nome-input").value = "";
+        } else {
+            fetch('https://teste.somosdevteam.com/api/v1/user/' + selectedUsuario)
+                .then(response => response.json())
+                .then(jsonResponse => {
+                    // Verifique se jsonResponse é um objeto e contém as propriedades esperadas
+                    if (jsonResponse && typeof jsonResponse === 'object') {
+                        if (jsonResponse.login !== undefined) {
+                            document.getElementById("login").value = jsonResponse.login;
+                        }
+                        if (jsonResponse.email !== undefined) {
+                            document.getElementById("email").value = jsonResponse.email;
+                        }
+                        if (jsonResponse.nome !== undefined) {
+                            document.getElementById("nome-input").value = jsonResponse.nome;
+                        }
+                    } else {
+                        console.error("Resposta da API inválida ou vazia");
+                    }
+                })
+                .catch(error => console.error("Erro ao buscar os dados do usuário:", error));
         }
     });
 });
