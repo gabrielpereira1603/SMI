@@ -14,7 +14,7 @@ class RelatorioManutencaoDao implements BuscarDadosRelatorioManutencaoRepository
             $fields = ' 
             manutencao.datahora_manutencao, 
             manutencao.descricao_manutencao, 
-            usuario_manutencao.nome_usuario AS nome_usuario_manutencao, 
+            usuario_manutencao.nome AS nome_usuario_manutencao, 
             usuario_manutencao.login AS login_manutencao, 
             usuario_manutencao.nivelacesso_fk AS nivelacesso_fk_manutencao, 
             reclamacao.status AS status_reclamacao, 
@@ -23,7 +23,7 @@ class RelatorioManutencaoDao implements BuscarDadosRelatorioManutencaoRepository
             reclamacao.descricao AS descricao_reclamacao, 
             reclamacao.datahora_reclamacao, 
             GROUP_CONCAT(componente.nome_componente) AS componentes,
-            usuario_reclamacao.nome_usuario AS nome_usuario_reclamacao, 
+            usuario_reclamacao.nome AS nome_usuario_reclamacao, 
             usuario_reclamacao.login AS login_reclamacao, 
             usuario_reclamacao.nivelacesso_fk AS nivelacesso_fk_reclamacao';
 
@@ -43,7 +43,7 @@ class RelatorioManutencaoDao implements BuscarDadosRelatorioManutencaoRepository
             $fields = '                
             manutencao.datahora_manutencao, 
             manutencao.descricao_manutencao, 
-            usuario_manutencao.nome_usuario AS nome_usuario_manutencao, 
+            usuario_manutencao.nome AS nome_usuario_manutencao, 
             usuario_manutencao.login AS login_manutencao, 
             usuario_manutencao.nivelacesso_fk AS nivelacesso_fk_manutencao, 
             reclamacao.status AS status_reclamacao, 
@@ -52,7 +52,7 @@ class RelatorioManutencaoDao implements BuscarDadosRelatorioManutencaoRepository
             reclamacao.descricao AS descricao_reclamacao, 
             reclamacao.datahora_reclamacao, 
             GROUP_CONCAT(componente.nome_componente) AS componentes,
-            usuario_reclamacao.nome_usuario AS nome_usuario_reclamacao, 
+            usuario_reclamacao.nome AS nome_usuario_reclamacao, 
             usuario_reclamacao.login AS login_reclamacao, 
             usuario_reclamacao.nivelacesso_fk AS nivelacesso_fk_reclamacao';
 
@@ -74,7 +74,7 @@ class RelatorioManutencaoDao implements BuscarDadosRelatorioManutencaoRepository
             $fields = '                
             manutencao.datahora_manutencao, 
             manutencao.descricao_manutencao, 
-            usuario_manutencao.nome_usuario AS nome_usuario_manutencao, 
+            usuario_manutencao.nome AS nome_usuario_manutencao, 
             usuario_manutencao.login AS login_manutencao, 
             usuario_manutencao.nivelacesso_fk AS nivelacesso_fk_manutencao, 
             reclamacao.status AS status_reclamacao, 
@@ -83,7 +83,7 @@ class RelatorioManutencaoDao implements BuscarDadosRelatorioManutencaoRepository
             reclamacao.descricao AS descricao_reclamacao, 
             reclamacao.datahora_reclamacao, 
             GROUP_CONCAT(componente.nome_componente) AS componentes,
-            usuario_reclamacao.nome_usuario AS nome_usuario_reclamacao, 
+            usuario_reclamacao.nome AS nome_usuario_reclamacao, 
             usuario_reclamacao.login AS login_reclamacao, 
             usuario_reclamacao.nivelacesso_fk AS nivelacesso_fk_reclamacao';
 
@@ -105,7 +105,7 @@ class RelatorioManutencaoDao implements BuscarDadosRelatorioManutencaoRepository
             $fields = '                
             manutencao.datahora_manutencao, 
             manutencao.descricao_manutencao, 
-            usuario_manutencao.nome_usuario AS nome_usuario_manutencao, 
+            usuario_manutencao.nome AS nome_usuario_manutencao, 
             usuario_manutencao.login AS login_manutencao, 
             usuario_manutencao.nivelacesso_fk AS nivelacesso_fk_manutencao, 
             reclamacao.status AS status_reclamacao, 
@@ -114,7 +114,7 @@ class RelatorioManutencaoDao implements BuscarDadosRelatorioManutencaoRepository
             reclamacao.descricao AS descricao_reclamacao, 
             reclamacao.datahora_reclamacao, 
             GROUP_CONCAT(componente.nome_componente) AS componentes,
-            usuario_reclamacao.nome_usuario AS nome_usuario_reclamacao, 
+            usuario_reclamacao.nome AS nome_usuario_reclamacao, 
             usuario_reclamacao.login AS login_reclamacao, 
             usuario_reclamacao.nivelacesso_fk AS nivelacesso_fk_reclamacao';
 
@@ -138,7 +138,7 @@ class RelatorioManutencaoDao implements BuscarDadosRelatorioManutencaoRepository
             $fields = '                
             manutencao.datahora_manutencao, 
             manutencao.descricao_manutencao, 
-            usuario_manutencao.nome_usuario AS nome_usuario_manutencao, 
+            usuario_manutencao.nome AS nome_usuario_manutencao, 
             usuario_manutencao.login AS login_manutencao, 
             usuario_manutencao.nivelacesso_fk AS nivelacesso_fk_manutencao, 
             reclamacao.status AS status_reclamacao, 
@@ -147,7 +147,7 @@ class RelatorioManutencaoDao implements BuscarDadosRelatorioManutencaoRepository
             reclamacao.descricao AS descricao_reclamacao, 
             reclamacao.datahora_reclamacao, 
             GROUP_CONCAT(componente.nome_componente) AS componentes,
-            usuario_reclamacao.nome_usuario AS nome_usuario_reclamacao, 
+            usuario_reclamacao.nome AS nome_usuario_reclamacao, 
             usuario_reclamacao.login AS login_reclamacao, 
             usuario_reclamacao.nivelacesso_fk AS nivelacesso_fk_reclamacao';
 

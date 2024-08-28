@@ -25,7 +25,7 @@ $(document).ready(function () {
             };
 
             // Faz a requisição usando fetch
-            fetch('http://localhost/manutencaoIntegrada/api/v1/user/' + selectedUsuario, requestOptions)
+            fetch('https://somosdevteam.com/SMI/api/v1/user/' + selectedUsuario, requestOptions)
                 .then(response => response.json())
                 .then(jsonResponse => {
                     console.log(jsonResponse)

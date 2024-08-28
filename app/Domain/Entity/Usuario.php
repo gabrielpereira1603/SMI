@@ -105,8 +105,8 @@ class Usuario
 
         return new Usuario(
             $data['codusuario'],
-            $data['nome_usuario'],
-            $data['email_usuario'],
+            $data['nome'],
+            $data['email'],
             $data['login'],
             '',
             '',

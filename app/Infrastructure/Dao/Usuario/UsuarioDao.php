@@ -25,8 +25,8 @@ class UsuarioDao
 
         return new Usuario(
             $usuarioData['codusuario'],
-            $usuarioData['nome_usuario'],
-            $usuarioData['email_usuario'],
+            $usuarioData['nome'],
+            $usuarioData['email'],
             $usuarioData['login'],
             $usuarioData['senha'],
             '',
@@ -38,8 +38,8 @@ class UsuarioDao
         $database = new Database('usuario');
         $idInserido = $database->insert([
             'login' => $login,
-            'email_usuario' => $email,
-            'nome_usuario' => $nome,
+            'email' => $email,
+            'nome' => $nome,
             'senha' => $senha,
             'nivelacesso_fk' => $nivel_acesso
         ]);
@@ -63,8 +63,8 @@ class UsuarioDao
 
             $usuario = new Usuario(
                 $usuarioData['codusuario'],
-                $usuarioData['nome_usuario'],
-                $usuarioData['email_usuario'],
+                $usuarioData['nome'],
+                $usuarioData['email'],
                 $usuarioData['login'],
                 $usuarioData['senha'],
                 $nivelAcesso
@@ -87,8 +87,8 @@ class UsuarioDao
 
             $usuario = new Usuario(
                 $usuarioData['codusuario'],
-                $usuarioData['nome_usuario'],
-                $usuarioData['email_usuario'],
+                $usuarioData['nome'],
+                $usuarioData['email'],
                 $usuarioData['login'],
                 $usuarioData['senha'],
                 '',
@@ -135,8 +135,8 @@ class UsuarioDao
 
         return new Usuario(
             $usuarioData['codusuario'],
-            $usuarioData['nome_usuario'],
-            $usuarioData['email_usuario'],
+            $usuarioData['nome'],
+            $usuarioData['email'],
             $usuarioData['login'],
             $usuarioData['senha'],
             $nivelAcesso
@@ -156,8 +156,8 @@ class UsuarioDao
 
             $usuario = new Usuario(
                 $usuarioData['codusuario'],
-                $usuarioData['nome_usuario'],
-                $usuarioData['email_usuario'],
+                $usuarioData['nome'],
+                $usuarioData['email'],
                 $usuarioData['login'],
                 $usuarioData['senha'],
                 $nivelAcesso
@@ -185,8 +185,8 @@ class UsuarioDao
 
         return new Usuario(
             $usuarioData['codusuario'],
-            $usuarioData['nome_usuario'],
-            $usuarioData['email_usuario'],
+            $usuarioData['nome'],
+            $usuarioData['email'],
             $usuarioData['login'],
             $usuarioData['senha'],
             $nivelAcesso

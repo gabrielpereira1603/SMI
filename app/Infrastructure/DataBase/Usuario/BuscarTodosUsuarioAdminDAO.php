@@ -13,7 +13,7 @@ class BuscarTodosUsuarioAdminDAO implements BuscarTodosUsuarioAdminRepository
 {
     public function buscarTodos(Request $request): ?array
     {
-        $where = "usuario.nivelacesso_fk = 3";
+        $where = "usuario.nivelacesso_fk = 2";
         $join = 'INNER JOIN nivel_acesso ON usuario.nivelacesso_fk = nivel_acesso.codnivel_acesso';
         $fields = 'usuario.*, nivel_acesso.codnivel_acesso, nivel_acesso.tipo_acesso';
 
