@@ -12,20 +12,9 @@ $(document).ready(function () {
         } else {
             // Configura o token JWT no cabeçalho Authorization
             const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbiI6IjEyMyJ9.Fc98BbWEJM79QUqUUVeXmSHxfSjfQnatptBlQQJp6Og"; // Substitua pelo seu token JWT válido
-            const requestOptions = {
-                method: 'POST', // Mudar para POST
-                headers: {
-                    'Content-Type': 'application/json', // Definir o tipo de conteúdo como JSON
-                    'Authorization': token
-                },
-                body: JSON.stringify({ // Converter o objeto para string JSON
-                    login: "123", // Substitua por um valor dinâmico se necessário
-                    senha: "123" // Substitua por um valor dinâmico se necessário
-                })
-            };
 
             // Faz a requisição usando fetch
-            fetch('https://teste.somosdevteam.com/api/v1/user/' + selectedUsuario, requestOptions)
+            fetch('https://teste.somosdevteam.com/api/v1/user/' + selectedUsuario)
                 .then(response => response.json())
                 .then(jsonResponse => {
                     // Preenche o campo de login com o valor retornado no JSON
