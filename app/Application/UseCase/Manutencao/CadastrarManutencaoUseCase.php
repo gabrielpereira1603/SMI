@@ -33,7 +33,7 @@ class CadastrarManutencaoUseCase
             throw new ErrorCadastrarManutencaoException("Não foi possível cadastrar à manutenção");
         }
 
-        if(!$this->atualizaSituacaoRepository->atualizaStatus($codcomputador,['codsituacao_fk' => 1])){
+        if(!$this->atualizaSituacaoRepository->atualizaStatus($codcomputador,['codsituacao_fk' => 2])){
             throw new ErrorAoAlterarSituacaoComputador("Error ao alterar a situação do computador!");
         }
 

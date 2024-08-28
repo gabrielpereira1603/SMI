@@ -28,8 +28,8 @@ class AdminComputadorStrategy implements CardComputadorStrategy
     public function renderCardComputadores(Request $request, &$obPagination, $codlaboratorio): array
     {
         $itens = '';
-        $statusClasses = ['', 'btn-success', 'btn-warning', 'btn-danger'];
-        $statusIcons = ['', 'bi bi-check-circle-fill', 'bi bi-tools', 'bi bi-exclamation-octagon-fill'];
+        $statusClasses = ['', 'btn-danger', 'btn-success', 'btn-warning'];
+        $statusIcons = ['', 'bi bi-tools','bi bi-check-circle-fill','bi bi-exclamation-octagon-fill'];
 
         $quantidadetotal = count($this->buscarComputadoresPorLaboratorioUseCase->execute($request,$codlaboratorio));
 

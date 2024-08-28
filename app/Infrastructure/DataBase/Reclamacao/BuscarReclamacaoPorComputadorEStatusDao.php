@@ -10,7 +10,7 @@ class BuscarReclamacaoPorComputadorEStatusDao implements BuscarReclamacaoPorComp
 {
     public function buscarReclamacao($codcomputador, $statusReclamacao): ?Reclamacao
     {
-        $where = "reclamacao.codcomputador_fk = $codcomputador AND reclamacao.status = '$statusReclamacao'";
+        $where = "reclamacao.codcomputador_fk = '$codcomputador' AND reclamacao.status = '$statusReclamacao'";
         $join = 'INNER JOIN usuario ON reclamacao.codusuario_fk = usuario.codusuario 
             INNER JOIN laboratorio ON reclamacao.codlaboratorio_fk = laboratorio.codlaboratorio 
             INNER JOIN computador ON reclamacao.codcomputador_fk = computador.codcomputador 
@@ -18,7 +18,7 @@ class BuscarReclamacaoPorComputadorEStatusDao implements BuscarReclamacaoPorComp
             INNER JOIN reclamacao_componente ON reclamacao.codreclamacao = reclamacao_componente.codreclamacao_fk 
             INNER JOIN componente ON componente.codcomponente = reclamacao_componente.codcomponente_fk
             INNER JOIN nivel_acesso ON usuario.nivelacesso_fk = nivel_acesso.codnivel_acesso';
-        $fields = 'reclamacao.*, usuario.login, usuario.nome_usuario, usuario.email_usuario, 
+        $fields = 'reclamacao.*, usuario.login, usuario.nome, usuario.email, 
                 laboratorio.numerolaboratorio, computador.patrimonio, situacao.codsituacao, 
                 situacao.tiposituacao,nivel_acesso.codnivel_acesso, nivel_acesso.tipo_acesso, 
                 GROUP_CONCAT(componente.nome_componente SEPARATOR \', \') AS componentes';
@@ -35,9 +35,9 @@ class BuscarReclamacaoPorComputadorEStatusDao implements BuscarReclamacaoPorComp
     private function isValidResult($result): bool
     {
         $mandatoryFields = [
-            'codreclamacao', 'descricao', 'prazo_reclamacao', 'status', 'datahora_reclamacao',
-            'codcomputador_fk', 'codlaboratorio_fk', 'codusuario_fk', 'login', 'nome_usuario',
-            'email_usuario', 'numerolaboratorio', 'patrimonio', 'codsituacao', 'tiposituacao',
+            'codreclamacao', 'descricao','status', 'datahora_reclamacao',
+            'codcomputador_fk', 'codlaboratorio_fk', 'codusuario_fk', 'login', 'nome',
+            'email', 'numerolaboratorio', 'patrimonio', 'codsituacao', 'tiposituacao',
             'codnivel_acesso', 'tipo_acesso'
         ];
 

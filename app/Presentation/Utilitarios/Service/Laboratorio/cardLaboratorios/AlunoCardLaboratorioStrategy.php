@@ -39,9 +39,9 @@ class AlunoCardLaboratorioStrategy implements CardLaboratorioStrategy
             return View::render('aluno/laboratorio/item', [
                 'codlaboratorio' => $laboratorio->getCodLaboratorio(),
                 'numerolaboratorio' => $laboratorio->getNumeroLaboratorio(),
-                'quantidade_disponiveis' => $quantidades[1] ?? 0,
-                'quantidade_indisponiveis' => $quantidades[3] ?? 0,
-                'quantidade_em_manutencao' => $quantidades[2] ?? 0,
+                'quantidade_disponiveis' => $quantidades[2] ?? 0,
+                'quantidade_indisponiveis' => $quantidades[1] ?? 0,
+                'quantidade_em_manutencao' => $quantidades[3] ?? 0,
                 'quantidade_total_computadores' => count($computadores)
             ]);
         }, $laboratorios);

@@ -19,7 +19,7 @@ class ComputadoresPorLaboratorioDAO implements BuscarComputadorPorLaboratorioRep
                 INNER JOIN laboratorio ON computador.codlaboratorio_fk = laboratorio.codlaboratorio';
 
         // Ordena os resultados pelo patrimônio em ordem crescente
-        $order = 'computador.patrimonio ASC';
+        $order = 'CAST(computador.patrimonio AS UNSIGNED) ASC';
 
         // Realiza a consulta no banco de dados
         $results = (new Database('computador'))->select($where, $order, null, null, '*', $join)->fetchAll();

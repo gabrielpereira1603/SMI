@@ -27,6 +27,7 @@ class CadastrarManutencaoEmail
             // Configurações adicionais (assunto, etc.)
             $subject = "Manutenção finalizada com sucesso.";
             $this->emailSender->sendEmail($email, $subject, $body);
+
         } catch (ErroAoEnviarEmailException $e) {
             throw new ErroAoEnviarEmailException("Erro ao enviar e-mail de cadastro de reclamação.");
         }
