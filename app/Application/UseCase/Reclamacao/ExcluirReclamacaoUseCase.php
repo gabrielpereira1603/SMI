@@ -40,7 +40,7 @@ class ExcluirReclamacaoUseCase
             throw new ErrorAoExcluirReclamacaoException("Error ao excluir a reclamação");
         }
 
-        if(!$this->atualizaStatusRepository->atualizaStatus((int)$codComputador, ['codsituacao_fk' => '1'])){
+        if(!$this->atualizaStatusRepository->atualizaStatus((int)$codComputador, ['codsituacao_fk' => '2'])){
 
             throw new ErrorAoExcluirReclamacaoException("Error ao atualizar situação do computador.");
         }

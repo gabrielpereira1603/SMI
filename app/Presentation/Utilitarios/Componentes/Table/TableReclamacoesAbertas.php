@@ -39,7 +39,7 @@ class TableReclamacoesAbertas
         );
 
         $obReclamacao = $useCase->execute($request,$codusuario, $statusReclamacao = 'Aberta');
-
+        $content = '';
         foreach ($obReclamacao as $reclamacao) {
             $codreclamacao = $reclamacao->getCodreclamacao();
             $obComponentes = $componenteUseCase->execute($request, $codreclamacao);

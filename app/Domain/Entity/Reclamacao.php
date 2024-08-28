@@ -119,17 +119,23 @@ class Reclamacao {
         $situacao = new Situacao($data['codsituacao'], $data['tiposituacao']);
         $nivelAcesso = new NivelAcesso($data['codnivel_acesso'], $data['tipo_acesso']);
         $computador = new Computador($data['codcomputador_fk'], $data['patrimonio'], $situacao, $laboratorio);
-        $usuario = new Usuario($data['codusuario_fk'], $data['nome_usuario'], $data['email_usuario'], $data['login'], '','', $nivelAcesso);
+        $usuario = new Usuario($data['codusuario_fk'], $data['nome'], $data['email'], $data['login'], '', '', $nivelAcesso);
+
+        // Convertendo a string para DateTime
+        $dataHoraReclamacao = new \DateTime($data['datahora_reclamacao']);
+
         return new Reclamacao(
             $data['codreclamacao'],
             $data['descricao'],
             $data['status'],
+            $dataHoraReclamacao,  // Usando a variável DateTime convertida
             $data['imagem'] ? : 'Não foi anexado fotos!',
             $computador,
             $laboratorio,
             $usuario
         );
     }
+
 
 
 }

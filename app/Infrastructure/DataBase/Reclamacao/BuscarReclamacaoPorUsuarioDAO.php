@@ -25,7 +25,7 @@ class BuscarReclamacaoPorUsuarioDAO implements BuscarReclamacaoPorAlunoRepositor
                 INNER JOIN reclamacao_componente ON reclamacao.codreclamacao = reclamacao_componente.codreclamacao_fk 
                 INNER JOIN componente ON componente.codcomponente = reclamacao_componente.codcomponente_fk
                 INNER JOIN nivel_acesso ON usuario.nivelacesso_fk = nivel_acesso.codnivel_acesso';
-        $fields = 'reclamacao.*, usuario.login, usuario.nome_usuario, usuario.email_usuario, 
+        $fields = 'reclamacao.*, usuario.login, usuario.nome, usuario.email, 
                     laboratorio.numerolaboratorio, computador.patrimonio, situacao.codsituacao, 
                     situacao.tiposituacao,nivel_acesso.codnivel_acesso, nivel_acesso.tipo_acesso, 
                     GROUP_CONCAT(componente.nome_componente SEPARATOR \', \') AS componentes';

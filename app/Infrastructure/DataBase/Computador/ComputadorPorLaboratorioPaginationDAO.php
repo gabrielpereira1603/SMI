@@ -19,7 +19,8 @@ class ComputadorPorLaboratorioPaginationDAO implements BuscarComputadorLaborator
         $join = 'INNER JOIN situacao ON computador.codsituacao_fk = situacao.codsituacao
                 INNER JOIN laboratorio ON computador.codlaboratorio_fk = laboratorio.codlaboratorio';
 
-        $order = 'patrimonio ASC';
+        // Ordena os resultados pelo patrimônio em ordem crescente
+        $order = 'CAST(computador.patrimonio AS UNSIGNED) ASC';
 
         $results = (new Database('computador'))->select($where, $order,$limit,$offset,'*', $join)->fetchAll();
 

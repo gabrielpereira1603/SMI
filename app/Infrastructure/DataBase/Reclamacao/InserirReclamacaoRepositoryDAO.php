@@ -16,10 +16,8 @@ class InserirReclamacaoRepositoryDAO implements CadastrarReclamacaoRepository
         $database = new Database('reclamacao');
         return $database->insert([
             'descricao' => $dadosReclamacao['descricao'],
-            'prazo_reclamacao' => 1,
             'status' => 'Aberta',
             'datahora_reclamacao' => $datahora_reclamacao,
-            'datahora_fimreclamacao' => '',
             'codcomputador_fk' => $dadosReclamacao['codcomputador'],
             'codlaboratorio_fk' => $dadosReclamacao['codlaboratorio'],
             'codusuario_fk' => $codUsuario,

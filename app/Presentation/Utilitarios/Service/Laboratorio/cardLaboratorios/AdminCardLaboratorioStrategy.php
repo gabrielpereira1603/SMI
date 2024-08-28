@@ -37,7 +37,7 @@ class AdminCardLaboratorioStrategy implements CardLaboratorioStrategy
             $quantidades = array_count_values(array_map(function($computador) {
                 return $computador->getSituacao()->getCodSituacao();
             }, $computadores));
-
+            var_dump($quantidades);
             return View::render('admin/laboratorio/item', [
                 'codlaboratorio' => $laboratorio->getCodLaboratorio(),
                 'numerolaboratorio' => $laboratorio->getNumeroLaboratorio(),

@@ -47,15 +47,15 @@ class AdminComputadorStrategy implements CardComputadorStrategy
             $statusIcon = $statusIcons[$obComputador->getSituacao()->getCodSituacao()] ?? '';
 
             switch ($obComputador->getSituacao()->getCodSituacao()) {
-                case 1:
+                case 2:
                     $status = 'status-itens status-item-2 btn btn-success';
                     $icone = 'bi bi-check-circle-fill'; // Ícone de computador em Disponível
                     break;
-                case 2:
+                case 3:
                     $status = 'status-itens status-item-1 btn btn-warning';
                     $icone = 'bi bi-tools'; // Ícone de computador Em Manutenção
                     break;
-                case 3:
+                case 1:
                     $status = 'status-itens status-item-3 btn btn-danger';
                     $icone = 'bi bi-exclamation-octagon-fill'; // Ícone de computador Indisponível
                     break;

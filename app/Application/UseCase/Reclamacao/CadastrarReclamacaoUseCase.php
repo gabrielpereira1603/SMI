@@ -31,7 +31,7 @@ class CadastrarReclamacaoUseCase
     {
         $lastIdReclamacao = $this->reclamacaoRepository->cadastrarReclamacao($dadosReclamacao,$foto);
 
-        if (!$this->computadorRepository->atualizaStatus($dadosReclamacao['codcomputador'], ['codsituacao_fk' => 2])){
+        if (!$this->computadorRepository->atualizaStatus($dadosReclamacao['codcomputador'], ['codsituacao_fk' => 3])){
             throw new FalhaCadastroReclamacao("Error ao atualizar o status do computador da reclamação.");
         }
 

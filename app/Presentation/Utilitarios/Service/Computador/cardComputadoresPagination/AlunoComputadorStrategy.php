@@ -29,8 +29,8 @@ class AlunoComputadorStrategy implements CardComputadorStrategy
     public function renderCardComputadores(Request $request, &$obPagination, $codlaboratorio): array
     {
         $itens = '';
-        $statusClasses = ['', 'btn-success', 'btn-warning', 'btn-danger'];
-        $statusIcons = ['', 'bi bi-check-circle-fill', 'bi bi-tools', 'bi bi-exclamation-octagon-fill'];
+        $statusClasses = ['', 'btn-danger','btn-success','btn-warning'];
+        $statusIcons = ['', 'bi bi-exclamation-octagon-fill','bi bi-check-circle-fill', 'bi bi-tools',];
 
         $quantidadetotal = count($this->buscarComputadoresPorLaboratorioUseCase->execute($request, $codlaboratorio));
 
@@ -47,7 +47,7 @@ class AlunoComputadorStrategy implements CardComputadorStrategy
         foreach ($results as $obComputador) {
             $statusClass = $statusClasses[$obComputador->getSituacao()->getCodSituacao()] ?? '';
             $statusIcon = $statusIcons[$obComputador->getSituacao()->getCodSituacao()] ?? '';
-            $disabled = $obComputador->getSituacao()->getCodSituacao() != 1 ? 'disabled' : '';
+            $disabled = $obComputador->getSituacao()->getCodSituacao() != 2 ? 'disabled' : '';
 
             $itens .= View::render('aluno/computador/item', [
                 'codcomputador' => $obComputador->getCodComputador(),
