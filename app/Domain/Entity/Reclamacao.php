@@ -6,23 +6,19 @@ class Reclamacao {
 
     private int $codreclamaca;
     private string $descricao;
-    private int $prazoReclamacao;
     private string $status;
     private \DateTime $dataHora_Reclamacao;
-    private \DateTime $dataHora_fimReclamacao;
     private string $imagem;
     private Computador $computador;
     private Laboratorio $laboratorio;
     private Usuario $usuario;
 
-    public function __construct(int $codreclamaca, string $descricao, int $prazoReclamacao, string $status, \DateTime $dataHora_Reclamacao, \DateTime $dataHora_fimReclamacao, string $imagen, Computador $computador, Laboratorio $laboratorio, Usuario $usuario)
+    public function __construct(int $codreclamaca, string $descricao, string $status, \DateTime $dataHora_Reclamacao, string $imagen, Computador $computador, Laboratorio $laboratorio, Usuario $usuario)
     {
         $this->codreclamaca = $codreclamaca;
         $this->descricao = $descricao;
-        $this->prazoReclamacao = $prazoReclamacao;
         $this->status = $status;
         $this->dataHora_Reclamacao = $dataHora_Reclamacao;
-        $this->dataHora_fimReclamacao = $dataHora_fimReclamacao;
         $this->imagem = $imagen;
         $this->computador = $computador;
         $this->laboratorio = $laboratorio;
@@ -62,17 +58,6 @@ class Reclamacao {
         return $this;
     }
 
-    public function getPrazoReclamacao(): int
-    {
-        return $this->prazoReclamacao;
-    }
-
-    public function setPrazoReclamacao(int $prazoReclamacao): Reclamacao
-    {
-        $this->prazoReclamacao = $prazoReclamacao;
-        return $this;
-    }
-
     public function getStatus(): string
     {
         return $this->status;
@@ -95,16 +80,6 @@ class Reclamacao {
         return $this;
     }
 
-    public function getDataHoraFimReclamacao(): \DateTime
-    {
-        return $this->dataHora_fimReclamacao;
-    }
-
-    public function setDataHoraFimReclamacao(\DateTime $dataHora_fimReclamacao): Reclamacao
-    {
-        $this->dataHora_fimReclamacao = $dataHora_fimReclamacao;
-        return $this;
-    }
 
     public function getComputador(): Computador
     {
@@ -148,10 +123,7 @@ class Reclamacao {
         return new Reclamacao(
             $data['codreclamacao'],
             $data['descricao'],
-            $data['prazo_reclamacao'],
             $data['status'],
-            new \DateTime($data['datahora_reclamacao']),
-            new \DateTime($data['datahora_fimreclamacao']),
             $data['imagem'] ? : 'Não foi anexado fotos!',
             $computador,
             $laboratorio,

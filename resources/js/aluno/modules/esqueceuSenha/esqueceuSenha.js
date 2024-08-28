@@ -1,10 +1,10 @@
-//const apiURL = `https://teste.somosdevteam.com/api/v1/email/${email}`;
+//
+//const apiURL = `http://localhost/manutencaoIntegrada/api/v1/email/${email}`;
 
 async function enviarEmailRedefinicaoSenha(email) {
     try {
         const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbiI6IjEyMyJ9.Fc98BbWEJM79QUqUUVeXmSHxfSjfQnatptBlQQJp6Og";
-        const apiURL = `http://localhost/manutencaoIntegrada/api/v1/email/${email}`;
-
+        const apiURL = `https://teste.somosdevteam.com/api/v1/email/${email}`;
         const response = await fetch(apiURL, {
             method: 'get',
 
