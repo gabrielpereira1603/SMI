@@ -25,10 +25,9 @@ $(document).ready(function () {
             };
 
             // Faz a requisição usando fetch
-            fetch('https://somosdevteam.com/SMI/api/v1/user/' + selectedUsuario, requestOptions)
+            fetch('https://teste.somosdevteam.com/api/v1/user/' + selectedUsuario, requestOptions)
                 .then(response => response.json())
                 .then(jsonResponse => {
-                    console.log(jsonResponse)
                     // Preenche o campo de login com o valor retornado no JSON
                     if (jsonResponse.login !== undefined) {
                         document.getElementById("login-user").value = jsonResponse.login;

@@ -139,6 +139,7 @@ class UsuarioDao
             $usuarioData['email'],
             $usuarioData['login'],
             $usuarioData['senha'],
+            '',
             $nivelAcesso
         );
     }
@@ -160,6 +161,7 @@ class UsuarioDao
                 $usuarioData['email'],
                 $usuarioData['login'],
                 $usuarioData['senha'],
+                '',
                 $nivelAcesso
             );
 
@@ -189,6 +191,7 @@ class UsuarioDao
             $usuarioData['email'],
             $usuarioData['login'],
             $usuarioData['senha'],
+            '',
             $nivelAcesso
         );
     }

@@ -14,3 +14,5 @@ include __DIR__ . '/usuario/enviarTokenRedefinirSenha.php';
 include __DIR__ . '/encerraSessao.php';
 
 include __DIR__ . '/Situaçao/SituacaoAPI.php';
+
+include __DIR__ . '/usuario/usuario.php';

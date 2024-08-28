@@ -18,8 +18,8 @@ class UsuarioApi
         // Extrai os dados do objeto $result e os adiciona ao array de retorno
         return [
             'codusuario' => $result->getCodusuario(),
-            'nome_usuario' => $result->getNomeUsuario(),
-            'email_usuario' => $result->getEmailUsuario(),
+            'nome' => $result->getNomeUsuario(),
+            'email' => $result->getEmailUsuario(),
             'tipo_acesso' => $result->getNivelAcesso()->getTipoAcesso(),
             'login' => $result->getLogin(),
         ];
