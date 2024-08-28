@@ -30,7 +30,7 @@ class BuscarTokenUsuarioDAO implements BuscarTokenUsuarioRepository
             $usuarioData['email'],
             $usuarioData['login'],
             $usuarioData['senha'],
-            '',
+            $usuarioData['token'],
             $nivelAcesso
         );
     }

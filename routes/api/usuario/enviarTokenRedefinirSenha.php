@@ -6,10 +6,10 @@ use app\Infrastructure\DataBase\Usuario\GerarTokenRedefinirSenhaDAO;
 use app\Infrastructure\Http\Response;
 
 
-$obRouter->post('/api/v1/email/{email}',[
+$obRouter->get('/api/v1/email/{email}',[
     'middlewares' => [
         'api',
-        'jwt-auth'
+        //'jwt-auth'
     ],
     function($request,$email) {
         $gerarToken = new GerarTokenRedefinirSenhaUseCase(

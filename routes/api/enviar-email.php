@@ -4,10 +4,10 @@ use app\Infrastructure\Http\Response;
 use app\Presentation\Utilitarios\Email\CriaContaAluno\CriaContaEmail;
 
 
-$obRouter->post('/api/v1/email/{email}/{nome}',[
+$obRouter->get('/api/v1/email/{email}/{nome}',[
     'middlewares' => [
         'api',
-        'jwt-auth'
+        //'jwt-auth'
     ],
     function($request, $email, $nome) {
         $enviarEmail = new CriaContaEmail();
