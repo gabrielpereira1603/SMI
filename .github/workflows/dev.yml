@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - main
-name: Deploy Manutencao Labs - Homologação
+name: Deploy Manutencao Labs - Produção
 jobs:
   web-deploy:
     name: 🎉 Deploy Homologação
@@ -17,4 +17,4 @@ jobs:
           server: ${{ secrets.ftp_host }}
           username: ${{ secrets.ftp_user }}
           password: ${{ secrets.ftp_password }}
-          server-dir: public_html/homologacao/
+          server-dir: smi.somosdevteam.com
