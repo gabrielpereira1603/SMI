@@ -12,7 +12,7 @@ $(document).ready(function () {
             document.getElementById("email").value = "";
             document.getElementById("nome-input").value = "";
         } else {
-            fetch('https://teste.somosdevteam.com/api/v1/user/' + selectedUsuario)
+            fetch('https://somosdevteam.com/smi/api/v1/user/' + selectedUsuario)
                 .then(response => response.json())
                 .then(jsonResponse => {
                     // Verifique se jsonResponse é um objeto e contém as propriedades esperadas

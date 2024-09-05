@@ -4,23 +4,19 @@
 async function enviarEmailRedefinicaoSenha(email) {
     try {
         const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbiI6IjEyMyJ9.Fc98BbWEJM79QUqUUVeXmSHxfSjfQnatptBlQQJp6Og";
-        const apiURL = `https://teste.somosdevteam.com/api/v1/email/${email}`;
+        const apiURL = `https://somosdevteam.com/smi/api/v1/email/${email}`;
         const response = await fetch(apiURL, {
             method: 'get',
 
         });
         console.log(response)
         if (response.ok) {
-            // Se a resposta for bem-sucedida, continua com o fluxo normal
-            // (neste caso, redirecionamento ou qualquer ação que você queira fazer)
             window.location.href = 'http://localhost/manutencaoIntegrada/aluno/validaToken';
         } else {
-            // Se a resposta não for bem-sucedida, trata o erro
             const errorMessage = await response.json();
             throw new Error(errorMessage.error);
         }
     } catch (error) {
-        // Trata o erro e exibe uma mensagem para o usuário
         Swal.fire({
             icon: 'error',
             title: 'Oops...',

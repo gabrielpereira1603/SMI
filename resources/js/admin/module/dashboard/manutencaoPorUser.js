@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     .then(response => response.json())
     .then(data => {
         const ctx = document.getElementById('myChart-ReclamacaoUsuario');
-        const labels = data.map(item => item.nome_usuario);
+        const labels = data.map(item => item.nome);
         const dataPoints = data.map(item => item.total_manutencoes);
 
         new Chart(ctx, {

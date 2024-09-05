@@ -108,7 +108,7 @@
             <!-- Select para escolher o laboratório -->
             <select class="form-select" id="min-laboratorio" aria-label="Default select example" name="laboratorio">
                 <option value="">Selecione um laboratório</option>
-                {{selectLabs}}
+                {{selectLabs}} <!-- Populado dinamicamente -->
             </select>
 
             <!-- Select para escolher o computador -->
@@ -153,7 +153,6 @@
                         </div>
 
                         <input type="hidden" id="computadorId" name="computadorId">
-                        <input type="hidden" id="laboratorioId" name="laboratorioId">
                         <button type="submit" class="btn btn-primary">Salvar</button>
                     </form>
                 </div>
@@ -197,12 +196,15 @@
             const computadorSelect = document.getElementById('min-computador');
             const selectedOption = computadorSelect.options[computadorSelect.selectedIndex];
 
+            //console.log('Computador selecionado para edição:', selectedOption.value);
+
             if (selectedOption.value) {
                 const computadorId = selectedOption.value;
 
                 fetch(`{{URL}}/api/v1/situacao/all`)
                     .then(response => response.json())
                     .then(situacoes => {
+                        //console.log('Situações recebidas:', situacoes);
                         fetch(`{{URL}}/api/v1/computador/${document.getElementById('min-laboratorio').value}`, {
                             method: 'POST',
                             headers: {
@@ -211,35 +213,34 @@
                         })
                             .then(response => response.json())
                             .then(data => {
-                                const computador = data.find(comp => comp.codcomputador == computadorId);
+                                //console.log('Dados do computador recebidos:', data);
+                                const computador = data.find(comp => comp.codcomputador === parseInt(computadorId));
+                                //console.log('Computador encontrado:', computador);
                                 if (computador) {
+                                    document.getElementById('computadorModalLabel').textContent = 'Editar Computador';
+                                    document.getElementById('computadorForm').action = `{{URL}}/admin/gerenciar/editPc`;
                                     document.getElementById('computadorId').value = computador.codcomputador;
                                     document.getElementById('patrimonio').value = computador.patrimonio;
-                                    // Preenche os campos ocultos
-                                    document.getElementById('tipoSituacao').value = computador.tiposituacao;  // Preenche o tipo de situação
 
-
-                                    // Preenche o select de situação
                                     const situacaoSelect = document.getElementById('situacao');
-                                    situacaoSelect.innerHTML = ''; // Limpa as opções
+                                    situacaoSelect.innerHTML = '';
 
                                     situacoes.forEach(situacao => {
                                         const option = document.createElement('option');
                                         option.value = situacao.codsituacao;
                                         option.textContent = situacao.tiposituacao;
-                                        if (situacao.tiposituacao === computador.tiposituacao) {
+                                        if (situacao.codsituacao === computador.codsituacao) {
                                             option.selected = true;
                                         }
                                         situacaoSelect.appendChild(option);
                                     });
 
-                                    // Esconder o select de laboratório no modal de edição
-                                    document.getElementById('laboratorioDiv').style.display = 'none';
-                                    document.getElementById('computadorForm').action = `{{URL}}/admin/gerenciar/editPc`; // Define a action de edição
+                                    document.getElementById('laboratorioDiv').style.display = 'none'; // Esconder o select de laboratório
 
-                                    // Abre o modal
                                     var myModal = new bootstrap.Modal(document.getElementById('computadorModal'));
                                     myModal.show();
+                                } else {
+                                    console.error('Computador não encontrado:', computadorId);
                                 }
                             })
                             .catch(error => console.error('Erro ao buscar dados do computador:', error));
@@ -257,18 +258,17 @@
         });
 
         document.getElementById('createComputadorBtn').addEventListener('click', function() {
-            // Resetando o modal para criação
+            document.getElementById('computadorModalLabel').textContent = 'Criar Novo Computador';
+            document.getElementById('computadorForm').action = `{{URL}}/admin/gerenciar/addPc`;
             document.getElementById('computadorId').value = '';
             document.getElementById('patrimonio').value = '';
-            document.getElementById('laboratorioDiv').style.display = 'block'; // Mostrar o select de laboratório
-            document.getElementById('computadorForm').action = `{{URL}}/admin/gerenciar/createPc`; // Define a action de criação
+            document.getElementById('laboratorioDiv').style.display = 'block';
 
-            // Preenche o select de situação
             fetch(`{{URL}}/api/v1/situacao/all`)
                 .then(response => response.json())
                 .then(situacoes => {
                     const situacaoSelect = document.getElementById('situacao');
-                    situacaoSelect.innerHTML = ''; // Limpa as opções
+                    situacaoSelect.innerHTML = '';
 
                     situacoes.forEach(situacao => {
                         const option = document.createElement('option');
@@ -277,15 +277,12 @@
                         situacaoSelect.appendChild(option);
                     });
 
-                    // Abre o modal
                     var myModal = new bootstrap.Modal(document.getElementById('computadorModal'));
                     myModal.show();
                 })
                 .catch(error => console.error('Erro ao buscar todas as situações:', error));
         });
     </script>
-
-
 
     <form action="?router=ManutencaoLabsController/alterComp" method="POST" class="form-manutencao">
         <fieldset>

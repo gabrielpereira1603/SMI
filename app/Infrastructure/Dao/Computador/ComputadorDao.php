@@ -5,10 +5,9 @@ namespace app\Infrastructure\Dao\Computador;
 use app\Domain\Entity\Computador;
 use app\Domain\Entity\Laboratorio;
 use app\Domain\Entity\Situacao;
-use app\Domain\Service\Computador\ComputadorRepository;
 use WilliamCosta\DatabaseManager\Database;
 
-class ComputadorDao implements ComputadorRepository
+class ComputadorDao
 {
 
     public function getComputadoresLaboratorio($codlaboratorio): array
@@ -105,6 +104,19 @@ class ComputadorDao implements ComputadorRepository
             $situacao,
             $laboratorio
         );
+    }
+
+    public static function cadastrarComputador(array $data): ?int
+    {
+        if (empty($data)) {
+            return null;
+        }
+
+        $database = new Database('computador');
+
+        $id = $database->insert($data);
+
+        return $id;
     }
 
 }

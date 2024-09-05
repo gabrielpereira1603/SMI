@@ -2,6 +2,7 @@
 
 namespace app\Presentation\Controller\Admin\Configuracoes;
 
+use app\Infrastructure\Dao\Computador\ComputadorDao;
 use app\Infrastructure\DataBase\Computador\EditarComputadorDAO;
 use app\Infrastructure\DataBase\Laboratorio\AdicionarLaboratorioDAO;
 use app\Infrastructure\DataBase\Laboratorio\EditarLaboratorioDAO;
@@ -87,20 +88,17 @@ class Configuracoes extends Page
 
     public static function editarComputador(Request $request){
         $postVars = $request->getPostVars();
-        var_dump($postVars);exit();
-        // Verificar se algum campo está vazio
-        if (empty($postVars['patrimonio']) || empty($postVars['situacao']) || empty($postVars['computadorId']) || empty($postVars['tiposituacao'])) {
+
+        if (empty($postVars['patrimonio']) || empty($postVars['situacao']) || empty($postVars['computadorId'])) {
             $request->getRouter()->redirect('/admin/gerenciar?error=' . urlencode("Erro: Todos os campos são obrigatórios."));
             return;
         }
 
-        // Verificar se o número do laboratório é válido (apenas números)
         if (!is_numeric($postVars['computadorId'])) {
             $request->getRouter()->redirect('/admin/gerenciar?error=' . urlencode("Erro: O número do computador deve ser um número válido."));
             return;
         }
 
-        // Verificar se a situação é válida (por exemplo, se é um número)
         if (!is_numeric($postVars['situacao'])) {
             $request->getRouter()->redirect('/admin/gerenciar?error=' . urlencode("Erro: O código da situação deve ser um número válido."));
             return;
@@ -113,4 +111,37 @@ class Configuracoes extends Page
 
         $request->getRouter()->redirect('/admin/gerenciar?success=' . urlencode("Computador editado com sucesso!"));
     }
+
+    public static function cadastrarComputador(Request $request)
+    {
+        $postVars = $request->getPostVars();
+
+        if (empty($postVars['patrimonio']) || empty($postVars['situacao']) || empty($postVars['laboratorio'])) {
+            $request->getRouter()->redirect('/admin/gerenciar?error=' . urlencode("Erro: Todos os campos são obrigatórios."));
+            return;
+        }
+
+        if (!is_numeric($postVars['situacao'])) {
+            $request->getRouter()->redirect('/admin/gerenciar?error=' . urlencode("Erro: O código da situação deve ser um número válido."));
+            return;
+        }
+
+        if (!is_numeric($postVars['laboratorio'])) {
+            $request->getRouter()->redirect('/admin/gerenciar?error=' . urlencode("Erro: O código do laboratório deve ser um número válido."));
+            return;
+        }
+
+        $id = ComputadorDao::cadastrarComputador([
+            'patrimonio' => $postVars['patrimonio'],
+            'codsituacao_fk' => $postVars['situacao'],
+            'codlaboratorio_fk' => $postVars['laboratorio']
+        ]);
+
+        if ($id) {
+            $request->getRouter()->redirect('/admin/gerenciar?success=' . urlencode("Computador cadastrado com sucesso!"));
+        } else {
+            $request->getRouter()->redirect('/admin/gerenciar?error=' . urlencode("Erro: Não foi possível cadastrar o computador."));
+        }
+    }
+
 }

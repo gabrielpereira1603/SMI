@@ -38,3 +38,12 @@ $obRouter->post('/admin/gerenciar/editPc',[
         return new Response(200, Configuracoes::editarComputador($request));
     }
 ]);
+
+$obRouter->post('/admin/gerenciar/addPc',[
+    'middlewares' => [
+        'required-admin-login'
+    ],
+    function($request) {
+        return new Response(200, Configuracoes::cadastrarComputador($request));
+    }
+]);
