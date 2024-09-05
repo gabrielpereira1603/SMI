@@ -7,7 +7,7 @@ use WilliamCosta\DatabaseManager\Database;
 
 class ComponenteDao
 {
-    public function getAllComponentes(): array
+    public static function getAllComponentes(): array
     {
         $results = (new Database('componente'))->select(null, null, null, null, '*', null)->fetchAll();
 
@@ -21,5 +21,36 @@ class ComponenteDao
         }
 
         return $componentes;
+    }
+
+    public static function editarComponente(int $codComponente, array $data)
+    {
+        if (empty($data)) {
+            return false;
+        }
+
+        $whereClause = "codcomponente = $codComponente";
+
+        $database = new Database('componente');
+        $result = $database->update($whereClause, $data);
+
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static function cadastrarComponente(array $data)
+    {
+        if (empty($data)) {
+            return null;
+        }
+
+        $database = new Database('componente');
+
+        $id = $database->insert($data);
+
+        return $id;
     }
 }

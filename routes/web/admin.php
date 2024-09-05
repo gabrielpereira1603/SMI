@@ -20,5 +20,7 @@ include __DIR__ . '/admin/gerarRelatorio/gerarRelatorio.php';
 
 include __DIR__ . '/admin/dashboard.php';
 
+include __DIR__ . '/admin/regras.php';
+
 include __DIR__ . '/admin/configuracoes/configuracoes.php';
 

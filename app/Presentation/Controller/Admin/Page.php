@@ -27,7 +27,7 @@ class Page {
         ],
         'termosDeUso' => [
             'label' => 'Termos De Uso',
-            'link'=> URL.'/regras'
+            'link'=> URL.'/admin/regras'
         ],
         'gerenciar'=> [
             'label'=> 'Gerenciar',

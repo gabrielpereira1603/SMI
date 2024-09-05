@@ -2,6 +2,7 @@
 
 namespace app\Presentation\Controller\Admin\Configuracoes;
 
+use app\Infrastructure\Dao\Componente\ComponenteDao;
 use app\Infrastructure\Dao\Computador\ComputadorDao;
 use app\Infrastructure\DataBase\Computador\EditarComputadorDAO;
 use app\Infrastructure\DataBase\Laboratorio\AdicionarLaboratorioDAO;
@@ -9,6 +10,7 @@ use app\Infrastructure\DataBase\Laboratorio\EditarLaboratorioDAO;
 use app\Infrastructure\DataBase\Laboratorio\ExcluirLaboratorioDAO;
 use app\Infrastructure\Http\Request;
 use app\Presentation\Controller\Admin\Page;
+use app\Presentation\Utilitarios\Componentes\Select\SelectTodosComponentes;
 use app\Presentation\Utilitarios\Componentes\Select\SelectTodosLaboratorios;
 use app\Utils\View;
 
@@ -19,9 +21,11 @@ class Configuracoes extends Page
         $content ='';
 
         $SelectTodosLaboratorios = SelectTodosLaboratorios::getLaboratorioItens($request);
+        $SelectTodosComponentes = SelectTodosComponentes::selectAllComponentes($request);
 
         $content = View::render('admin/modules/configuracoes/index',[
             'selectLabs' => $SelectTodosLaboratorios,
+            'selectComponentes' => $SelectTodosComponentes,
         ]);
 
         //RETONA A PAGINA COMPLETA
@@ -141,6 +145,46 @@ class Configuracoes extends Page
             $request->getRouter()->redirect('/admin/gerenciar?success=' . urlencode("Computador cadastrado com sucesso!"));
         } else {
             $request->getRouter()->redirect('/admin/gerenciar?error=' . urlencode("Erro: Não foi possível cadastrar o computador."));
+        }
+    }
+
+    public static function editarComponente(Request $request)
+    {
+        $postVars = $request->getPostVars();
+        if (empty($postVars['nomeComponente']) || empty($postVars['componenteId'])) {
+            $request->getRouter()->redirect('/admin/gerenciar?error=' . urlencode("Erro: Todos os campos são obrigatórios."));
+            return;
+        }
+
+        if (!is_numeric($postVars['componenteId'])) {
+            $request->getRouter()->redirect('/admin/gerenciar?error=' . urlencode("Erro: O id do componente deve ser um número válido."));
+            return;
+        }
+
+        ComponenteDao::editarComponente($postVars['componenteId'], [
+            'nome_componente' => $postVars['nomeComponente'],
+        ]);
+
+        $request->getRouter()->redirect('/admin/gerenciar?success=' . urlencode("Componente editado com sucesso!"));
+    }
+
+    public static function cadastrarComponente(Request $request)
+    {
+        $postVars = $request->getPostVars();
+
+        if (empty($postVars['nomeComponente'])) {
+            $request->getRouter()->redirect('/admin/gerenciar?error=' . urlencode("Erro: Todos os campos são obrigatórios."));
+            return;
+        }
+
+        $id = ComponenteDao::cadastrarComponente([
+            'nome_componente' => $postVars['nomeComponente'],
+        ]);
+
+        if ($id) {
+            $request->getRouter()->redirect('/admin/gerenciar?success=' . urlencode("Componente cadastrado com sucesso!"));
+        } else {
+            $request->getRouter()->redirect('/admin/gerenciar?error=' . urlencode("Erro: Não foi possível cadastrar o Componente."));
         }
     }
 
