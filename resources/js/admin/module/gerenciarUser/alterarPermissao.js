@@ -12,7 +12,7 @@ $(document).ready(function () {
         } else {
             // Faz a requisição usando fetch com try-catch
             try {
-                fetch('https://teste.somosdevteam.com/api/v1/user/' + selectedUsuario)
+                fetch('https://smi.somosdevteam.com/api/v1/user/' + selectedUsuario)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error('Erro na requisição: ' + response.statusText);
