@@ -1,17 +1,19 @@
-//
-//const apiURL = `http://localhost/manutencaoIntegrada/api/v1/email/${email}`;
-
 async function enviarEmailRedefinicaoSenha(email) {
     try {
         const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbiI6IjEyMyJ9.Fc98BbWEJM79QUqUUVeXmSHxfSjfQnatptBlQQJp6Og";
-        const apiURL = `https://somosdevteam.com/smi/api/v1/email/${email}`;
+        const apiURL = `https://smi.somosdevteam.com/api/v1/email/${email}`;
         const response = await fetch(apiURL, {
             method: 'get',
-
         });
-        console.log(response)
+
+        // Exibe o status e a resposta para debugging
+        console.log('Response status:', response.status);
+        console.log('Response data:', await response.json());
+
         if (response.ok) {
-            window.location.href = 'http://localhost/manutencaoIntegrada/aluno/validaToken';
+            // Coloque um console.log antes de redirecionar
+            console.log('Redirecionando para validaToken...');
+            window.location.href = 'https://smi.somosdevteam.com/aluno/validaToken';
         } else {
             const errorMessage = await response.json();
             throw new Error(errorMessage.error);
