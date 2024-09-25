@@ -5,12 +5,11 @@ $(document).ready(function () {
     });
 
     $('#select-usuario').on('select2:select', function (e) {
-        const selectedUsuario = this.value; // Obtém o ID do usuário selecionado
+        const selectedUsuario = this.value;
 
         if (selectedUsuario === "") {
             document.getElementById("login-user").value = "";
         } else {
-            // Faz a requisição usando fetch com try-catch
             try {
                 fetch('https://smi.somosdevteam.com/api/v1/user/' + selectedUsuario)
                     .then(response => {
