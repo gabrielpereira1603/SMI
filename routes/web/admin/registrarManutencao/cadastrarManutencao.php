@@ -21,7 +21,6 @@ $obRouter->post('/admin/manutencao/{codcomputador}',[
                 new AtualizaReclamacaoDAO()
             )
         );
-        var_dump($codcomputador);
         return new Response(200, $cadastrarManutencao->cadastrarManutencao($request,$codcomputador));
     }
 ]);
